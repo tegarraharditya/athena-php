@@ -45,7 +45,7 @@ class LoginContext extends AthenaTestContext
      */
     public function iTypeEmail()
     {
-        $this->loginPage->fillLoginEmail('suci.ij@gmail.com');
+        $this->loginPage->fillLoginEmail('suci.istch@gmail.com');
     }
 
     /**
@@ -53,7 +53,7 @@ class LoginContext extends AthenaTestContext
      */
     public function iTypePassword()
     {
-        $this->loginPage->fillLoginPassword('olx131');
+        $this->loginPage->fillLoginPassword('testing123');
     }
 
     /**
