@@ -4,4 +4,4 @@ vendor/
 .swp
 tests/report.html
 report.html
-*.jpp
+*.jpg
