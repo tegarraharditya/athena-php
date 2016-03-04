@@ -2,6 +2,4 @@
 composer.lock
 vendor/
 .swp
-tests/report.html
-report.html
 *.jpg
