@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+    <title>Test Automation Report</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <style type="text/css">
+        pre {
+            word-break: keep-all !important;
+            word-wrap: normal !important;
+            overflow-x: scroll !important;
+        }
+
+        .expected-exception-stacktrace {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <header class="page-header">
+
+                            <h1>default</h1>
+            
+            <small>
+                Total 1 tests in .
+
+                            </small>
+        </header>
+
+        
+                    <section class="panel panel-default">
+                <div class="panel-heading">Feature: Login. As a user of OLX
+I want to log into site</div>
+                <div class="panel-body">
+                                            <section class="panel panel-danger test-execution">
+                            <div class="panel-heading">Scenario: login to the site with an existing user</div>
+                            <div class="panel-body">
+                                <div class="row">
+
+                                                                        <div class="col-md-8">
+                                        <ul class="list-group">
+                                            
+                                                <li class="test-execution-item list-group-item"             data-screenshot="./athenaimg_56d9410fd75c8.jpg"
+    >When I go to accounts page
+
+                                                    
+                                                    
+                                                                                                            <span class="badge"><span class="glyphicon glyphicon-picture"></span></span>
+                                                    
+                                                                                                    </li>
+
+                                            
+                                                <li class="test-execution-item list-group-item"             data-screenshot="./athenaimg_56d9410febe37.jpg"
+    >And I type email
+
+                                                    
+                                                    
+                                                                                                            <span class="badge"><span class="glyphicon glyphicon-picture"></span></span>
+                                                    
+                                                                                                    </li>
+
+                                            
+                                                <li class="test-execution-item list-group-item"             data-screenshot="./athenaimg_56d9411002c2f.jpg"
+    >And I type password
+
+                                                    
+                                                    
+                                                                                                            <span class="badge"><span class="glyphicon glyphicon-picture"></span></span>
+                                                    
+                                                                                                    </li>
+
+                                            
+                                                <li class="test-execution-item list-group-item"             data-screenshot="./athenaimg_56d941100cd9a.jpg"
+    >And I click submit button
+
+                                                    
+                                                    
+                                                                                                            <span class="badge"><span class="glyphicon glyphicon-picture"></span></span>
+                                                    
+                                                                                                    </li>
+
+                                            
+                                                <li class="test-execution-item list-group-item"             data-screenshot="./athenaimg_56d94110180e1.jpg"
+    >Then I should see myaccount page
+
+                                                    
+                                                    
+                                                                                                            <span class="badge"><span class="glyphicon glyphicon-picture"></span></span>
+                                                    
+                                                                                                    </li>
+
+                                                                                    </ul>
+                                    </div>
+
+                                                                        <div class="col-md-4">
+                                        <div class="detail-screenshot">
+                                            Move your mouse over an action to see the screenshot. (Screenshot was taken after the action)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                                    </div>
+            </section>
+            </div>
+
+</body>
+</html>
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(function () {
+
+        $(".show-expected-exception").on("click", function (e) {
+            $(this).siblings(".expected-exception-stacktrace").show();
+            $(this).hide();
+            e.preventDefault();
+        });
+
+        $(".test-execution-item-action").each(function () {
+            this.innerHTML = this.innerHTML.replace(/https?:\/\/[^ ]+/, function (match) {
+                return "<a href=\"" + match + "\" target=\"_blank\">" + match + "</a>"
+            })
+        });
+
+        $(".test-execution-item").on("mouseenter", function (ev) {
+
+
+            $item = $(this);
+            $element = $item.parents(".test-execution");
+            $screenshotArea = $element.find(".detail-screenshot");
+            $screenshotArea.text("");
+            $screenshotArea.children().remove();
+
+
+            if ($item.attr("data-screenshot")) {
+                $screenshotArea.append('<div class="overlay-contents" style="height: 300px; overflow: hidden; margin-bottom: 15px;"><a href="' + $item.attr("data-screenshot") + '"><img src="' + $item.attr("data-screenshot") + '" style="max-width: 100%; "/></a></div>');
+            } else if ($item.attr("data-httpcall")) {
+
+                $screenshotArea.append("<div class=\"overlay-contents\">" + $item.find(".detailed-httpcall").html() + "</div>");
+            } else {
+                $screenshotArea.text("no screenshot/http log");
+            }
+        });
+        $(".test-execution-item").on("click", function (ev) {
+
+            $item = $(this);
+            var $modalArea = $("#modal-body");
+            if ($item.attr("data-screenshot")) {
+                $modalArea.html('<div class="overlay-contents" style="height: 300px; overflow: hidden; margin-bottom: 15px;"><a href="' + $item.attr("data-screenshot") + '"><img src="' + $item.attr("data-screenshot") + '" style="max-width: 100%; "/></a></div>');
+            } else if ($item.attr("data-httpcall")) {
+                $modalArea.html("<div class=\"overlay-contents\">" + $item.find(".detailed-httpcall").html() + "</div>");
+            } else {
+                return;
+            }
+
+            $("#modal").modal();
+        });
+
+    });
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Details</h4>
+            </div>
+            <div class="modal-body" id="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
