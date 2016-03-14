@@ -50,6 +50,10 @@ class LoginPage extends AbstractPage
         return new MyAds($this->getBrowser());
     }
 
+    public function verifyFormLoginIsDisplayed(){
+        $this->elementLoginForm()->assertThat()->isDisplayed();
+    }
+
     public function Login($email, $password)
     {
 
@@ -90,4 +94,10 @@ class LoginPage extends AbstractPage
     {
         return $this->getCurrentPage()->getElement()->withId('se_userLogin');
     }
+
+    private function elementLoginForm(){
+        return $this->getCurrentPage()->getElement()->withId('loginForm');
+    }
+
+
 }

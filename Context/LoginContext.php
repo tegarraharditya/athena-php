@@ -4,6 +4,7 @@ namespace Tests\Context;
 
 use Athena\Athena;
 use Athena\Test\AthenaTestContext;
+use Behat\Behat\Tester\Exception\PendingException;
 use Tests\Page\LoginPage;
 
 /**
@@ -70,5 +71,21 @@ class LoginContext extends AthenaTestContext
     public function iShouldSeeMyaccountPage()
     {
         $this->MyAdsPage->verifyMyAdsTitle();
+    }
+
+    /**
+     * @When /^I go to login page$/
+     */
+    public function iGoToLoginPage()
+    {
+        $this->loginPage->open();
+    }
+
+    /**
+     * @Then /^I see login page$/
+     */
+    public function iSeeLoginPage()
+    {
+        $this->loginPage->verifyFormLoginIsDisplayed();
     }
 }

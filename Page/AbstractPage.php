@@ -37,6 +37,13 @@ abstract class AbstractPage
         return $this->browser->getCurrentPage();
     }
 
+    /**
+     * @return \Athena\Browser\Page\Element\ElementSelector
+     */
+    public function getElement(){
+        return $this->getCurrentPage()->getElement();
+    }
+
 
     /**
      * Open page.
