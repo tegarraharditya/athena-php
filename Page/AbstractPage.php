@@ -44,6 +44,15 @@ abstract class AbstractPage
         return $this->getCurrentPage()->getElement();
     }
 
+    /**
+     * @param $locatortype : id, class, etc
+     * @param $locator : value of locator
+     * @return \Athena\Browser\Page\Element\ElementAction
+     */
+    public function getElementWithOther($locatortype,$locator){
+        return $this->getCurrentPage()->getElement()->withXpath("//*[@".$locatortype."='".$locator."']");
+    }
+
 
     /**
      * Open page.

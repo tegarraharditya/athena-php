@@ -5,6 +5,5 @@
   },
   "selenium" : {
     "hub_url" : "http://athena-selenium-hub:4444/wd/hub"
-  },
-  "browser_nodes" : 2
+  }
 }

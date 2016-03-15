@@ -99,5 +99,4 @@ class LoginPage extends AbstractPage
         return $this->getCurrentPage()->getElement()->withId('loginForm');
     }
 
-
 }
