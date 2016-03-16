@@ -11,8 +11,10 @@ namespace Tests\Page;
 
 class SearchBar extends AbstractPage
 {
-    private $SEARCH_BAR = '';
-    private $SEARCH_BUTTON = '';
+    private $ID_SEARCH_BAR = 'js-field-search';
+    private $SEARCH_BUTTON = 'submit';
+    private $PILIH_LOKASI = '';
+    private $ID_LOCATION_LIST = 'location-list__metro';
 
     public function open(){}
 
@@ -20,11 +22,23 @@ class SearchBar extends AbstractPage
      * @return \Athena\Browser\Page\Element\ElementAction
      */
     public function getElementSearchBar(){
-        return $this->getElement()->withXpath($this->SEARCH_BAR);
+        return $this->getElement()->withId($this->ID_SEARCH_BAR);
     }
 
     public function getElementSearchButton(){
-        return $this->getElement()->withXpath($this->SEARCH_BUTTON);
+        return $this->getElementWithOther('type',$this->SEARCH_BUTTON);
+    }
+
+    public function getPilihLokasiButton(){
+        return $this->getElement()->withId('');
+    }
+
+    public function getLokasi(){
+        return $this->getElement()->withId('');
+    }
+
+    public function getElementLocationList(){
+        return $this->getElement()->withId($this->ID_LOCATION_LIST);
     }
 
     public function typeKeyword($keyword){
@@ -34,5 +48,15 @@ class SearchBar extends AbstractPage
     public function clickSearchButton(){
         $this->getElementSearchButton()->thenFind()->asHtmlElement()->click();
     }
+
+    public function waitLoacationListVisible(){
+        $this->getElementLocationList()->wait(5)->toBeVisible();
+    }
+
+    public function clickLokasi(){
+        $this->getLokasi()->thenFind()->asHtmlElement()->click();
+    }
+
+
 
 }

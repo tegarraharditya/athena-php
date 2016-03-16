@@ -24,6 +24,12 @@ Feature: Footer
   @parallel-scenario
   Scenario:
     Given I am in homepage
+    When I click Facebook OLX Indonesia link on footer
+    Then I am navigated to Facebook OLX Indonesia page
+
+  @parallel-scenario
+  Scenario:
+    Given I am in homepage
     When I click Ketentuan Umum link on footer
     Then I am navigated to Ketentuan Umum page
 
@@ -68,3 +74,4 @@ Feature: Footer
     Given I am in homepage
     When I click Blog OLX Indonesia link on footer
     Then I am navigated to Blog OLX Indonesia page
+

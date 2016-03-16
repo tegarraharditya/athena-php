@@ -208,4 +208,20 @@ class FooterContext extends AthenaTestContext
     {
         $this->footer->verifyBlogOlxIndonesiaPage();
     }
+
+    /**
+     * @When /^I click Facebook OLX Indonesia link on footer$/
+     */
+    public function iClickFacebookOLXIndonesiaLinkOnFooter()
+    {
+        $this->footer->clickFooterLink($this->FACEBOOK_OLX_INDONESIA);
+    }
+
+    /**
+     * @Then /^I am navigated to Facebook OLX Indonesia page$/
+     */
+    public function iAmNavigatedToFacebookOLXIndonesiaPage()
+    {
+        $this->footer->verifyFacebookOLXIndonesiaPage();
+    }
 }

@@ -27,91 +27,91 @@ class OpenHomepageContext extends AthenaTestContext
     private $homepage;
 
     //ID
-    private $ID_MOBIL = 'catitem__mobil';
-    private $ID_MOBIL_MOBIL_BEKAS = 'mobil_bekas';
+    private $ID_MOBIL = 'mobil';
+    private $ID_MOBIL_MOBIL_BEKAS = 'mobil-bekas';
     private $ID_MOBIL_AKSESORIS = 'aksesoris';
-    private $ID_MOBIL_AUDIO_MOBIL = 'audio_mobil';
+    private $ID_MOBIL_AUDIO_MOBIL = 'audio-mobil';
     private $ID_MOBIL_SPAREPART = 'sparepart';
-    private $ID_MOBIL_VELG_AND_BAN = 'velg_dan-ban';
+    private $ID_MOBIL_VELG_AND_BAN = 'velg-dan-ban';
 
-    private $ID_MOTOR = 'catitem__motor';
-    private $ID_MOTOR_BEKAS = 'motor_bekas';
+    private $ID_MOTOR = 'motor';//kembar dengan yang all
+    private $ID_MOTOR_BEKAS = 'motor-bekas';
     private $ID_MOTOR_HELM = 'helm';
-    private $ID_MOTOR_SPAREPART = 'sparepart';
-    private $ID_MOTOR_AKSESORIS = 'aksesoris';
+    private $ID_MOTOR_SPAREPART = 'sparepart';//sama dengan mobil
+    private $ID_MOTOR_AKSESORIS = 'aksesoris';// sama dengan mobil
 
-    private $ID_PROPERTY = 'catitem__properti';
+    private $ID_PROPERTY = 'properti';//kembar dengan yang all
     private $ID_PROPERTY_RUMAH = 'rumah';
     private $ID_PROPERTY_APARTMENT = 'apartment';
     private $ID_PROPERTY_INDEKOS = 'indekos';
-    private $ID_PROPERTY_BANGUNAN_KOMERSIL = 'bangunan_komersil';
+    private $ID_PROPERTY_BANGUNAN_KOMERSIL = 'bangunan-komersil';
     private $ID_PROPERTY_TANAH = 'tanah';
-    private $ID_PROPERTY_LAINNYA = 'properti_lainnya';
+    private $ID_PROPERTY_LAINNYA = 'properti-lainnya';
 
-    private $ID_PRIBADI = 'catitem__keperluan-pribadi';
-    private $ID_PRIBADI_FASHION_WANITA = 'fashion_wanita';
-    private $ID_PRIBADI_FASHION_PRIA = 'fashion_pria';
-    private $ID_PRIBADI_JAM_TANGAN = 'jam_tangan';
-    private $ID_PRIBADI_PAKAIAN_OR = 'pakaian_olahraga';
+    private $ID_PRIBADI = 'keperluan-pribadi';
+    private $ID_PRIBADI_FASHION_WANITA = 'fashion-wanita';//kembar dengan yang all
+    private $ID_PRIBADI_FASHION_PRIA = 'fashion-pria';
+    private $ID_PRIBADI_JAM_TANGAN = 'jam-tangan';
+    private $ID_PRIBADI_PAKAIAN_OR = 'pakaian-olahraga';
     private $ID_PRIBADI_PERHIASAN = 'perhiasan';
-    private $ID_PRIBADI_MAKEUP_PARFUM = 'make_up-parfum';
-    private $ID_PRIBADI_TERAPI_PENGOBATAN = 'terapi_pengobatan';
+    private $ID_PRIBADI_MAKEUP_PARFUM = 'make-up-parfum';
+    private $ID_PRIBADI_TERAPI_PENGOBATAN = 'terapi-pengobatan';
     private $ID_PRIBADI_PERAWATAN = 'perawatan';
-    private $ID_PRIBADI_NUTRISI_SUPLEMEN = 'nutrisi_suplemen';
+    private $ID_PRIBADI_NUTRISI_SUPLEMEN = 'nutrisi-suplemen';
     private $ID_PRIBADI_LAINNYA = 'lainnya';
 
-    private $ID_ENG = 'catitem__elektronik-gadget';
+    private $ID_ENG = 'elektronik-gadget';//sama dengan yang all
     private $ID_ENG_HANDPHONE = 'handphone';
     private $ID_ENG_TABLET = 'tablet';
-    private $ID_ENG_AKSESORIS_HP_TABLET = 'aksesoris_hp-tablet';
+    private $ID_ENG_AKSESORIS_HP_TABLET = 'aksesoris-hp-tablet';
     private $ID_ENG_FOTOGRAFI = 'fotografi';
-    private $ID_ENG_RUMAH_TANGGA = 'elektronik_rumah-tangga';
-    private $ID_ENG_GAMES_CONSOLE = 'games_console';
+    private $ID_ENG_RUMAH_TANGGA = 'elektronik-rumah-tangga';
+    private $ID_ENG_GAMES_CONSOLE = 'games-console';
     private $ID_ENG_KOMPUTER = 'komputer';
     private $ID_ENG_LAMPU = 'lampu';
-    private $ID_ENG_TV_AUDIO_VIDEO = 'tv_audio-video';
+    private $ID_ENG_TV_AUDIO_VIDEO = 'tv-audio-video';
 
-    private $ID_HO = 'catitem__hobi-olahraga';
-    private $ID_HO_ALAT_MUSIK = 'alat_musik';
+    private $ID_HO = 'hobi-olahraga';
+    private $ID_HO_ALAT_MUSIK = 'alat-musik';
     private $ID_HO_OLAH_RAGA = 'olahraga';
-    private $ID_HO_SEPEDA_AKSESORIS = 'sepeda_aksesoris';
+    private $ID_HO_SEPEDA_AKSESORIS = 'sepeda-aksesoris';
     private $ID_HO_HANDICRAFTS = 'handicrafts';
-    private $ID_HO_BARANG_ANTIK = 'barang_antik';
-    private $ID_HO_BUKU_MAJALAH = 'buku_majalah';
+    private $ID_HO_BARANG_ANTIK = 'barang-antik';
+    private $ID_HO_BUKU_MAJALAH = 'buku-majalah';
     private $ID_HO_KOLEKSI = 'koleksi';
-    private $ID_HO_MAINAN_HOBI = 'mainan_hobi';
-    private $ID_HO_MUSIK_FILM = 'musik_film';
-    private $ID_HO_HEWAN_PELIHARAAN = 'hewan_peliharaan';
+    private $ID_HO_MAINAN_HOBI = 'mainan-hobi';
+    private $ID_HO_MUSIK_FILM = 'musik-film';
+    private $ID_HO_HEWAN_PELIHARAAN = 'hewan-peliharaan';
 
-    private $ID_RT = 'catitem__rumah-tangga';
-    private $ID_RT_MAKANAN_MINUMAN = 'makanan_minuman';
+    private $ID_RT = 'rumah-tangga';//kembar dengan yang all
+    private $ID_RT_MAKANAN_MINUMAN = 'makanan-minuman';
     private $ID_RT_FURNITURE = 'furniture';
-    private $ID_RT_DEKORASI_RUMAH = 'dekorasi_murah';
-    private $ID_RT_KONSTRUKSI_TAMAN = 'konstruksi_dan-taman';
+    private $ID_RT_DEKORASI_RUMAH = 'dekorasi-rumah';
+    private $ID_RT_KONSTRUKSI_TAMAN = 'konstruksi-dan-taman';
     private $ID_RT_JAM = 'jam';
-    private $ID_RT_LAMPU = '';//minta ubah
-    private $ID_RT_PERLENGKAPAN_RUMAH_TANGGA = 'perlengkapan_rumah';
+    private $ID_RT_LAMPU = 'lampu';//kembar
+    private $ID_RT_PERLENGKAPAN_RUMAH_TANGGA = 'perlengkapan-rumah';
     private $ID_RT_LAINNYA = 'lain';
 
-    private $ID_PBA = 'catitem__perlengkapan-bayi-anak';
+    private $ID_PBA = 'perlengkapan-bayi-anak';//kembar sama yang all
     private $ID_PBA_PAKAIAN = 'pakaian';
-    private $ID_PBA_PERLENGKAPAN_BAYI = 'perlengkapan_bayi';
-    private $ID_PBA_PERLENGKAPAN_IBU_BAYI = 'perlengkapan_ibu-bayi';
-    private $ID_PBA_BONEKA_MAINAN_ANAK = 'boneka_mainan-anak';
-    private $ID_PBA_BUKU_ANAK = 'buku_anak';
+    private $ID_PBA_PERLENGKAPAN_BAYI = 'perlengkapan-bayi';
+    private $ID_PBA_PERLENGKAPAN_IBU_BAYI = 'perlengkapan-ibu-bayi';
+    private $ID_PBA_BONEKA_MAINAN_ANAK = 'boneka-mainan-anak';
+    private $ID_PBA_BUKU_ANAK = 'buku-anak';
     private $ID_PBA_STROLLER  = 'stroller';
-    private $ID_PBA_LAINNYA = 'lain_lain';
+    private $ID_PBA_LAINNYA = 'lain-lain';
 
-    private $ID_KINDUSTRI = 'catitem__kantor-industri';
-    private $ID_KINDUSTRI_PERALATAN_KANTOR = 'peralatan_kantor';
-    private $ID_KINDUSTRI_PERLENGKAPAN_USAHA = 'perlengkapan_usaha';
-    private $ID_KINDUSTRI_MESIN_KEPERLUAN_INDUSTRI = 'mesin_keperluan-industri';
+    private $ID_KINDUSTRI = 'kantor-industri';
+    private $ID_KINDUSTRI_PERALATAN_KANTOR = 'peralatan-kantor';//kembar dengan yg all
+    private $ID_KINDUSTRI_PERLENGKAPAN_USAHA = 'perlengkapan-usaha';
+    private $ID_KINDUSTRI_MESIN_KEPERLUAN_INDUSTRI = 'mesin-keperluan-industri';
     private $ID_KINDUSTRY_STATIONERY = 'stationery';
-    private $ID_KINDUSTRI_LAINNYA = '';//sama minta ganti
+    private $ID_KINDUSTRI_LAINNYA = 'lain-lain';//sama minta ganti
 
-    private $ID_JASA = 'catitem__jasa-lowongan-kerja';
-    private $ID_JASA_LOWONGAN = 'lowongan';
-    private $ID_JASA_CARI_PEKERJAAN = 'cari_pekerjaan';
+    private $ID_JASA = 'jasa-lowongan-kerja';
+    private $ID_JASA_LOWONGAN = 'lowongan';//sama dengan yang all
+    private $ID_JASA_CARI_PEKERJAAN = 'cari-pekerjaan';
     private $ID_JASA_JASA = 'jasa';
 
     public function __construct(){
@@ -123,6 +123,7 @@ class OpenHomepageContext extends AthenaTestContext
      */
     public function iOpenUrl(){
         $this->homepage->open();
+        sleep(10);
     }
 
     /**

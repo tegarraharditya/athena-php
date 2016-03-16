@@ -20,11 +20,11 @@ class Homepage extends AbstractPage
     }
 
     public function verifyPage(){
-        \PHPUnit_Framework_Assert::assertEquals('OLX.co.id - Cara Tepat Jual Cepat',$this->getBrowser()->getTitle());
+        \PHPUnit_Framework_Assert::assertEquals('home',$this->getAttributeBodyPage());
     }
 
     private function getElementCategoryById($id){
-        return $this->getElement()->withId($id);
+        return $this->getElementWithOther('data-cat-name',$id);
     }
 
     public function clickElementLevel2($level2){

@@ -53,6 +53,13 @@ abstract class AbstractPage
         return $this->getCurrentPage()->getElement()->withXpath("//*[@".$locatortype."='".$locator."']");
     }
 
+    /**
+     * @return null|string
+     */
+    public function getAttributeBodyPage(){
+        return $this->getElement()->withXpath('//body')->thenFind()->asHtmlElement()->getAttribute('class');
+    }
+
 
     /**
      * Open page.

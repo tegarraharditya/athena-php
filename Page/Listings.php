@@ -91,15 +91,10 @@ class Listings extends AbstractPage
     public function open()
     {
         // TODO: Implement open() method.
-        $this->getBrowser()->get("");
+        $this->getBrowser()->get('');
     }
 
-    /**
-     * @return null|string
-     */
-    public function getAttributeBodyPage(){
-        return $this->getElement()->withXpath('//body')->thenFind()->asHtmlElement()->getAttribute('class');
-    }
+
 
     public function verifyCategoryPage_Mobil_MobilBekas(){
         \PHPUnit_Framework_Assert::assertEquals($this->MOBIL_MOBIL_BEKAS,$this->getAttributeBodyPage());
