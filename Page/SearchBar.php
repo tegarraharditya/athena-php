@@ -21,23 +21,23 @@ class SearchBar extends AbstractPage
     /**
      * @return \Athena\Browser\Page\Element\ElementAction
      */
-    public function getElementSearchBar(){
+    private function getElementSearchBar(){
         return $this->getElement()->withId($this->ID_SEARCH_BAR);
     }
 
-    public function getElementSearchButton(){
+    private function getElementSearchButton(){
         return $this->getElementWithOther('type',$this->SEARCH_BUTTON);
     }
 
-    public function getPilihLokasiButton(){
+    private function getPilihLokasiButton(){
         return $this->getElement()->withId('');
     }
 
-    public function getLokasi(){
-        return $this->getElement()->withId('');
+    private function getLokasi($index){
+        return $this->getElement()->withXpath("//*[@id='location-list__metro']/li[".$index."]/a");
     }
 
-    public function getElementLocationList(){
+    private function getElementLocationList(){
         return $this->getElement()->withId($this->ID_LOCATION_LIST);
     }
 
@@ -49,13 +49,29 @@ class SearchBar extends AbstractPage
         $this->getElementSearchButton()->thenFind()->asHtmlElement()->click();
     }
 
-    public function waitLoacationListVisible(){
+    public function clickPilihLokasiButton(){
+        $this->getPilihLokasiButton()->thenFind()->asHtmlElement()->click();
+        $this->waitLoacationListVisible();
+    }
+
+    private function waitLoacationListVisible(){
         $this->getElementLocationList()->wait(5)->toBeVisible();
     }
 
-    public function clickLokasi(){
-        $this->getLokasi()->thenFind()->asHtmlElement()->click();
+    private function waitLocationListinVisible(){
+        $this->getElementLocationList()->wait(5)->toBeInvisible();
     }
+
+    /**
+     * @param $index
+     */
+    public function clickLokasi($index){
+        //$this->waitLoacationListVisible();
+        $this->getLokasi($index)->thenFind()->asHtmlElement()->click();
+        $this->waitLocationListinVisible();
+    }
+
+
 
 
 

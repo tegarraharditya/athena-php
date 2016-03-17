@@ -11,16 +11,25 @@ namespace Tests\Context;
 
 use Athena\Test\AthenaTestContext;
 use Behat\Behat\Tester\Exception\PendingException;
+use Tests\Page\SearchBar;
 
 class SearchContext extends AthenaTestContext
 {
+    /**
+     * @var SearchBar
+     */
+    private $searchBar;
+    public function __construct()
+    {
+        $this->searchBar = new SearchBar(Athena::browser());
+    }
 
     /**
      * @Given /^I type (.*)$/
      */
     public function iType($keyword)
     {
-        throw new PendingException();
+        $this->searchBar->typeKeyword($keyword);
     }
 
     /**
@@ -28,7 +37,7 @@ class SearchContext extends AthenaTestContext
      */
     public function iClickSearchButton()
     {
-        throw new PendingException();
+        $this->searchBar->clickSearchButton();
     }
 
     /**
@@ -44,7 +53,8 @@ class SearchContext extends AthenaTestContext
      */
     public function iChoose($area)
     {
-        throw new PendingException();
+        $this->searchBar->clickPilihLokasiButton();
+        $this->searchBar->clickLokasi($area);//index area as shown on 'Pilih Lokasi' Pop Up Box
     }
 
     /**

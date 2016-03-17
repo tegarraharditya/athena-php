@@ -23,17 +23,25 @@ class Homepage extends AbstractPage
         \PHPUnit_Framework_Assert::assertEquals('home',$this->getAttributeBodyPage());
     }
 
-    private function getElementCategoryById($id){
-        return $this->getElementWithOther('data-cat-name',$id);
+    private function getElementCategory($attribute,$value){
+        return $this->getElementWithOther($attribute, $value);
+    }
+
+    private function getElementCategoryViewAll($id){
+        return $this->getElement()->withId($id);
     }
 
     public function clickElementLevel2($level2){
-        $this->getElementCategoryById($level2)->thenFind()->asHtmlElement()->click();
+        $this->getElementCategory('data-cat-name',$level2)->thenFind()->asHtmlElement()->click();
         return new Listings(Athena::browser());
     }
 
     public function clickElementLevel1($level1){
-        $this->getElementCategoryById($level1)->thenFind()->asHtmlElement()->click();
+        $this->getElementCategory('data-cat-name', $level1)->thenFind()->asHtmlElement()->click();
+    }
+
+    public function clickElementCategoryViewAll($viewall){
+        $this->getElementCategoryViewAll($viewall)->thenFind()->asHtmlElement()->click();
     }
 
 

@@ -15,19 +15,24 @@ use Tests\Page\Footer;
 
 class FooterContext extends AthenaTestContext
 {
+    /**
+     * @var Footer
+     */
+    private $footer;
+
     //element
-    private $PUSAT_BANTUAN = '';
-    private $CARA_MENGGUNAKAN_OLX = '';
-    private $IKLAN_BERDASARKAN_OLX = '';
-    private $FACEBOOK_OLX_INDONESIA = '';
-    private $KETENTUAN_UMUM = '';
-    private $TIPS_JUAL_BELI_AMAN = '';
-    private $PENCARIAN_POPULER = '';
-    private $TWITTER_OLX_INDONESIA = '';
-    private $KEBIJAKAN_PRIVASI = '';
-    private $PETA_SITUS = '';
-    private $JOIN_OLX = '';
-    private $BLOG_OLX_INDONESIA = '';
+    private $PUSAT_BANTUAN = 'aux_link_help';
+    private $CARA_MENGGUNAKAN_OLX = 'aux_link_howto';
+    private $IKLAN_BERDASARKAN_OLX = 'aux_link_location';
+    private $FACEBOOK_OLX_INDONESIA = 'aux_link_fb';
+    private $KETENTUAN_UMUM = 'aux_link_toc';
+    private $TIPS_JUAL_BELI_AMAN = 'aux_link_tips';
+    private $PENCARIAN_POPULER = 'aux_link_popular';
+    private $TWITTER_OLX_INDONESIA = 'aux_link_tw';
+    private $KEBIJAKAN_PRIVASI = 'aux_link_privacy';
+    private $PETA_SITUS = 'aux_link_sitemap';
+    private $JOIN_OLX = 'aux_link_join';
+    private $BLOG_OLX_INDONESIA = 'aux_link_blog';
 
     public function __construct()
     {
