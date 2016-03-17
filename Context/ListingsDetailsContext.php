@@ -184,4 +184,44 @@ class ListingsDetailsContext extends AthenaTestContext
     {
         throw new PendingException();
     }
+
+    /**
+     * @Given /^I have Contact Seller pop up appear$/
+     */
+    public function iHaveContactSellerPopUpAppear()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^I click submit button on Contact Seller form$/
+     */
+    public function iClickSubmitButtonOnContactSellerForm()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then /^I am be able to submit message$/
+     */
+    public function iAmBeAbleToSubmitMessage()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When /^I fill email on email field$/
+     */
+    public function iFillEmailOnEmailField()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^I fill details of message$/
+     */
+    public function iFillDetailsOfMessage()
+    {
+        throw new PendingException();
+    }
 }

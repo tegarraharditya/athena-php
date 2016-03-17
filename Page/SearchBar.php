@@ -16,7 +16,7 @@ class SearchBar extends AbstractPage
     private $PILIH_LOKASI = '';
     private $ID_LOCATION_LIST = 'location-list__metro';
 
-    public function open(){}
+    public function open($url){}
 
     /**
      * @return \Athena\Browser\Page\Element\ElementAction

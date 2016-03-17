@@ -22,8 +22,8 @@ class MyAds extends AbstractPage
      *
      * @return void
      */
-    public function open()
+    public function open($url)
     {
-        throw new Exception('method not implemented.');
+        throw new Exception($url);
     }
 }

@@ -63,6 +63,13 @@ Feature:
     Then I should see message box appear
 
   Scenario:
+    Given I have Contact Seller pop up appear
+    When I fill email on email field
+    And I fill details of message
+    And I click submit button on Contact Seller form
+    Then I am be able to submit message
+
+  Scenario:
     Given I am in Listings Details page
     When I click report this ads
     And I fill all of the information needed

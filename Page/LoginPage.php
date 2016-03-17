@@ -15,10 +15,10 @@ class LoginPage extends AbstractPage
      *
      * @return void
      */
-    public function open()
+    public function open($url)
     {
         // account page gets mapped from athena.json file (check it out)
-        $this->getBrowser()->get('account-page');
+        $this->getBrowser()->get($url);
     }
 
     /*

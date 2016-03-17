@@ -27,9 +27,9 @@ class Footer extends AbstractPage
     /**
      *
      */
-    public function open()
+    public function open($url)
     {
-        $this->getBrowser()->get('/');
+        $this->getBrowser()->get($url);
     }
 
 

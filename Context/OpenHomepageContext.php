@@ -132,7 +132,7 @@ class OpenHomepageContext extends AthenaTestContext
      * @When /^I open olx homepage$/
      */
     public function iOpenUrl(){
-        $this->homepage->open();
+        $this->homepage->open("http://olxindonesia.github.io/apollo/home.html");
         sleep(10);
     }
 

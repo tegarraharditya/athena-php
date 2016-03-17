@@ -13,10 +13,10 @@ use Athena\Athena;
 
 class Homepage extends AbstractPage
 {
-    public function open()
+    public function open($url)
     {
         // TODO: Implement open() method.
-        $this->getBrowser()->get('/');
+        $this->getBrowser()->get($url);
     }
 
     public function verifyPage(){

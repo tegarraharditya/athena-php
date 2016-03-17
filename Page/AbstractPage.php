@@ -66,5 +66,5 @@ abstract class AbstractPage
      *
      * @return void
      */
-    abstract function open();
+    abstract function open($url);
 }

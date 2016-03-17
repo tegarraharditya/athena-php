@@ -84,17 +84,23 @@ class Listings extends AbstractPage
     private $KI_STATIONARY = '';
     private $KI_LAINNYA = '';
 
-    private $LOKER_LOWONGAN = '';
     private $LOKER_CARI_PEKERJAAN = '';
     private $LOKER_JASA = '';
 
-    public function open()
+    public function open($url)
     {
         // TODO: Implement open() method.
-        $this->getBrowser()->get('');
+        $this->getBrowser()->get($url);
     }
 
+    public function clickPage($page){
+        $index = $page-1;
+        $this->getElementPage($index)->thenFind()->asHtmlElement()->click();
+    }
 
+    private function getElementPage($index){
+        return $this->getElement()->withXpath("//*[@id='page_nav_pagination']//li[".$index."]/a");
+    }
 
     public function verifyCategoryPage_Mobil_MobilBekas(){
         \PHPUnit_Framework_Assert::assertEquals($this->MOBIL_MOBIL_BEKAS,$this->getAttributeBodyPage());
