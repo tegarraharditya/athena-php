@@ -10,7 +10,7 @@ default:
     suites:
         default:
             paths:
-                - %paths.base%/features
+                - %paths.base%/Features
             contexts:
                 - Tests\Context\LoginContext
                 - Tests\Context\OpenHomepageContext
