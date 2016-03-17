@@ -1,0 +1,9 @@
+{
+  "urls" : {
+    "/" : "http://www.olx.co.id",
+    "account-page" : "/masuk"
+  },
+  "selenium" : {
+    "hub_url" : "http://172.17.0.1:4444/wd/hub"
+  }
+}
