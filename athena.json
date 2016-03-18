@@ -9,5 +9,12 @@
   "report" : {
     "format" : "html",
     "outputDirectory" : "./Report"
+  },
+  "blacklist_urls" : {
+    ".*facebook.com" : 200,
+    ".*gemius\\..*" : 200,
+    ".*plus\\..*" : 200,
+    ".*optimizely\\..*" : 200,
+    ".*doubleclick.net" : 200
   }
 }
