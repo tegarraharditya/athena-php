@@ -61,7 +61,7 @@ class LoginContext extends AthenaTestContext
      */
     public function iGoToAccountsPage()
     {
-        $this->loginPage->open();
+        $this->loginPage->open(true);
     }
 
     /**
