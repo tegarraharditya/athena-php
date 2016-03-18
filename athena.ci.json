@@ -1,6 +1,6 @@
 {
   "urls" : {
-    "/" : "http://www.olx.co.id",
+    "/" : "http://myolx.co.id/",
     "account-page" : "/masuk"
   },
   "selenium" : {
