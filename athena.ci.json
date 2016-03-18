@@ -11,10 +11,6 @@
     "hub_url" : "http://172.17.0.1:4444/wd/hub"
   },
   "username" : "suci.istch@gmail.com",
-  "password" : "testing123",
-  "strings" : {
-    "byPage" : {
-      "homepage" : "asdasdas dasda"
-    }
+  "password" : "testing123"
   }
 }
