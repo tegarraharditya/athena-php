@@ -3,6 +3,7 @@
 namespace Tests\Context;
 
 use Athena\Athena;
+use Athena\Browser\BrowserInterface;
 use Athena\Test\AthenaTestContext;
 use Behat\Behat\Tester\Exception\PendingException;
 use Tests\Page\LoginPage;
@@ -26,11 +27,33 @@ class LoginContext extends AthenaTestContext
     private $loginPage;
 
     /**
+     * @var BrowserInterface
+     */
+    private $browser;
+
+    /**
+     * @BeforeScenario
+     */
+    public function startup()
+    {
+        $this->browser = Athena::browser(true);
+    }
+
+    /**
+     * @AfterScenario
+     */
+    public function cleanup()
+    {
+        $this->browser->cleanup();
+    }
+
+    /**
      * LoginContext constructor.
      */
     public function __construct()
     {
-        $this->loginPage = new LoginPage(Athena::browser());
+        Athena::settings()->getByPath('strings.byPage.homepage');
+        $this->loginPage = new LoginPage();
     }
 
     /**
@@ -38,7 +61,7 @@ class LoginContext extends AthenaTestContext
      */
     public function iGoToAccountsPage()
     {
-        $this->loginPage->open('https://ssl.olx.co.id/masuk/');
+        $this->loginPage->open();
     }
 
     /**
@@ -46,7 +69,8 @@ class LoginContext extends AthenaTestContext
      */
     public function iTypeEmail()
     {
-        $this->loginPage->fillLoginEmail('suci.istch@gmail.com');
+        $email = Athena::settings()->get('username');
+        $this->loginPage->fillLoginEmail($email);
     }
 
     /**
@@ -54,7 +78,8 @@ class LoginContext extends AthenaTestContext
      */
     public function iTypePassword()
     {
-        $this->loginPage->fillLoginPassword('testing123');
+        $password = Athena::settings()->get('password');
+        $this->loginPage->fillLoginPassword($password);
     }
 
     /**
