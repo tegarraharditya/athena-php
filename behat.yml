@@ -13,6 +13,8 @@ default:
 
     suites:
         default:
+            filters:
+              tags: ~@login
             paths:
                 - %paths.base%/Features
             contexts:
