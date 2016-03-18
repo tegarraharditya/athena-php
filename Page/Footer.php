@@ -9,7 +9,9 @@
 namespace Tests\Page;
 
 
-class Footer extends AbstractPage
+use Athena\Page\BasePage;
+
+ class Footer extends OneWeb
 {
     //body attribute
     private $PUSAT_BANTUAN_ATRR = '';
@@ -24,21 +26,20 @@ class Footer extends AbstractPage
     private $PETA_SITUS_ATRR = '';
     private $JOIN_OLX_ATRR = '';
     private $BLOG_OLX_INDONESIA_ATRR = '';
-    /**
-     *
-     */
-    public function open($url)
+
+    public function __construct()
     {
-        $this->getBrowser()->get($url);
+        parent::__construct('/');
     }
 
-
     private function getElementFooterById($id){
-        return $this->getElement()->withId($id);
+        //return $this->getElement()->withId($id);
+        return $this->getBrowser()->getCurrentPage()->getElement()->withId($id);
     }
 
     private function getElementBodyFooterByXpath(){
-        return $this->getElement()->withXpath('//body');
+        //return $this->getElement()->withXpath('//body');
+        return $this->getBrowser()->getCurrentPage()->getElement()->withXpath('//body');
     }
 
     public function clickFooterLink($footer){

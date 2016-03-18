@@ -10,20 +10,11 @@ use Facebook\WebDriver\WebDriverBy;
  * Date: 2/24/16
  * Time: 8:24 PM
  */
-class LoginPage extends BasePage
+class LoginPage extends OneWeb
 {
     public function __construct()
     {
         parent::__construct('login');
-    }
-
-    /*
-     * Actions
-     */
-
-    public function gotoLoginPage()
-    {
-        $this->elementTopLoginLink()->thenFind()->asHtmlElement()->click();
     }
 
     public function fillLoginEmail($email)

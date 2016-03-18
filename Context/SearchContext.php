@@ -13,7 +13,7 @@ use Athena\Test\AthenaTestContext;
 use Behat\Behat\Tester\Exception\PendingException;
 use Tests\Page\SearchBar;
 
-class SearchContext extends AthenaTestContext
+class SearchContext extends BaseContext
 {
     /**
      * @var SearchBar
@@ -21,7 +21,7 @@ class SearchContext extends AthenaTestContext
     private $searchBar;
     public function __construct()
     {
-        $this->searchBar = new SearchBar(Athena::browser());
+        $this->searchBar = new SearchBar();
     }
 
     /**

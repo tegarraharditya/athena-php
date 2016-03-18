@@ -9,7 +9,7 @@
 namespace Tests\Page;
 
 
-class ListingsDetails extends AbstractPage
+class ListingsDetails extends OneWeb
 {
     private $ID_TITLE = 'detail_ad_title';
     private $ID_PRICE = 'detail_ad_price';
@@ -29,14 +29,14 @@ class ListingsDetails extends AbstractPage
     private $ID_SELLER_PHONE_NUMBER = 'detail_ad_contact';
     private $ID_HUBUNGI_PENJUAL_BUTTON = '';
 
-    public function open($url)
+    public function __construct()
     {
-        // TODO: Implement open() method.
-        $this->getBrowser()->get($url);
+        parent::__construct('listings_details');
     }
 
     private function getElementListingsDetails($element){
-        return $this->getElement()->withId($element);
+        //return $this->getElement()->withId($element);
+        return $this->getBrowser()->getCurrentPage()->getElement()->withId($element);
     }
 
     private function verifyElementListingsDetails($element){
@@ -45,7 +45,8 @@ class ListingsDetails extends AbstractPage
     }
 
     private function getElementHubungiPenjualButton(){
-        return $this->getElement()->withId($this->ID_HUBUNGI_PENJUAL_BUTTON);
+        //return $this->getElement()->withId($this->ID_HUBUNGI_PENJUAL_BUTTON);
+        return $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_HUBUNGI_PENJUAL_BUTTON);
     }
 
     /**

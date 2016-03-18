@@ -14,7 +14,7 @@ use Athena\Test\AthenaTestContext;
 use Tests\Page\Homepage;
 use Tests\Page\Listings;
 
-class OpenHomepageContext extends AthenaTestContext
+class OpenHomepageContext extends BaseContext
 {
     /**
      * @var Listings
@@ -125,7 +125,7 @@ class OpenHomepageContext extends AthenaTestContext
     private $ID_JASA_JASA = 'jasa_228';
 
     public function __construct(){
-        $this->homepage = new Homepage(Athena::browser());
+        $this->homepage = new Homepage();
     }
 
     /**

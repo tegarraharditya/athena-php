@@ -10,13 +10,14 @@ namespace Tests\Page;
 
 
 use Athena\Athena;
+use Athena\Page\BasePage;
 
-class Homepage extends AbstractPage
+class Homepage extends OneWeb
 {
-    public function open($url)
+
+    public function __construct()
     {
-        // TODO: Implement open() method.
-        $this->getBrowser()->get($url);
+        parent::__construct('/');
     }
 
     public function verifyPage(){
@@ -28,7 +29,8 @@ class Homepage extends AbstractPage
     }
 
     private function getElementCategoryViewAll($id){
-        return $this->getElement()->withId($id);
+        //return $this->getElement()->withId($id);
+        return $this->getBrowser()->getCurrentPage()->getElement()->withId($id);
     }
 
     public function clickElementLevel2($level2){

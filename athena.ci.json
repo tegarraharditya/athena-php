@@ -1,9 +1,20 @@
 {
   "urls" : {
     "/" : "http://myolx.co.id/",
-    "account-page" : "/masuk"
+    "login" : "/masuk",
+    "myads" : "/iklanku",
+    "listings" : "/listings",
+    "listings_details" : "/bla",
+    "search" : "/search"
   },
   "selenium" : {
     "hub_url" : "http://172.17.0.1:4444/wd/hub"
+  },
+  "username" : "suci.istch@gmail.com",
+  "password" : "testing123",
+  "strings" : {
+    "byPage" : {
+      "homepage" : "asdasdas dasda"
+    }
   }
 }

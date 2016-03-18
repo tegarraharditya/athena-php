@@ -8,21 +8,19 @@
 
 namespace Tests\Context;
 
-
-use Athena\Test\AthenaTestContext;
 use Behat\Behat\Tester\Exception\PendingException;
 use Tests\Page\ListingsDetails;
 
-class ListingsDetailsContext extends AthenaTestContext
+class ListingsDetailsContext extends BaseContext
 {
     /**
      * @var ListingsDetails
      */
-    private $lisingsDetails;
+    private $listingsDetails;
 
     public function __construct()
     {
-        $this->listingsDetails = new ListingsDetails(Athena::browser());
+        $this->listingsDetails = new ListingsDetails();
     }
 
     /**
@@ -30,7 +28,7 @@ class ListingsDetailsContext extends AthenaTestContext
      */
     public function iAmInListingsDetailsPage()
     {
-        $this->listingsDetails->open();
+        $this->listingsDetails->open(true);
     }
 
     /**

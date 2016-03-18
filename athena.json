@@ -9,11 +9,13 @@
   "urls" : {
     "/" : "https://ssl.olx.co.id",
     "login" : "/masuk",
-    "myads" : "/iklanku"
+    "myads" : "/iklanku",
+    "listings" : "/listings",
+    "listings_details" : "/bla",
+    "search" : "/search"
   },
   "username" : "suci.istch@gmail.com",
   "password" : "testing123",
-  "browser_nodes" : 4,
   "strings" : {
     "byPage" : {
       "homepage" : "asdasdas dasda"

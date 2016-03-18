@@ -14,7 +14,7 @@ use Tests\Page\LoginPage;
  * Date: 2/24/16
  * Time: 7:48 PM
  */
-class LoginContext extends AthenaTestContext
+class LoginContext extends BaseContext
 {
     /**
      * @var \Tests\Page\MyAds
@@ -27,32 +27,11 @@ class LoginContext extends AthenaTestContext
     private $loginPage;
 
     /**
-     * @var BrowserInterface
-     */
-    private $browser;
-
-    /**
-     * @BeforeScenario
-     */
-    public function startup()
-    {
-        $this->browser = Athena::browser(true);
-    }
-
-    /**
-     * @AfterScenario
-     */
-    public function cleanup()
-    {
-        $this->browser->cleanup();
-    }
-
-    /**
      * LoginContext constructor.
      */
     public function __construct()
     {
-        Athena::settings()->getByPath('strings.byPage.homepage');
+        //Athena::settings()->getByPath('strings.byPage.homepage');
         $this->loginPage = new LoginPage();
     }
 
@@ -103,7 +82,7 @@ class LoginContext extends AthenaTestContext
      */
     public function iGoToLoginPage()
     {
-        $this->loginPage->open();
+        $this->loginPage->open(true);
     }
 
     /**

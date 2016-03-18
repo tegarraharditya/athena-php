@@ -14,7 +14,7 @@ use Athena\Test\AthenaTestContext;
 use Behat\Behat\Tester\Exception\PendingException;
 use Tests\Page\Listings;
 
-class ListingsContext extends AthenaTestContext
+class ListingsContext extends BaseContext
 {
     /**
      * @var Listings
@@ -22,7 +22,7 @@ class ListingsContext extends AthenaTestContext
     private $listings;
     public function __construct()
     {
-        $this->listings=new Listings(Athena::browser());
+        $this->listings=new Listings();
     }
 
     /**
@@ -30,7 +30,7 @@ class ListingsContext extends AthenaTestContext
      */
     public function iAmInListingsPage()
     {
-        $this->listings->open('');
+        $this->listings->open(true);
     }
 
     /**

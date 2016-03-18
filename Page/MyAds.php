@@ -11,7 +11,7 @@ use PHPUnit_Framework_Assert;
  * Date: 2/24/16
  * Time: 8:40 PM
  */
-class MyAds extends BasePage
+class MyAds extends OneWeb
 {
     public function __construct()
     {

@@ -9,7 +9,7 @@
 namespace Tests\Page;
 
 
-class Listings extends AbstractPage
+class Listings extends OneWeb
 {
     private $MOBIL_MOBIL_BEKAS ='';
     private $MOBIL_AKSESORIS_MOBIL = '';
@@ -87,10 +87,10 @@ class Listings extends AbstractPage
     private $LOKER_CARI_PEKERJAAN = '';
     private $LOKER_JASA = '';
 
-    public function open($url)
+
+    public function __construct()
     {
-        // TODO: Implement open() method.
-        $this->getBrowser()->get($url);
+        parent::__construct('listings');
     }
 
     public function clickPage($page){
@@ -99,7 +99,9 @@ class Listings extends AbstractPage
     }
 
     private function getElementPage($index){
-        return $this->getElement()->withXpath("//*[@id='page_nav_pagination']//li[".$index."]/a");
+        //return $this->getElement()->withXpath("//*[@id='page_nav_pagination']//li[".$index."]/a");
+        return $this->getBrowser()->getCurrentPage()->getElement()
+            ->withXpath("//*[@id='page_nav_pagination']//li[".$index."]/a");
     }
 
     public function verifyCategoryPage_Mobil_MobilBekas(){

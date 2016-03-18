@@ -13,7 +13,7 @@ use Athena\Test\AthenaTestContext;
 use Behat\Behat\Tester\Exception\PendingException;
 use Tests\Page\Footer;
 
-class FooterContext extends AthenaTestContext
+class FooterContext extends BaseContext
 {
     /**
      * @var Footer
@@ -36,7 +36,7 @@ class FooterContext extends AthenaTestContext
 
     public function __construct()
     {
-        $this->footer = new Footer(Athena::browser());
+        $this->footer = new Footer();
     }
     /**
      * @When /^I click Pusat Bantuan link on footer$/
