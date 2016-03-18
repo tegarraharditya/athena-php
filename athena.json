@@ -1,8 +1,4 @@
 {
-  "urls" : {
-    "/" : "http://olxindonesia.github.io/apollo/home.html",
-    "account-page" : "/masuk"
-  },
   "selenium" : {
     "hub_url" : "http://athena-selenium-hub:4444/wd/hub"
   },
