@@ -6,11 +6,17 @@
     "format" : "html",
     "outputDirectory" : "./Report"
   },
-  "blacklist_urls" : {
-    ".*facebook.com" : 200,
-    ".*gemius\\..*" : 200,
-    ".*plus\\..*" : 200,
-    ".*optimizely\\..*" : 200,
-    ".*doubleclick.net" : 200
+  "urls" : {
+    "/" : "https://ssl.olx.co.id",
+    "login" : "/masuk",
+    "myads" : "/iklanku"
+  },
+  "username" : "suci.istch@gmail.com",
+  "password" : "testing123",
+  "browser_nodes" : 4,
+  "strings" : {
+    "byPage" : {
+      "homepage" : "asdasdas dasda"
+    }
   }
 }

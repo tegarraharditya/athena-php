@@ -1,6 +1,7 @@
 <?php
 namespace Tests\Page;
 
+use Athena\Page\BasePage;
 use Exception;
 use PHPUnit_Framework_Assert;
 
@@ -10,20 +11,16 @@ use PHPUnit_Framework_Assert;
  * Date: 2/24/16
  * Time: 8:40 PM
  */
-class MyAds extends AbstractPage
+class MyAds extends BasePage
 {
+    public function __construct()
+    {
+        parent::__construct('myads');
+    }
+
+
     public function verifyMyAdsTitle()
     {
         PHPUnit_Framework_Assert::assertEquals('OLX.co.id - Cara Tepat Jual Cepat', $this->getBrowser()->getTitle());
-    }
-
-    /**
-     * Open page.
-     *
-     * @return void
-     */
-    public function open($url)
-    {
-        throw new Exception($url);
     }
 }
