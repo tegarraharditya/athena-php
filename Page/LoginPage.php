@@ -1,5 +1,7 @@
 <?php
 namespace Tests\Page;
+use Athena\Browser\BrowserInterface;
+use Athena\Page\BasePage;
 use Facebook\WebDriver\WebDriverBy;
 
 /**
@@ -8,17 +10,11 @@ use Facebook\WebDriver\WebDriverBy;
  * Date: 2/24/16
  * Time: 8:24 PM
  */
-class LoginPage extends AbstractPage
+class LoginPage extends BasePage
 {
-    /**
-     * Open page.
-     *
-     * @return void
-     */
-    public function open($url)
+    public function __construct()
     {
-        // account page gets mapped from athena.json file (check it out)
-        $this->getBrowser()->get($url);
+        parent::__construct('login');
     }
 
     /*
@@ -47,7 +43,7 @@ class LoginPage extends AbstractPage
     {
         $this->elementLoginButton()->thenFind()->asHtmlElement()->click();
 
-        return new MyAds($this->getBrowser());
+        return new MyAds();
     }
 
     public function verifyFormLoginIsDisplayed(){
@@ -68,7 +64,7 @@ class LoginPage extends AbstractPage
      */
     private function elementTopLoginLink()
     {
-        return $this->getCurrentPage()->getElement()->withId('topLoginLink');
+        return $this->getBrowser()->getCurrentPage()->getElement()->withId('topLoginLink');
     }
 
     /**
@@ -76,7 +72,7 @@ class LoginPage extends AbstractPage
      */
     private function elementEmailField()
     {
-        return $this->getCurrentPage()->getElement()->withId('userEmail');
+        return $this->getBrowser()->getCurrentPage()->getElement()->withId('userEmail');
     }
 
     /**
@@ -84,7 +80,7 @@ class LoginPage extends AbstractPage
      */
     private function elementPasswordField()
     {
-        return $this->getCurrentPage()->getElement()->withId('userPass');
+        return $this->getBrowser()->getCurrentPage()->getElement()->withId('userPass');
     }
 
     /**
@@ -92,11 +88,11 @@ class LoginPage extends AbstractPage
      */
     private function elementLoginButton()
     {
-        return $this->getCurrentPage()->getElement()->withId('se_userLogin');
+        return $this->getBrowser()->getCurrentPage()->getElement()->withId('se_userLogin');
     }
 
     private function elementLoginForm(){
-        return $this->getCurrentPage()->getElement()->withId('loginForm');
+        return $this->getBrowser()->getCurrentPage()->getElement()->withId('loginForm');
     }
 
 }
