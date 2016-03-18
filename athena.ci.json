@@ -1,6 +1,6 @@
 {
   "urls" : {
-    "/" : "http://myolx.co.id/",
+    "/" : "http://olx.co.id/",
     "login" : "/masuk",
     "myads" : "/iklanku",
     "listings" : "/listings",
@@ -12,5 +12,5 @@
   },
   "username" : "suci.istch@gmail.com",
   "password" : "testing123"
-  }
+  
 }
