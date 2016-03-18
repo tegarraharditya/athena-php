@@ -78,7 +78,7 @@ class LoginContext extends AthenaTestContext
      */
     public function iGoToLoginPage()
     {
-        $this->loginPage->open();
+        $this->loginPage->open('https://ssl.olx.co.id/masuk/');
     }
 
     /**
