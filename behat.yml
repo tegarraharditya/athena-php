@@ -5,6 +5,10 @@ default:
         Pproenca\Behat\BootstrapFileLoader:
             bootstrap_path: "/opt/athena-php/bootstrap.php"
 
+        jarnaiz\JUnitFormatter\JUnitFormatterExtension:
+            filename: report.xml
+            outputDir: %paths.base%/Report
+
         Athena\Event\Proxy\BehatProxyExtension: ~
 
     suites:
