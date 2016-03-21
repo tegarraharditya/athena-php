@@ -11,6 +11,7 @@ namespace Tests\Page;
 
 use Athena\Athena;
 use Athena\Page\BasePage;
+use Facebook\WebDriver\WebDriverExpectedCondition;
 
 class Homepage extends OneWeb
 {
@@ -22,6 +23,7 @@ class Homepage extends OneWeb
 
     public function verifyPage(){
         \PHPUnit_Framework_Assert::assertEquals('home',$this->getAttributeBodyPage());
+        $this->getBrowser()->wait(3)->until(WebDriverExpectedCondition::titleIs(''));
     }
 
     private function getElementCategory($attribute,$value){
