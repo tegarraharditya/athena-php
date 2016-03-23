@@ -23,6 +23,7 @@ class ListingsContext extends BaseContext
     public function __construct()
     {
         $this->listings=new Listings();
+        $this->listings->setCurrentListingList('games-console');
     }
 
     /**
@@ -30,7 +31,10 @@ class ListingsContext extends BaseContext
      */
     public function iAmInListingsPage()
     {
+        //$this->listings->setCurrentListingList('games-console');
         $this->listings->open(true);
+        //var_dump('title: '.$this->listings->getCurrentListingsLink());
+
     }
 
     /**
@@ -38,7 +42,7 @@ class ListingsContext extends BaseContext
      */
     public function iClickNextPage()
     {
-        $this->listings->clickPage(2);
+        $this->listings->clickNextPage();
     }
 
     /**
@@ -54,7 +58,7 @@ class ListingsContext extends BaseContext
      */
     public function iClickPrevButton()
     {
-        throw new PendingException();
+        $this->listings->clickPrevPage();
     }
 
     /**

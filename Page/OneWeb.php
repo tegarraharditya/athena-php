@@ -21,4 +21,9 @@ class OneWeb extends BasePage
         return $this->getBrowser()->getCurrentPage()->getElement()->withXpath('//body');
     }
 
+    public function getElementWithOther($attribute, $value){
+        return $this->getBrowser()->getCurrentPage()->getElement()
+            ->withXpath("//*[@".$attribute."=='".$value."']");
+    }
+
 }

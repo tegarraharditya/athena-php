@@ -31,13 +31,7 @@ class Homepage extends OneWeb
         return $this->getElementWithOther($attribute, $value);
     }
 
-    private function getElementWithOther($attribute, $value){
-        return $this->getBrowser()->getCurrentPage()->getElement()
-            ->withXpath("//*[@".$attribute."=='".$value."']");
-    }
-
     private function getElementCategoryViewAll($id){
-        //return $this->getElement()->withId($id);
         return $this->getBrowser()->getCurrentPage()->getElement()->withId($id);
     }
 

@@ -9,6 +9,8 @@
 namespace Tests\Page;
 
 
+use Athena\Athena;
+
 class Listings extends OneWeb
 {
     private $MOBIL_MOBIL_BEKAS ='';
@@ -87,21 +89,55 @@ class Listings extends OneWeb
     private $LOKER_CARI_PEKERJAAN = '';
     private $LOKER_JASA = '';
 
+    private $XPATH_PAGING_BAR = "//*[@id='page_nav_pagination']li";
+    private $NEXT_PAGE = 'Next';
+    private $PREV_PAGE = 'Previous';
+
+    /**
+     * @var String
+     */
+    private $listingsLink;
 
     public function __construct()
     {
-        parent::__construct('listings');
+        parent::__construct('game-console');
+    }
+
+    public function getCurrentListingsLink(){
+        return $this->listingsLink;
+    }
+
+    public function setCurrentListingList($category){
+        $this->listingsLink=$category;
     }
 
     public function clickPage($page){
-        $index = $page-1;
-        $this->getElementPage($index)->thenFind()->asHtmlElement()->click();
+        $this->getElementPage($page)->thenFind()->asHtmlElement()->click();
     }
 
-    private function getElementPage($index){
-        //return $this->getElement()->withXpath("//*[@id='page_nav_pagination']//li[".$index."]/a");
-        return $this->getBrowser()->getCurrentPage()->getElement()
-            ->withXpath("//*[@id='page_nav_pagination']//li[".$index."]/a");
+    public function clickNextPage(){
+        $this->getElementNextPage()->thenFind()->asHtmlElement()->click();
+    }
+
+    public function clickPrevPage(){
+        $this->getElementPrevPage()->thenFind()->asHtmlElement()->click();
+    }
+
+    private function getElementPage($page){
+        return $this->getBrowser()->getCurrentPage()->getElement()->withLinkText($page);
+    }
+
+    public function getTotalElementPagingBar(){
+        $elements=$this->getBrowser()->getCurrentPage()->find()->elementsWithXpath($this->XPATH_PAGING_BAR);
+        return $total = count($elements);
+    }
+
+    private function getElementNextPage(){
+        return $this->getElementWithOther('aria-label',$this->NEXT_PAGE);
+    }
+
+    private function getElementPrevPage(){
+        return $this->getElementWithOther('aria-label',$this->PREV_PAGE);
     }
 
     public function verifyCategoryPage_Mobil_MobilBekas(){

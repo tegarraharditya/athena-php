@@ -61,6 +61,7 @@ class ListingsDetails extends OneWeb
         $this->getElementHubungiPenjualButton()->thenFind()->asHtmlElement()->click();
     }
 
+
     public function verifyListingsDetailsCategoryMobil(){
         $this->verifyElementListingsDetails($this->ID_TITLE);
         $this->verifyElementListingsDetails($this->ID_IMAGE);

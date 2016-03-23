@@ -10,10 +10,12 @@
     "/" : "https://olex.id",
     "login" : "/masuk",
     "myads" : "/iklanku",
-    "listings" : "/listings",
     "listings_details" : "/bla",
     "search" : "/search",
-    "game-console" : "/elektronik-gadget/games-console"
+    "game-console" : "/elektronik-gadget/games-console",
+    "mobil-bekas-details" : "/iklan/test-extend-validate-coba-edit-IDa7yQb.html",
+    "property-details" : "/iklan/paywall-ke-9-belom-kena-IDa7yKQ.html",
+    "jasa-lowongan-details" : "/iklan/admin-laundry-sepatu-online-di-bandung-ID9NxgM.html"
   },
   "username" : "suci.istch@gmail.com",
   "password" : "testing123",

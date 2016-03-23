@@ -8,7 +8,9 @@
 
 namespace Tests\Context;
 
+use Athena\Athena;
 use Behat\Behat\Tester\Exception\PendingException;
+use GuzzleHttp\Url;
 use Tests\Page\ListingsDetails;
 
 class ListingsDetailsContext extends BaseContext
@@ -21,14 +23,6 @@ class ListingsDetailsContext extends BaseContext
     public function __construct()
     {
         $this->listingsDetails = new ListingsDetails();
-    }
-
-    /**
-     * @Given /^I am in Listings Details page$/
-     */
-    public function iAmInListingsDetailsPage()
-    {
-        $this->listingsDetails->open(true);
     }
 
     /**
@@ -104,86 +98,6 @@ class ListingsDetailsContext extends BaseContext
     }
 
     /**
-     * @Then /^I should see details of listings for Category Motor$/
-     */
-    public function iShouldSeeDetailsOfListingsForCategoryMotor()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then /^I should see details of listings for Category Mobil$/
-     */
-    public function iShouldSeeDetailsOfListingsForCategoryMobil()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then /^I should see details of listings for Category Property$/
-     */
-    public function iShouldSeeDetailsOfListingsForCategoryProperty()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then /^I should see details of listings for Category Keperluan Pribadi$/
-     */
-    public function iShouldSeeDetailsOfListingsForCategoryKeperluanPribadi()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then /^I should see details of listings for Category Electronic & Gadget$/
-     */
-    public function iShouldSeeDetailsOfListingsForCategoryElectronicGadget()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then /^I should see details of listings for Category Hobi & Olahraga$/
-     */
-    public function iShouldSeeDetailsOfListingsForCategoryHobiOlahraga()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then /^I should see details of listings for Category Rumah Tangga$/
-     */
-    public function iShouldSeeDetailsOfListingsForCategoryRumahTangga()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then /^I should see details of listings for Category Perlengkapan Bayi & Anak$/
-     */
-    public function iShouldSeeDetailsOfListingsForCategoryPerlengkapanBayiAnak()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then /^I should see details of listings for Category Kantor & Industri$/
-     */
-    public function iShouldSeeDetailsOfListingsForCategoryKantorIndustri()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then /^I should see details of listings for Category Jasa & Lowongan Kerja$/
-     */
-    public function iShouldSeeDetailsOfListingsForCategoryJasaLowonganKerja()
-    {
-        throw new PendingException();
-    }
-
-    /**
      * @Given /^I have Contact Seller pop up appear$/
      */
     public function iHaveContactSellerPopUpAppear()
@@ -219,6 +133,22 @@ class ListingsDetailsContext extends BaseContext
      * @Given /^I fill details of message$/
      */
     public function iFillDetailsOfMessage()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^I am in Listings Details (.*) page$/
+     */
+    public function iAmInListingsDetailsPage($category)
+    {
+        $this->listingsDetails->getBrowser()->get($category);
+    }
+
+    /**
+     * @Then /^I should see details of listings for Category (.*)$/
+     */
+    public function iShouldSeeDetailsOfListingsForCategory($category)
     {
         throw new PendingException();
     }
