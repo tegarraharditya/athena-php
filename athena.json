@@ -7,18 +7,19 @@
     "outputDirectory" : "./Report"
   },
   "urls" : {
-    "/" : "https://ssl.olx.co.id",
+    "/" : "https://olex.id",
     "login" : "/masuk",
     "myads" : "/iklanku",
     "listings" : "/listings",
     "listings_details" : "/bla",
-    "search" : "/search"
+    "search" : "/search",
+    "game-console" : "/elektronik-gadget/games-console"
   },
   "username" : "suci.istch@gmail.com",
   "password" : "testing123",
   "strings" : {
-    "byPage" : {
-      "homepage" : "asdasdas dasda"
+    "attributeByBody" : {
+      "homepage" : "homepage"
     }
   }
 }
