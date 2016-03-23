@@ -22,8 +22,9 @@ class Homepage extends OneWeb
     }
 
     public function verifyPage(){
-        \PHPUnit_Framework_Assert::assertEquals('home',$this->getAttributeBodyPage());
-        $this->getBrowser()->wait(3)->until(WebDriverExpectedCondition::titleIs(''));
+        $homeAttr = Athena::settings()->get('strings.attributeByBody.homepage');
+        \PHPUnit_Framework_Assert::assertEquals($homeAttr,$this->getAttributeBodyPage());
+       // $this->getBrowser()->wait(3)->until(WebDriverExpectedCondition::titleIs(''));
     }
 
     private function getElementCategory($attribute,$value){

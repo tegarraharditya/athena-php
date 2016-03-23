@@ -132,7 +132,7 @@ class OpenHomepageContext extends BaseContext
      * @When /^I open olx homepage$/
      */
     public function iOpenUrl(){
-        $this->homepage->open("http://olxindonesia.github.io/apollo/home.html");
+        $this->homepage->open(true);
         sleep(10);
     }
 
