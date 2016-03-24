@@ -10,7 +10,10 @@
   "selenium" : {
     "hub_url" : "http://172.17.0.1:4444/wd/hub"
   },
+  "report" : {
+    "format" : "html",
+    "outputDirectory" : "./Report"
+  },
   "username" : "suci.istch@gmail.com",
   "password" : "testing123"
-
 }
