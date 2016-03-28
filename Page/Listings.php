@@ -123,8 +123,18 @@ class Listings extends OneWeb
         $this->getElementPrevPage()->thenFind()->asHtmlElement()->click();
     }
 
+    public function clickListingsIndex1(){
+        $this->getElementListingsIndex1()->thenFind()->asHtmlElement()->click();
+        return new ListingsDetails();
+    }
+
     private function getElementPage($page){
         return $this->getBrowser()->getCurrentPage()->getElement()->withLinkText($page);
+    }
+
+    private function getElementListingsIndex1(){
+        return $this->getBrowser()->getCurrentPage()->getElement()
+            ->withXpath('//*[@id=\'js-ad-promotion-group\']/article[1]/div//div/a');
     }
 
     public function getTotalElementPagingBar(){

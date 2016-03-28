@@ -14,14 +14,13 @@ default:
     suites:
         default:
             filters:
-              tags: @coba
+              tags: @homepage
             paths:
                 - %paths.base%/Features
             contexts:
-                - Tests\Context\LoginContext
                 - Tests\Context\OpenHomepageContext
                 - Tests\Context\ListingsContext
                 - Tests\Context\ListingsDetailsContext
                 - Tests\Context\LoginContext
-                - Tests\Context\OpenHomepageContext
                 - Tests\Context\SearchContext
+                - Tests\Context\FooterContext

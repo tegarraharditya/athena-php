@@ -13,6 +13,7 @@ use Athena\Athena;
 use Athena\Test\AthenaTestContext;
 use Behat\Behat\Tester\Exception\PendingException;
 use Tests\Page\Listings;
+use Tests\Page\ListingsDetails;
 
 class ListingsContext extends BaseContext
 {
@@ -20,6 +21,11 @@ class ListingsContext extends BaseContext
      * @var Listings
      */
     private $listings;
+
+    /**
+     * @var ListingsDetails
+     */
+    private $listingsDetails;
     public function __construct()
     {
         $this->listings=new Listings();
@@ -32,7 +38,7 @@ class ListingsContext extends BaseContext
      */
     public function iAmInListingsPage()
     {
-        $this->listings->open(true);
+        $this->listings->open(false);
         $this->listings->verifyCategoryPage_ENG_Games_Console();
 
     }
@@ -90,7 +96,7 @@ class ListingsContext extends BaseContext
      */
     public function iClickAds()
     {
-        throw new PendingException();
+        $this->listingsDetails=$this->listings->clickListingsIndex1();
     }
 
     /**
@@ -98,6 +104,6 @@ class ListingsContext extends BaseContext
      */
     public function iAmInListingsDetailsPage()
     {
-        throw new PendingException();
+        $this->listingsDetails->verifyAttributeClassBody();
     }
 }

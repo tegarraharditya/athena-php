@@ -36,6 +36,10 @@ class ListingsDetails extends OneWeb
         parent::__construct('listings_details');
     }
 
+    public function verifyAttributeClassBody(){
+        \PHPUnit_Framework_Assert::assertEquals('advert',$this->getAttributeBodyPage());
+    }
+
     private function getElementListingsDetails($element){
         //return $this->getElement()->withId($element);
         return $this->getBrowser()->getCurrentPage()->getElement()->withId($element);

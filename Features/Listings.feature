@@ -17,14 +17,6 @@
     Given I am in a Listings page
     Then I can verify that there's promotion banner on bottom page
 
-  Scenario Outline:
-    Given I go to <category> page
-    Then I can see listings based on <category>
-
-  Examples:
-    |category|
-    |        |
-
   Scenario:
     Given I am in a Listings page
     When I click ads
