@@ -15,16 +15,14 @@ use Facebook\WebDriver\WebDriverExpectedCondition;
 
 class Homepage extends OneWeb
 {
-
+    private $HOME = 'home';
     public function __construct()
     {
         parent::__construct('/');
     }
 
     public function verifyPage(){
-        /**
-         * @var String
-         */
+
         //$homeAttr = Athena::settings()->getByPath('attributeByBody.homepage');
         \PHPUnit_Framework_Assert::assertEquals('home',$this->getAttributeBodyPage());
     }

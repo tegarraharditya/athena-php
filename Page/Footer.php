@@ -14,18 +14,18 @@ use Athena\Page\BasePage;
  class Footer extends OneWeb
 {
     //body attribute
-    private $PUSAT_BANTUAN_ATRR = '';
-    private $CARA_MENGGUNAKAN_OLX_ATRR = '';
-    private $IKLAN_BERDASARKAN_OLX_ATRR = '';
-    private $FACEBOOK_OLX_INDONESIA_ATRR = '';
-    private $KETENTUAN_UMUM_ATRR = '';
-    private $TIPS_JUAL_BELI_AMAN_ATRR = '';
-    private $PENCARIAN_POPULER_ATRR = '';
-    private $TWITTER_OLX_INDONESIA_ATRR = '';
-    private $KEBIJAKAN_PRIVASI_ATRR = '';
-    private $PETA_SITUS_ATRR = '';
-    private $JOIN_OLX_ATRR = '';
-    private $BLOG_OLX_INDONESIA_ATRR = '';
+    private $PUSAT_BANTUAN_ATRR = 'aux_link_help';
+    private $CARA_MENGGUNAKAN_OLX_ATRR = 'aux_link_howto';
+    private $IKLAN_BERDASARKAN_OLX_ATRR = 'aux_link_location';
+    private $FACEBOOK_OLX_INDONESIA_ATRR = 'aux_link_fb';
+    private $KETENTUAN_UMUM_ATRR = 'aux_link_toc';
+    private $TIPS_JUAL_BELI_AMAN_ATRR = 'aux_link_tips';
+    private $PENCARIAN_POPULER_ATRR = 'aux_link_popular';
+    private $TWITTER_OLX_INDONESIA_ATRR = 'aux_link_tw';
+    private $KEBIJAKAN_PRIVASI_ATRR = 'aux_link_privacy';
+    private $PETA_SITUS_ATRR = 'aux_link_sitemap';
+    private $JOIN_OLX_ATRR = 'aux_link_join';
+    private $BLOG_OLX_INDONESIA_ATRR = 'aux_link_blog';
 
     public function __construct()
     {
@@ -46,12 +46,69 @@ use Athena\Page\BasePage;
         $this->getElementFooterById($footer)->thenFind()->asHtmlElement()->click();
     }
 
+
+    public function isElementExistById($id){
+        $this->getBrowser()->getCurrentPage()->getElement()->withId($id)->assertThat()->isDisplayed();
+    }
+
     /**
      * @return null|string
      */
     public function getAttributeFooterPage(){
         return $this->getElementBodyFooterByXpath()->thenFind()->asHtmlElement()->getAttribute('class');
     }
+
+     public function verifyLinkPusatBantuanPage(){
+         $this->isElementExistById($this->PUSAT_BANTUAN_ATRR);
+     }
+
+     public function verifyLinkCaraMenggunakanOLXPage(){
+         $this->isElementExistById($this->CARA_MENGGUNAKAN_OLX_ATRR);
+     }
+
+     public function verifyLinkIklanBerdasarkanLokasiPage(){
+        $this->isElementExistById($this->IKLAN_BERDASARKAN_OLX_ATRR);
+     }
+
+     public function verifyLinkFacebookOLXIndonesiaPage(){
+         $this->isElementExistById($this->FACEBOOK_OLX_INDONESIA_ATRR);
+     }
+
+     public function verifyLinkTipsJualBeliAmanPage(){
+         $this->isElementExistById($this->TIPS_JUAL_BELI_AMAN_ATRR);
+     }
+
+     public function verifyLinkPencarianPopulerPage(){
+         $this->isElementExistById($this->PENCARIAN_POPULER_ATRR);
+     }
+
+     public function verifyLinkTwitterOLXIndonesiaPage(){
+         $this->isElementExistById($this->TWITTER_OLX_INDONESIA_ATRR);
+     }
+
+     public function verifyLinkKebijakanPrivacyPage(){
+         $this->isElementExistById($this->KEBIJAKAN_PRIVASI_ATRR);
+     }
+
+     public function verifyLinkPetaSitusPage(){
+         $this->isElementExistById($this->PETA_SITUS_ATRR);
+     }
+
+     public function verifyLinkJoinOLXPage(){
+         $this->isElementExistById($this->JOIN_OLX_ATRR);
+     }
+
+     public function verifyLinkBlogOLXIndonesiaPage(){
+         $this->isElementExistById($this->BLOG_OLX_INDONESIA_ATRR);
+     }
+
+     public function verifyLinkKetentuanUmumPage(){
+         $this->isElementExistById($this->KETENTUAN_UMUM_ATRR);
+     }
+
+     public function verifyLinkKebijakanPrivasiPage(){
+         $this->isElementExistById($this->KEBIJAKAN_PRIVASI_ATRR);
+     }
 
     public function verifyPusatBantuanPage(){
         \PHPUnit_Framework_Assert::assertEquals($this->PUSAT_BANTUAN_ATRR,$this->getAttributeFooterPage());
