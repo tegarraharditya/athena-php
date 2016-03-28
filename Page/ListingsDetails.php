@@ -18,13 +18,15 @@ class ListingsDetails extends OneWeb
     private $ID_CATEGORY = 'detail_ad_category';
     private $ID_DATE_CREATED = '';
     private $ID_DATE_POSTED = 'detail_ad_posted';
-    private $ID_LOCATION = 'detail_ad_location';
+    private $ID_JUMLAH_PENGUNJUNG = '';
+    private $ID_LOCATION_MEET_UP = 'detail_ad_location';
+    private $ID_CONDITION = 'detail_ad_condition';
     private $ID_ADS_ID = 'detail_ad_id';
     private $ID_USERNAME_SELLER = 'detail_seller_name';
+    private $ID_ADDRESS_SELLER = 'detail_seller_address';
     private $ID_MEMBER_REG_DATE = 'detail_seller_registered';
     private $ID_LAST_LOGIN_DATE = 'detail_seller_last_log';
     private $ID_MORE_ADS = '';
-    private $ID_LOCATION_SELLER = 'detail_seller_address';
 
     private $ID_SELLER_PHONE_NUMBER = 'detail_ad_contact';
     private $ID_HUBUNGI_PENJUAL_BUTTON = '';
@@ -45,8 +47,8 @@ class ListingsDetails extends OneWeb
     }
 
     private function getElementHubungiPenjualButton(){
-        //return $this->getElement()->withId($this->ID_HUBUNGI_PENJUAL_BUTTON);
-        return $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_HUBUNGI_PENJUAL_BUTTON);
+        return $this->getBrowser()->getCurrentPage()->getElement()
+            ->withId($this->ID_HUBUNGI_PENJUAL_BUTTON);
     }
 
     /**
@@ -61,53 +63,49 @@ class ListingsDetails extends OneWeb
         $this->getElementHubungiPenjualButton()->thenFind()->asHtmlElement()->click();
     }
 
-
-    public function verifyListingsDetailsCategoryMobil(){
+    public function verifyListingDetails($category){
         $this->verifyElementListingsDetails($this->ID_TITLE);
         $this->verifyElementListingsDetails($this->ID_IMAGE);
-        $this->verifyElementListingsDetails($this->ID_PRICE);
         $this->verifyElementListingsDetails($this->ID_DETAILS_PRODUCT);
+
+        $this->verifyElementListingsDetails($this->ID_PRICE);
+        $this->verifyElementListingsDetails($this->ID_SELLER_PHONE_NUMBER);
         $this->verifyElementListingsDetails($this->ID_CATEGORY);
-        $this->verifyElementListingsDetails($this->ID_DATE_CREATED);
-    }
+        $this->verifyElementListingsDetails($this->ID_DATE_POSTED);
+        $this->verifyElementListingsDetails($this->ID_JUMLAH_PENGUNJUNG);
+        $this->verifyElementListingsDetails($this->ID_ADS_ID);
 
-    public function verifyListingsDetailsCategoryMotor(){
+        $this->verifyElementListingsDetails($this->ID_USERNAME_SELLER);
+        $this->verifyElementListingsDetails($this->ID_ADDRESS_SELLER);
+        $this->verifyElementListingsDetails($this->ID_MEMBER_REG_DATE);
+        $this->verifyElementListingsDetails($this->ID_LAST_LOGIN_DATE);
 
-    }
-
-    public function verifyListingsDetailsCategoryProperty(){}
-
-    public function verifyListingsDetailsCategoryKeperluanPribadi(){
-
-    }
-
-    public function verifyListingsDetailsCategoryElectronicGadget(){
 
     }
 
-    public function verifyListingsDetailsCategoryHobiOlahraga(){
+    private function verifyExtraParameter($category){
+        if(strcmp($category,'mobil-bekas-details')){
+            $this->verifyExtraParameterMobilBekas();
+        }else if (strcmp($category,'property-details')){
+            $this->verifyExtraParameterProperty();
+        }else if(strcmp($category,'jasa-lowongan-details')){
+
+        }else{
+
+        }
+    }
+
+    private function verifyExtraParameterMobilBekas(){
+        $this->verifyElementListingsDetails($this->ID_CONDITION);
+        $this->verifyElementListingsDetails($this->ID_LOCATION_MEET_UP);
+    }
+
+    private function verifyExtraParameterProperty(){
 
     }
 
-    public function verifyListingsDetailsCategoryRumahTangga(){
+    private function verifyExtraParameterJasaLowongan(){
 
     }
-
-    public function verifyListingsDetailsCategoryPerlengkapanBayiAnak(){
-
-    }
-
-    public function verifyListingsDetailsCategoryKantorIndustri(){
-
-    }
-
-    public function verifyListingsDetailsCategoryJasaLoker(){
-
-    }
-
-    public function verifyListingsDetailsSellerInfo(){
-
-    }
-
 
 }

@@ -11,6 +11,7 @@ namespace Tests\Context;
 
 use Athena\Athena;
 use Athena\Test\AthenaTestContext;
+use Behat\Behat\Tester\Exception\PendingException;
 use Tests\Page\Homepage;
 use Tests\Page\Listings;
 
@@ -133,7 +134,7 @@ class OpenHomepageContext extends BaseContext
      */
     public function iOpenUrl(){
         $this->homepage->open(true);
-        sleep(10);
+        //sleep(2000);
     }
 
     /**
@@ -159,73 +160,73 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Mobil Bekas sub-category$/
+     * @When /^I click Mobil Bekas sub-category$/
      */
     public function iClickMobilBekasSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_MOBIL_MOBIL_BEKAS);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_MOBIL_MOBIL_BEKAS);
     }
 
     /**
      * @Then /^I am in Mobil Bekas Page$/
      */
     public function iAmInSubCategoryMobilBekasPage(){
-        $this->iClickMobilBekasSubCategory()->verifyCategoryPage_Mobil_MobilBekas();
+        $this->listings->verifyCategoryPage_Mobil_MobilBekas();
     }
 
     /**
      * @And /^I click Aksesoris Mobil sub category$/
      */
     public function iclickAksesorisMobilSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_MOBIL_AKSESORIS);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_MOBIL_AKSESORIS);
     }
 
     /**
      * @Then /^I am in Aksesoris Mobil page$/
      */
     public function iAmInSubCategoryAksesorisMobilPage(){
-        $this->iclickAksesorisMobilSubCategory()->verifyCategoryPage_Mobil_AksesorisMobil();
+        $this->listings->verifyCategoryPage_Mobil_AksesorisMobil();
     }
 
     /**
      * @And /^I click Audio Mobil sub-category$/
      */
     public function iClickAudioMobilSubcategory(){
-        return $this->homepage->clickElementLevel2($this->ID_MOBIL_AUDIO_MOBIL);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_MOBIL_AUDIO_MOBIL);
     }
 
     /**
      * @Then /^I am in Audio Mobil page$/
      */
     public function iAmInSubCategoryAudioMobilPage(){
-        $this->iClickAudioMobilSubcategory()->verifyCategoryPage_Mobil_AudioMobil();
+        $this->listings->verifyCategoryPage_Mobil_AudioMobil();
     }
 
     /**
      * @And /^I click Sparepat Mobil sub-category$/
      */
     public function iClickSparepartMobilSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_MOBIL_SPAREPART);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_MOBIL_SPAREPART);
     }
 
     /**
      * @Then /^I am in Sparepart page$/
      */
     public function iAmInSubCategorySparepartMobilPage(){
-        $this->iClickSparepartMobilSubCategory()->verifyCategoryPage_Mobil_Sparepart();
+        $this->listings->verifyCategoryPage_Mobil_Sparepart();
     }
 
     /**
      * @And /^I click Velg and Ban Mobil sub-category$/
      */
     public function iClickVelgAndBanMobilSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_MOBIL_VELG_AND_BAN);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_MOBIL_VELG_AND_BAN);
     }
 
     /**
      * @Then /^I am in Velg and Ban Mobil page$/
      */
     public function iAmInSubCategoryVelgAndBanMobilPage(){
-        $this->iClickVelgAndBanMobilSubCategory()->verifyCategoryPage_Mobil_VelgAndBan();
+        $this->listings->verifyCategoryPage_Mobil_VelgAndBan();
     }
 
     /**
@@ -239,28 +240,28 @@ class OpenHomepageContext extends BaseContext
      * @And /^I click Motor Bekas sub-category$/
      */
     public function iClickMotorBekasSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_MOTOR_BEKAS);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_MOTOR_BEKAS);
     }
 
     /**
      * @Then /^I am in Motor Bekas page$/
      */
     public function iAmInSubCategoryMotorBekasPage(){
-        $this->iClickMotorBekasSubCategory()->verifyCategoryPage_Motor_MotorBekas();
+        $this->listings->verifyCategoryPage_Motor_MotorBekas();
     }
 
     /**
      * @And /^I click Helm category$/
      */
     public function iClickHelmSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_MOTOR_HELM);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_MOTOR_HELM);
     }
 
     /**
      * @Then /^I am in Helm page$/
      */
     public function iAminSubCategoryHelmPage(){
-        $this->iClickHelmSubCategory()->verifyCategoryPage_Motor_Helm();
+        $this->listings->verifyCategoryPage_Motor_Helm();
     }
 
     /**
@@ -1188,6 +1189,104 @@ class OpenHomepageContext extends BaseContext
     public function iAmInJasaPage()
     {
         $this->listings->verifyCategoryPage_Loker_Jasa();
+    }
+
+    /**
+     * @Given /^I am in a page$/
+     */
+    public function iAmInAPage()
+    {
+        $this->homepage->clickElementLevel1($this->ID_MOBIL);
+        $categoryPage = $this->homepage->clickElementLevel2($this->ID_MOBIL_MOBIL_BEKAS);
+        $categoryPage->verifyCategoryPage_Mobil_MobilBekas();
+    }
+
+    /**
+     * @When /^I click logo OLX$/
+     */
+    public function iClickLogoOLX()
+    {
+        $this->homepage->clickLogo();
+    }
+
+    /**
+     * @Then /^I am navigated to homepage$/
+     */
+    public function iAmNavigatedToHomepage()
+    {
+        $this->homepage->verifyPage();
+    }
+
+    /**
+     * @Then /^I still can click Hobi & Olahraga category$/
+     */
+    public function iStillCanClickHobiOlahragaCategory()
+    {
+        $this->homepage->clickElementLevel1($this->ID_HO);
+    }
+
+    /**
+     * @Given /^I still can click Jasa & Lowongan Kerja category$/
+     */
+    public function iStillCanClickJasaLowonganKerjaCategory()
+    {
+        $this->homepage->clickElementLevel1($this->ID_JASA);
+    }
+
+    /**
+     * @Given /^I still can click Kantor & Industri category$/
+     */
+    public function iStillCanClickKantorIndustriCategory()
+    {
+        $this->homepage->clickElementLevel1($this->ID_KINDUSTRI);
+    }
+
+    /**
+     * @Given /^I still can click Motor category$/
+     */
+    public function iStillCanClickMotorCategory()
+    {
+        $this->homepage->clickElementLevel1($this->ID_MOTOR);
+    }
+
+    /**
+     * @Given /^I still can click Mobil category$/
+     */
+    public function iStillCanClickMobilCategory()
+    {
+        $this->homepage->clickElementLevel1($this->ID_MOBIL);
+    }
+
+    /**
+     * @Given /^I still can click Property category$/
+     */
+    public function iStillCanClickPropertyCategory()
+    {
+        $this->homepage->clickElementLevel1($this->ID_PROPERTY);
+    }
+
+    /**
+     * @Given /^I still can click Rumah Tangga category$/
+     */
+    public function iStillCanClickRumahTanggaCategory()
+    {
+        $this->homepage->clickElementLevel1($this->ID_RT);
+    }
+
+    /**
+     * @Given /^I still can click Keperluan Pribadi category$/
+     */
+    public function iStillCanClickKeperluanPribadiCategory()
+    {
+        $this->homepage->clickElementLevel1($this->ID_PRIBADI);
+    }
+
+    /**
+     * @Given /^I still can click Perlengkapan Bayi & Anak category$/
+     */
+    public function iStillCanClickPerlengkapanBayiAnakCategory()
+    {
+        $this->homepage->clickElementLevel1($this->ID_PBA);
     }
 
 

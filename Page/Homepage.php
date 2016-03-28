@@ -22,9 +22,15 @@ class Homepage extends OneWeb
     }
 
     public function verifyPage(){
-        $homeAttr = Athena::settings()->get('strings.attributeByBody.homepage');
-        \PHPUnit_Framework_Assert::assertEquals($homeAttr,$this->getAttributeBodyPage());
-       // $this->getBrowser()->wait(3)->until(WebDriverExpectedCondition::titleIs(''));
+        /**
+         * @var String
+         */
+        //$homeAttr = Athena::settings()->getByPath('attributeByBody.homepage');
+        \PHPUnit_Framework_Assert::assertEquals('home',$this->getAttributeBodyPage());
+    }
+
+    private function getElementLogo(){
+        return $this->getBrowser()->getCurrentPage()->getElement()->withId('logo-header');
     }
 
     private function getElementCategory($attribute,$value){
@@ -33,6 +39,10 @@ class Homepage extends OneWeb
 
     private function getElementCategoryViewAll($id){
         return $this->getBrowser()->getCurrentPage()->getElement()->withId($id);
+    }
+
+    public function clickLogo(){
+        $this->getElementLogo()->thenFind()->asHtmlElement()->click();
     }
 
     public function clickElementLevel2($level2){

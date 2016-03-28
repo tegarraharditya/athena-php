@@ -7,7 +7,7 @@
     "outputDirectory" : "./Report"
   },
   "urls" : {
-    "/" : "https://olex.id",
+    "/" : "http://olex.id",
     "login" : "/masuk",
     "myads" : "/iklanku",
     "listings_details" : "/bla",
@@ -19,9 +19,8 @@
   },
   "username" : "suci.istch@gmail.com",
   "password" : "testing123",
-  "strings" : {
-    "attributeByBody" : {
-      "homepage" : "homepage"
-    }
+  "attributeByBody" : {
+      "homepage" : "home"
+
   }
 }

@@ -150,6 +150,6 @@ class ListingsDetailsContext extends BaseContext
      */
     public function iShouldSeeDetailsOfListingsForCategory($category)
     {
-        throw new PendingException();
+
     }
 }
