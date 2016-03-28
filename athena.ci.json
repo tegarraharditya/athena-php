@@ -1,19 +1,26 @@
 {
-  "urls" : {
-    "/" : "http://olx.co.id/",
-    "login" : "/masuk",
-    "myads" : "/iklanku",
-    "listings" : "/listings",
-    "listings_details" : "/bla",
-    "search" : "/search"
-  },
   "selenium" : {
-    "hub_url" : "http://172.17.0.1:4444/wd/hub"
+    "hub_url" : "http://athena-selenium-hub:4444/wd/hub"
   },
   "report" : {
     "format" : "html",
     "outputDirectory" : "./Report"
   },
+  "urls" : {
+    "/" : "http://olex.id",
+    "login" : "/masuk",
+    "myads" : "/iklanku",
+    "listings_details" : "/bla",
+    "search" : "/search",
+    "game-console" : "/elektronik-gadget/games-console",
+    "mobil-bekas-details" : "/iklan/test-extend-validate-coba-edit-IDa7yQb.html",
+    "property-details" : "/iklan/paywall-ke-9-belom-kena-IDa7yKQ.html",
+    "jasa-lowongan-details" : "/iklan/admin-laundry-sepatu-online-di-bandung-ID9NxgM.html"
+  },
   "username" : "suci.istch@gmail.com",
-  "password" : "testing123"
+  "password" : "testing123",
+  "attributeByBody" : {
+    "homepage" : "home"
+
+  }
 }
