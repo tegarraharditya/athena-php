@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: suci
- * Date: 3/14/16
- * Time: 10:13 AM
+ * User: Tegar
+ * Date: 3/29/16
+ * Time: 10:10 AM
  */
 
 namespace Tests\Context;
@@ -38,195 +38,98 @@ class FooterContext extends BaseContext
     {
         $this->footer = new Footer();
     }
+
     /**
-     * @When /^I click Pusat Bantuan link on footer$/
+     * @Then /^I found Pusat Bantuan link page$/
      */
-    public function iClickPusatBantuanLinkOnFooter()
+    public function verifyLinkPusatBantuanPageOnFooter()
     {
-        $this->footer->clickFooterLink($this->PUSAT_BANTUAN);
+        $this->footer->verifyLinkPusatBantuanPage();
     }
 
     /**
-     * @Then /^I am navigated to Pusat Bantuan page$/
+     * @Then /^I found Iklan Berdasarkan Lokasi link page$/
      */
-    public function iAmNavigatedToPusatBantuanPage()
+    public function verifyLinkMenggunakanOlxLinkOnFooter()
     {
-        $this->footer->verifyPusatBantuanPage();
+        $this->footer->verifyLinkPusatBantuanPage();
     }
 
     /**
-     * @When /^I click Cara Menggunakan Olx link on footer$/
+     * @Then /^I found Facebook OLX Indonesia link page$/
      */
-    public function iClickCaraMenggunakanOlxLinkOnFooter()
+    public function verifyLinkFacebookOLXIndonesiaOnFooter()
     {
-        $this->footer->clickFooterLink($this->CARA_MENGGUNAKAN_OLX);
+        $this->footer->verifyLinkFacebookOLXIndonesiaPage();
+    }
+
+
+    /**
+     * @Then /^I found Ketentuan Umum link page$/
+     */
+    public function verifyKetentuanUmumLinkOnFooter()
+    {
+        $this->footer->verifyLinkKetentuanUmumPage();
+    }
+
+
+    /**
+     * @Then /^I found Tips Jual Beli Aman link page$/
+     */
+    public function verifyToTipsJualBeliAmanLinkOnFooter()
+    {
+       $this->footer->verifyLinkTipsJualBeliAmanPage();
     }
 
     /**
-     * @Then /^I am navigated to Cara Menggunakan Olx page$/
+     * @Then /^I found Pencarian Populer link page$/
      */
-    public function iAmNavigatedToCaraMenggunakanOlxPage()
+    public function verifyPencarianPopulerLinkOnFooter()
     {
-        $this->footer->verifyCaraMenggunakanOLXPage();
+        $this->footer->verifyLinkPencarianPopulerPage();
+    }
+
+
+    /**
+     * @Then /^I found Twitter link page$/
+     */
+    public function verifyTwitterOlxIndonesiaLinkOnFooter()
+    {
+        $this->footer->verifyLinkTwitterOlxIndonesiaPage();
     }
 
     /**
-     * @When /^I click Iklan Berdasarkan Lokasi link on footer$/
+     * @Then /^I found Kebijakan Privasi link page$/
      */
-    public function iClickIklanBerdasarkanLokasiLinkOnFooter()
+    public function verifyKebijakanPrivasiLinkOnFooter()
     {
-        $this->footer->clickFooterLink($this->IKLAN_BERDASARKAN_OLX);
+        $this->footer->verifyLinkKebijakanPrivasiPage();
     }
 
-    /**
-     * @Then /^I am navigated to Iklan Berdasarkan Lokasi page$/
-     */
-    public function iAmNavigatedToIklanBerdasarkanLokasiPage()
-    {
-        $this->footer->verifyIklanBedasarkanLokasiPage();
-    }
 
     /**
-     * @When /^I click Ketentuan Umum link on footer$/
+     * @Then /^I found Peta Situs link page$/
      */
-    public function iClickKetentuanUmumLinkOnFooter()
+    public function verifyPetaSitusLinkOnFooter()
     {
-        $this->footer->clickFooterLink($this->KETENTUAN_UMUM);
+        $this->footer->verifyLinkPetaSitusPage();
     }
 
-    /**
-     * @Then /^I am navigated to Ketentuan Umum page$/
-     */
-    public function iAmNavigatedToKetentuanUmumPage()
-    {
-        $this->footer->verifyKetentuanUmumPage();
-    }
 
     /**
-     * @When /^I click Tips Jual Beli Aman link on footer$/
+     * @Then /^I found Join OLX link page$/
      */
-    public function iClickTipsJualBeliAmanLinkOnFooter()
+    public function verifyJoinOLXLinkOnFooter()
     {
-        $this->footer->clickFooterLink($this->TIPS_JUAL_BELI_AMAN);
+        $this->footer->verifyLinkJoinOLXPage();
     }
 
-    /**
-     * @Then /^I am navigated to Tips Jual Beli Aman page$/
-     */
-    public function iAmNavigatedToTipsJualBeliAmanPage()
-    {
-        $this->footer->verifyTipsJualBeliAmanPage();
-    }
 
     /**
-     * @When /^I click Pencarian Populer link on footer$/
+     * @Then /^I found Blog OLX link page$/
      */
-    public function iClickPencarianPopulerLinkOnFooter()
+    public function verifyBlogOLXLinkOnFooter()
     {
-        $this->footer->clickFooterLink($this->PENCARIAN_POPULER);
-    }
-
-    /**
-     * @Then /^I am navigated to Pencarian Populer page$/
-     */
-    public function iAmNavigatedToPencarianPopulerPage()
-    {
-        $this->footer->verifyPencarianPopulerPage();
-    }
-
-    /**
-     * @When /^I click Twitter OLX Indonesia link on footer$/
-     */
-    public function iClickTwitterOLXIndonesiaLinkOnFooter()
-    {
-        $this->footer->clickFooterLink($this->TWITTER_OLX_INDONESIA);
-    }
-
-    /**
-     * @Then /^I am navigated to Twitter OLX Indonesia page$/
-     */
-    public function iAmNavigatedToTwitterOLXIndonesiaPage()
-    {
-        $this->footer->verifyTwitterOlxIndonesiaPage();
-    }
-
-    /**
-     * @When /^I click Kebijakan Privasi link on footer$/
-     */
-    public function iClickKebijakanPrivasiLinkOnFooter()
-    {
-        $this->footer->clickFooterLink($this->KEBIJAKAN_PRIVASI);
-    }
-
-    /**
-     * @Then /^I am navigated to Kebijakan Privasi page$/
-     */
-    public function iAmNavigatedToKebijakanPrivasiPage()
-    {
-        $this->footer->verifyKebijakanPrivasiPage();
-    }
-
-    /**
-     * @When /^I click Peta Situs link on footer$/
-     */
-    public function iClickPetaSitusLinkOnFooter()
-    {
-        $this->footer->clickFooterLink($this->PETA_SITUS);
-    }
-
-    /**
-     * @Then /^I am navigated to Peta Situs page$/
-     */
-    public function iAmNavigatedToPetaSitusPage()
-    {
-        $this->footer->verifyPetaSitusPage();
-    }
-
-    /**
-     * @When /^I click Join OLX link on footer$/
-     */
-    public function iClickJoinOLXLinkOnFooter()
-    {
-        $this->footer->clickFooterLink($this->JOIN_OLX);
-    }
-
-    /**
-     * @Then /^I am navigated to Join Olx page$/
-     */
-    public function iAmNavigatedToJoinOlxPage()
-    {
-        $this->footer->verifyJoinOlxPage();
-    }
-
-    /**
-     * @When /^I click Blog OLX Indonesia link on footer$/
-     */
-    public function iClickBlogOLXIndonesiaLinkOnFooter()
-    {
-        $this->footer->clickFooterLink($this->BLOG_OLX_INDONESIA);
-    }
-
-    /**
-     * @Then /^I am navigated to Blog OLX Indonesia page$/
-     */
-    public function iAmNavigatedToBlogOLXIndonesiaPage()
-    {
-        $this->footer->verifyBlogOlxIndonesiaPage();
-    }
-
-    /**
-     * @When /^I click Facebook OLX Indonesia link on footer$/
-     */
-    public function iClickFacebookOLXIndonesiaLinkOnFooter()
-    {
-        $this->footer->clickFooterLink($this->FACEBOOK_OLX_INDONESIA);
-    }
-
-    /**
-     * @Then /^I am navigated to Facebook OLX Indonesia page$/
-     */
-    public function iAmNavigatedToFacebookOLXIndonesiaPage()
-    {
-        $this->footer->verifyFacebookOLXIndonesiaPage();
+        $this->footer->verifyLinkBlogOlxIndonesiaPage();
     }
 }

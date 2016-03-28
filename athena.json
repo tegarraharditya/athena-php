@@ -7,7 +7,7 @@
     "outputDirectory" : "./Report"
   },
   "urls" : {
-    "/" : "https://olex.id",
+    "/" : "http://olex.id",
     "login" : "/masuk",
     "myads" : "/iklanku",
     "listings_details" : "/bla",

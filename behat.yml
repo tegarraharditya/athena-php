@@ -14,9 +14,10 @@ default:
     suites:
         default:
             filters:
-              tags: @login
+              tags: @debug,@footer
             paths:
                 - %paths.base%/Features
             contexts:
                 - Tests\Context\LoginContext
                 - Tests\Context\OpenHomepageContext
+                - Tests\Context\FooterContext
