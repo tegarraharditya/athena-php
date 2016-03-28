@@ -3,7 +3,7 @@ Feature:
     As User I want to see the details of Listings
 
 
-  Scenario Outline:
+  Scenario Outline: TC_OW_005_001
     Given I am in Listings Details <category> page
     Then I should see details of listings for Category <category>
     And I should see details of seller

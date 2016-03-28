@@ -14,6 +14,7 @@ default:
     suites:
         default:
             filters:
+
               tags: @debug,@footer
             paths:
                 - %paths.base%/Features
@@ -21,3 +22,8 @@ default:
                 - Tests\Context\LoginContext
                 - Tests\Context\OpenHomepageContext
                 - Tests\Context\FooterContext
+                - Tests\Context\ListingsContext
+                - Tests\Context\ListingsDetailsContext
+                - Tests\Context\LoginContext
+                - Tests\Context\OpenHomepageContext
+                - Tests\Context\SearchContext

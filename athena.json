@@ -19,9 +19,8 @@
   },
   "username" : "suci.istch@gmail.com",
   "password" : "testing123",
-  "strings" : {
-    "attributeByBody" : {
-      "homepage" : "homepage"
-    }
+  "attributeByBody" : {
+      "homepage" : "home"
+
   }
 }
