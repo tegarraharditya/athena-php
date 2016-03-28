@@ -1,6 +1,6 @@
 {
   "selenium" : {
-    "hub_url" : "http://athena-selenium-hub:4444/wd/hub"
+    "hub_url" : "http://athena-selenium-hub0:4444/wd/hub"
   },
   "report" : {
     "format" : "html",
