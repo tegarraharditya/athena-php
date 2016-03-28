@@ -14,8 +14,7 @@ default:
     suites:
         default:
             filters:
-
-              tags: @footer
+              tags: @homepage
             paths:
                 - %paths.base%/Features
             contexts:
