@@ -4,7 +4,7 @@ Feature: Footer
   I want to be able to see all footer link
 
   @parallel-scenario
-  Scenario: TC_OW_003_005 - be able to click 'Join OLX' link on footer
+  Scenario: TC_OW_003_001 - be able to click 'Join OLX' link on footer
     Given I am in homepage
     Then I found Pusat Bantuan link page
     Then I found Iklan Berdasarkan Lokasi link page

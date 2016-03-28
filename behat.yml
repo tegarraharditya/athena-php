@@ -15,7 +15,7 @@ default:
         default:
             filters:
 
-              tags: @debug,@footer
+              tags: @footer
             paths:
                 - %paths.base%/Features
             contexts:
