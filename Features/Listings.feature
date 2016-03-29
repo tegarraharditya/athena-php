@@ -13,14 +13,21 @@
     When I click prev button
     Then I can see Ads Listings in page
 
-  Scenario: TC_OW_005_003 - There's promotion banner on bottom page
+  Scenario:
     Given I am in a Listings page
-    Then I can verify that there's promotion banner on bottom page
+    Then I can see Iklan Promosi
+    And I can see Iklan lainnya
 
   Scenario:
     Given I am in a Listings page
-    When I click ads
-    Then I am in Listings Details page
+    Then I can see Listings with Yellow Background on Top section
+    And I can see Istimewa Label in Iklan Promosi Section
+    And I can see Top Listings
+
+    Scenario:
+      Given I am in a Listings page
+      When I click ads
+      Then I am in Listings Details page
 
 
 

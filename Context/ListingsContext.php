@@ -28,7 +28,7 @@ class ListingsContext extends BaseContext
     private $listingsDetails;
     public function __construct()
     {
-        $this->listings=new Listings();
+        $this->listings=new Listings(Athena::browser());
         //$this->listings->setCurrentListingList('games-console');
 
     }
@@ -38,7 +38,7 @@ class ListingsContext extends BaseContext
      */
     public function iAmInListingsPage()
     {
-        $this->listings->open(false);
+        $this->listings->open(true);
         $this->listings->verifyCategoryPage_ENG_Games_Console();
 
     }
@@ -68,30 +68,6 @@ class ListingsContext extends BaseContext
     }
 
     /**
-     * @Then /^I can verify that there's promotion banner on bottom page$/
-     */
-    public function iCanVerifyThatThereSPromotionBannerOnBottomPage()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Given /^I go to (.*) page$/
-     */
-    public function iAmInPage($category)
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then /^I can see listings based on (.*)$/
-     */
-    public function iCanSeeListingsBasedOn($category)
-    {
-        throw new PendingException();
-    }
-
-    /**
      * @When /^I click ads$/
      */
     public function iClickAds()
@@ -105,5 +81,45 @@ class ListingsContext extends BaseContext
     public function iAmInListingsDetailsPage()
     {
         $this->listingsDetails->verifyAttributeClassBody();
+    }
+
+    /**
+     * @Then /^I can see Iklan Promosi$/
+     */
+    public function iCanSeeIklanPromosi()
+    {
+        $this->listings->verifyIklanPromosiSection();
+    }
+
+    /**
+     * @Given /^I can see Iklan lainnya$/
+     */
+    public function iCanSeeIklanLainnya()
+    {
+        $this->listings->verifyIklanLainnyaSection();
+    }
+
+    /**
+     * @Then /^I can see Listings with Yellow Background on Top section$/
+     */
+    public function iCanSeeListingsWithYellowBackgroundOnTopSection()
+    {
+        echo 'hello';
+    }
+
+    /**
+     * @Then /^I can see Istimewa Label in Iklan Promosi Section$/
+     */
+    public function iCanSeeIstimewaLabelInIklanPromosiSection()
+    {
+        $this->listings->verifyIstimewaLabelOnlyInIklanPromosiSection();
+    }
+
+    /**
+     * @Given /^I can see Top Listings$/
+     */
+    public function iCanSeeTopListings()
+    {
+        echo 'hello';
     }
 }

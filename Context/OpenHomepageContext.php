@@ -31,99 +31,99 @@ class OpenHomepageContext extends BaseContext
     private $ID_MOBIL = 'mobil_86';
     private $ID_MOBIL_VIEWALL = 'view_all_86';
     private $ID_MOBIL_MOBIL_BEKAS = 'mobil-bekas_198';
-    private $ID_MOBIL_AKSESORIS = 'aksesoris_4760';
-    private $ID_MOBIL_AUDIO_MOBIL = 'audio-mobil_4762';
-    private $ID_MOBIL_SPAREPART = 'sparepart_4759';
-    private $ID_MOBIL_VELG_AND_BAN = 'velg-dan-ban_4761';
+    private $ID_MOBIL_AKSESORIS = 'mobil-aksesoris_4760';
+    private $ID_MOBIL_AUDIO_MOBIL = 'mobil-audio-mobil_4762';
+    private $ID_MOBIL_SPAREPART = 'mobil-sparepart_4759';
+    private $ID_MOBIL_VELG_AND_BAN = 'mobil-velg-dan-ban_4761';
 
     private $ID_MOTOR = 'motor_87';
     private $ID_MOTOR_VIEWALL = 'view_all_87';
     private $ID_MOTOR_BEKAS = 'motor-bekas_200';
-    private $ID_MOTOR_HELM = 'helm_4824';
-    private $ID_MOTOR_SPAREPART = 'sparepart_4822';
-    private $ID_MOTOR_AKSESORIS = 'aksesoris_4823';
+    private $ID_MOTOR_HELM = 'motor-helm_4824';
+    private $ID_MOTOR_SPAREPART = 'motor-sparepart_4822';
+    private $ID_MOTOR_AKSESORIS = 'motor-aksesoris_4823';
 
     private $ID_PROPERTY = 'properti_88';
     private $ID_PROPERTI_VIEWALL = 'view_all_88';
-    private $ID_PROPERTY_RUMAH = 'rumah_4825';
-    private $ID_PROPERTY_APARTMENT = 'apartment_4826';
-    private $ID_PROPERTY_INDEKOS = 'indekos_4833';
-    private $ID_PROPERTY_BANGUNAN_KOMERSIL = 'bangunan-komersil_5094';
-    private $ID_PROPERTY_TANAH = 'tanah_4827';
-    private $ID_PROPERTY_LAINNYA = 'properti-lainnya_4834';
+    private $ID_PROPERTY_RUMAH = 'properti-rumah_4825';
+    private $ID_PROPERTY_APARTMENT = 'properti-apartment_4826';
+    private $ID_PROPERTY_INDEKOS = 'properti-indekos_4833';
+    private $ID_PROPERTY_BANGUNAN_KOMERSIL = 'properti-bangunan-komersil_5094';
+    private $ID_PROPERTY_TANAH = 'properti-tanah_4827';
+    private $ID_PROPERTY_LAINNYA = 'properti-properti-lainnya_4834';
 
     private $ID_PRIBADI = 'keperluan-pribadi_98';
     private $ID_PRIBADI_VIEWALL = 'view_all_98';
-    private $ID_PRIBADI_FASHION_WANITA = 'fashion-wanita_230';
-    private $ID_PRIBADI_FASHION_PRIA = 'fashion-pria_229';
-    private $ID_PRIBADI_JAM_TANGAN = 'jam-tangan_231';
-    private $ID_PRIBADI_PAKAIAN_OR = 'pakaian-olahraga_5095';
-    private $ID_PRIBADI_PERHIASAN = 'perhiasan_232';
-    private $ID_PRIBADI_MAKEUP_PARFUM = 'make-up-parfum_233';
-    private $ID_PRIBADI_TERAPI_PENGOBATAN = 'terapi-pengobatan_5123';
-    private $ID_PRIBADI_PERAWATAN = 'perawatan_234';
-    private $ID_PRIBADI_NUTRISI_SUPLEMEN = 'nutrisi-suplemen_5126';
-    private $ID_PRIBADI_LAINNYA = 'lainnya_5124';
+    private $ID_PRIBADI_FASHION_WANITA = 'keperluan-pribadi-fashion-wanita_230';
+    private $ID_PRIBADI_FASHION_PRIA = 'keperluan-pribadi-fashion-pria_229';
+    private $ID_PRIBADI_JAM_TANGAN = 'keperluan-pribadi-jam-tangan_231';
+    private $ID_PRIBADI_PAKAIAN_OR = 'keperluan-pribadi-pakaian-olahraga_5095';
+    private $ID_PRIBADI_PERHIASAN = 'keperluan-pribadi-perhiasan_232';
+    private $ID_PRIBADI_MAKEUP_PARFUM = 'keperluan-pribadi-make-up-parfum_233';
+    private $ID_PRIBADI_TERAPI_PENGOBATAN = 'keperluan-pribadi-terapi-pengobatan_5123';
+    private $ID_PRIBADI_PERAWATAN = 'keperluan-pribadi-perawatan_234';
+    private $ID_PRIBADI_NUTRISI_SUPLEMEN = 'keperluan-pribadi-nutrisi-suplemen_5126';
+    private $ID_PRIBADI_LAINNYA = 'keperluan-pribadi-lainnya_5124';
 
     private $ID_ENG = 'elektronik-gadget_92';
     private $ID_ENG_VIEWALL = 'view_all_92';
-    private $ID_ENG_HANDPHONE = 'handphone_208';
-    private $ID_ENG_TABLET = 'tablet_209';
-    private $ID_ENG_AKSESORIS_HP_TABLET = 'aksesoris-hp-tablet_215';
-    private $ID_ENG_FOTOGRAFI = 'fotografi_211';
-    private $ID_ENG_RUMAH_TANGGA = 'elektronik-rumah-tangga_214';
-    private $ID_ENG_GAMES_CONSOLE = 'games-console_212';
-    private $ID_ENG_KOMPUTER = 'komputer_213';
-    private $ID_ENG_LAMPU = 'lampu_4952';
-    private $ID_ENG_TV_AUDIO_VIDEO = 'tv-audio-video_210';
+    private $ID_ENG_HANDPHONE = 'elektronik-gadget-handphone_208';
+    private $ID_ENG_TABLET = 'elektronik-gadget-tablet_209';
+    private $ID_ENG_AKSESORIS_HP_TABLET = 'elektronik-gadget-aksesoris-hp-tablet_215';
+    private $ID_ENG_FOTOGRAFI = 'elektronik-gadget-fotografi_211';
+    private $ID_ENG_RUMAH_TANGGA = 'elektronik-gadget-elektronik-rumah-tangga_214';
+    private $ID_ENG_GAMES_CONSOLE = 'elektronik-gadget-games-console_212';
+    private $ID_ENG_KOMPUTER = 'elektronik-gadget-komputer_213';
+    private $ID_ENG_LAMPU = 'elektronik-gadget-lampu_4952';
+    private $ID_ENG_TV_AUDIO_VIDEO = 'elektronik-gadget-tv-audio-video_210';
 
     private $ID_HO = 'hobi-olahraga_94';
     private $ID_HO_VIEWALL = 'view_all_217';
-    private $ID_HO_ALAT_MUSIK = 'alat-musik';
-    private $ID_HO_OLAH_RAGA = 'olahraga_218';
-    private $ID_HO_SEPEDA_AKSESORIS = 'sepeda-aksesoris_219';
-    private $ID_HO_HANDICRAFTS = 'handicrafts_222';
-    private $ID_HO_BARANG_ANTIK = 'barang-antik_4964';
-    private $ID_HO_BUKU_MAJALAH = 'buku-majalah_220';
-    private $ID_HO_KOLEKSI = 'koleksi_221';
-    private $ID_HO_MAINAN_HOBI = 'mainan-hobi_223';
-    private $ID_HO_MUSIK_FILM = 'musik-film_4975';
-    private $ID_HO_HEWAN_PELIHARAAN = 'hewan-peliharaan_235';
+    private $ID_HO_ALAT_MUSIK = 'hobi-olahraga-alat-alat-musik_217';
+    private $ID_HO_OLAH_RAGA = 'hobi-olahraga-olahraga_218';
+    private $ID_HO_SEPEDA_AKSESORIS = 'hobi-olahraga-sepeda-aksesoris_219';
+    private $ID_HO_HANDICRAFTS = 'hobi-olahraga-handicrafts_222';
+    private $ID_HO_BARANG_ANTIK = 'hobi-olahraga-barang-antik_4964';
+    private $ID_HO_BUKU_MAJALAH = 'hobi-olahraga-buku-majalah_220';
+    private $ID_HO_KOLEKSI = 'hobi-olahraga-koleksi_221';
+    private $ID_HO_MAINAN_HOBI = 'hobi-olahraga-mainan-hobi_223';
+    private $ID_HO_MUSIK_FILM = 'hobi-olahraga-musik-film_4975';
+    private $ID_HO_HEWAN_PELIHARAAN = 'hobi-olahraga-hewan-peliharaan_235';
 
     private $ID_RT = 'rumah-tangga_89';
     private $ID_RT_VIEWALL = 'view_all_89';
-    private $ID_RT_MAKANAN_MINUMAN = 'makanan-minuman_4845';
-    private $ID_RT_FURNITURE = 'furniture_4835';
-    private $ID_RT_DEKORASI_RUMAH = 'dekorasi-rumah_4836';
-    private $ID_RT_KONSTRUKSI_TAMAN = 'konstruksi-dan-taman_4842';
-    private $ID_RT_JAM = 'jam_4841';
-    private $ID_RT_LAMPU = 'lampu_4844';
-    private $ID_RT_PERLENGKAPAN_RUMAH_TANGGA = 'perlengkapan-rumah_202';
-    private $ID_RT_LAINNYA = 'lain_4843';
+    private $ID_RT_MAKANAN_MINUMAN = 'rumah-tangga-makanan-minuman_4845';
+    private $ID_RT_FURNITURE = 'rumah-tangga-furniture_4835';
+    private $ID_RT_DEKORASI_RUMAH = 'rumah-tangga-dekorasi-rumah_4836';
+    private $ID_RT_KONSTRUKSI_TAMAN = 'rumah-tangga-konstruksi-dan-taman_4842';
+    private $ID_RT_JAM = 'rumah-tangga-jam_4841';
+    private $ID_RT_LAMPU = 'rumah-tangga-lampu_4844';
+    private $ID_RT_PERLENGKAPAN_RUMAH_TANGGA = 'rumah-tangga-perlengkapan-rumah_202';
+    private $ID_RT_LAINNYA = 'rumah-tangga-lain-lain_4843';
 
     private $ID_PBA = 'perlengkapan-bayi-anak_96';
     private $ID_PB_VIEWALL = 'view_all_96';
-    private $ID_PBA_PAKAIAN = 'pakaian_5049';
-    private $ID_PBA_PERLENGKAPAN_BAYI = 'perlengkapan-bayi_224';
-    private $ID_PBA_PERLENGKAPAN_IBU_BAYI = 'perlengkapan-ibu-bayi_5048';
-    private $ID_PBA_BONEKA_MAINAN_ANAK = 'boneka-mainan-anak_5142';
-    private $ID_PBA_BUKU_ANAK = 'buku-anak_5046';
-    private $ID_PBA_STROLLER  = 'stroller_5053';
-    private $ID_PBA_LAINNYA = 'lain-lain_5047';
+    private $ID_PBA_PAKAIAN = 'perlengkapan-bayi-anak-pakaian_5049';
+    private $ID_PBA_PERLENGKAPAN_BAYI = 'perlengkapan-bayi-anak-perlengkapan-bayi_224';
+    private $ID_PBA_PERLENGKAPAN_IBU_BAYI = 'perlengkapan-bayi-anak-perlengkapan-ibu-bayi_5048';
+    private $ID_PBA_BONEKA_MAINAN_ANAK = 'perlengkapan-bayi-anak-boneka-mainan-anak_5142';
+    private $ID_PBA_BUKU_ANAK = 'perlengkapan-bayi-anak-buku-anak-anak_5046';
+    private $ID_PBA_STROLLER  = 'perlengkapan-bayi-anak-stroller_5053';
+    private $ID_PBA_LAINNYA = 'perlengkapan-bayi-anak-lain-lain_5047';
 
     private $ID_KINDUSTRI = 'kantor-industri_90';
     private $ID_KINDUSTRI_VIEWALL = 'view_all_90';
-    private $ID_KINDUSTRI_PERALATAN_KANTOR = 'peralatan-kantor_203';//kembar dengan yg all
-    private $ID_KINDUSTRI_PERLENGKAPAN_USAHA = 'perlengkapan-usaha_5090';
-    private $ID_KINDUSTRI_MESIN_KEPERLUAN_INDUSTRI = 'mesin-keperluan-industri_4846';
-    private $ID_KINDUSTRY_STATIONERY = 'stationery_4852';
-    private $ID_KINDUSTRI_LAINNYA = 'lain-lain_4853';
+    private $ID_KINDUSTRI_PERALATAN_KANTOR = 'kantor-industri-peralatan-kantor_203';//kembar dengan yg all
+    private $ID_KINDUSTRI_PERLENGKAPAN_USAHA = 'kantor-industri-perlengkapan-usaha_5090';
+    private $ID_KINDUSTRI_MESIN_KEPERLUAN_INDUSTRI = 'kantor-industri-mesin-keperluan-industri_4846';
+    private $ID_KINDUSTRY_STATIONERY = 'kantor-industri-stationery_4852';
+    private $ID_KINDUSTRI_LAINNYA = 'kantor-industri-lain-lain_4853';
 
     private $ID_JASA = 'jasa-lowongan-kerja_97';
     private $ID_JASA_VIEWALL = 'view_all_226';
-    private $ID_JASA_LOWONGAN = 'lowongan_226';
-    private $ID_JASA_CARI_PEKERJAAN = 'cari-pekerjaan_227';
-    private $ID_JASA_JASA = 'jasa_228';
+    private $ID_JASA_LOWONGAN = 'jasa-lowongan-kerja-lowongan_226';
+    private $ID_JASA_CARI_PEKERJAAN = 'jasa-lowongan-kerja-cari-pekerjaan_227';
+    private $ID_JASA_JASA = 'jasa-lowongan-kerja-jasa_228';
 
     public function __construct(){
         $this->homepage = new Homepage();
@@ -174,7 +174,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Aksesoris Mobil sub category$/
+     * @When /^I click Aksesoris Mobil sub category$/
      */
     public function iclickAksesorisMobilSubCategory(){
         $this->listings = $this->homepage->clickElementLevel2($this->ID_MOBIL_AKSESORIS);
@@ -188,7 +188,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Audio Mobil sub-category$/
+     * @When /^I click Audio Mobil sub-category$/
      */
     public function iClickAudioMobilSubcategory(){
         $this->listings = $this->homepage->clickElementLevel2($this->ID_MOBIL_AUDIO_MOBIL);
@@ -202,7 +202,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Sparepat Mobil sub-category$/
+     * @When /^I click Sparepat Mobil sub-category$/
      */
     public function iClickSparepartMobilSubCategory(){
         $this->listings = $this->homepage->clickElementLevel2($this->ID_MOBIL_SPAREPART);
@@ -216,7 +216,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Velg and Ban Mobil sub-category$/
+     * @When /^I click Velg and Ban Mobil sub-category$/
      */
     public function iClickVelgAndBanMobilSubCategory(){
         $this->listings = $this->homepage->clickElementLevel2($this->ID_MOBIL_VELG_AND_BAN);
@@ -237,7 +237,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Motor Bekas sub-category$/
+     * @When /^I click Motor Bekas sub-category$/
      */
     public function iClickMotorBekasSubCategory(){
         $this->listings = $this->homepage->clickElementLevel2($this->ID_MOTOR_BEKAS);
@@ -251,7 +251,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Helm category$/
+     * @When /^I click Helm category$/
      */
     public function iClickHelmSubCategory(){
         $this->listings = $this->homepage->clickElementLevel2($this->ID_MOTOR_HELM);
@@ -265,7 +265,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Aksesoris Motor sub-category$/
+     * @When /^I click Aksesoris Motor sub-category$/
      */
     public function iClickAksesorisMotorSubCategory(){
         $this->listings=$this->homepage->clickElementLevel2($this->ID_MOTOR_AKSESORIS);
@@ -279,7 +279,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Sparepart Motor sub\-category$/
+     * @When /^I click Sparepart Motor sub\-category$/
      */
     public function iClickSparepartMotorSubCategory1()
     {
@@ -302,87 +302,87 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Rumah sub-category$/
+     * @When /^I click Rumah sub-category$/
      */
     public function iClickRumahSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PROPERTY_RUMAH);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PROPERTY_RUMAH);
     }
 
     /**
      * @Then /^I am in Rumah page$/
      */
     public function iAmInSubCategoryRumahPage(){
-        $this->iClickRumahSubCategory()->verifyCategoryPage_Property_Rumah();
+        $this->listings->verifyCategoryPage_Property_Rumah();
     }
 
     /**
-     * @And /^I click Apartment sub-category$/
+     * @When /^I click Apartment sub-category$/
      */
     public function iClickApartmentSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PROPERTY_APARTMENT);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PROPERTY_APARTMENT);
     }
 
     /**
      * @Then /^I am in Apartment page$/
      */
     public function iAmInSubCategoryApartmentPage(){
-        $this->iClickApartmentSubCategory()->verifyCategoryPage_Property_Apartment();
+        $this->listings->verifyCategoryPage_Property_Apartment();
     }
 
     /**
-     * @And /^I click Indekos sub-category$/
+     * @When /^I click Indekos sub-category$/
      */
     public function iClickIndekosSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PROPERTY_INDEKOS);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PROPERTY_INDEKOS);
     }
 
     /**
      * @Then /^I am in Indekos page$/
      */
     public function iAmInSubCategoryIndekosPage(){
-        $this->iClickIndekosSubCategory()->verifyCategoryPage_Property_Indekos();
+        $this->listings->verifyCategoryPage_Property_Indekos();
     }
 
     /**
-     * @And /^I click Bangunan Komersil sub-category$/
+     * @When /^I click Bangunan Komersil sub-category$/
      */
     public function iClickBangunanKomersilSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PROPERTY_BANGUNAN_KOMERSIL);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PROPERTY_BANGUNAN_KOMERSIL);
     }
 
     /**
      * @Then /^I am in Bangunan Komersil page$/
      */
     public function iAmInSubCategoryBangunanKomersilPage(){
-        $this->iClickBangunanKomersilSubCategory()->verifyCategoryPage_Property_BangunanKomersil();
+        $this->listings->verifyCategoryPage_Property_BangunanKomersil();
     }
 
     /**
-     * @And /^I click Tanah sub-category$/
+     * @When /^I click Tanah sub-category$/
      */
     public function iClickTanahSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PROPERTY_TANAH);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PROPERTY_TANAH);
     }
 
     /**
      * @Then /^I am in Tanah page$/
      */
     public function iAmInSubCategoryTanahPage(){
-        $this->iClickTanahSubCategory()->verifyCategoryPage_Property_Tanah();
+        $this->listings->verifyCategoryPage_Property_Tanah();
     }
 
     /**
-     * @And /^I click Property Lainnya sub-category$/
+     * @When /^I click Property Lainnya sub-category$/
      */
     public function iClickPropertyLainnyaSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PROPERTY_LAINNYA);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PROPERTY_LAINNYA);
     }
 
     /**
      * @Then /^I am in Propery Lainnya page$/
      */
     public function iAmInSubCategoryPropertyLainnyaPage(){
-        $this->iClickPropertyLainnyaSubCategory()->verifyCategoryPage_Property_Lainnya();
+        $this->listings->verifyCategoryPage_Property_Lainnya();
     }
 
     /**
@@ -393,143 +393,143 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Fashion Wanita sub-category$/
+     * @When /^I click Fashion Wanita sub-category$/
      */
     public function iClickFashionWanitaSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PRIBADI_FASHION_WANITA);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PRIBADI_FASHION_WANITA);
     }
 
     /**
      * @Then /^I am in Fashion Wanita page$/
      */
     public function iAmInSubCategoryFashionWanitaPage(){
-        $this->iClickFashionWanitaSubCategory()->verifyCategoryPage_Pribadi_FashionWanita();
+        $this->listings->verifyCategoryPage_Pribadi_FashionWanita();
     }
 
     /**
-     * @And /^I click Fashion Pria sub-category$/
+     * @When /^I click Fashion Pria sub-category$/
      */
     public function iClickFashionPriaSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PRIBADI_FASHION_PRIA);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PRIBADI_FASHION_PRIA);
     }
 
     /**
      * @Then /^I am in Keperluan Pribadi page$/
      */
     public function iAmInSubCategoryFashionPriaPage(){
-        $this->iClickFashionPriaSubCategory()->verifyCategoryPage_Pribadi_FashionPria();
+        $this->listings->verifyCategoryPage_Pribadi_FashionPria();
     }
 
     /**
-     * @And /^I click Jam Tangan sub-category$/
+     * @When /^I click Jam Tangan sub-category$/
      */
     public function iClickJamTanganSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PRIBADI_JAM_TANGAN);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PRIBADI_JAM_TANGAN);
     }
 
     /**
      * @Then /^I am in Jam Tangan page$/
      */
     public function iAmInSubCategoryJamTanganPage(){
-        $this->iClickJamTanganSubCategory()->verifyCategoryPage_Pribadi_JamTangan();
+        $this->listings->verifyCategoryPage_Pribadi_JamTangan();
     }
 
     /**
-     * @And /^I click Pakaian Olahraga sub-category$/
+     * @When /^I click Pakaian Olahraga sub-category$/
      */
     public function iClickPakaianORSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PRIBADI_PAKAIAN_OR);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PRIBADI_PAKAIAN_OR);
     }
 
     /**
      * @Then /^I am in Keperluan Olahraga page$/
      */
     public function iAmInSubCategoryKeperluanORPage(){
-        $this->iClickPakaianORSubCategory()->verifyCategoryPage_Pribadi_PakaianOR();
+        $this->listings->verifyCategoryPage_Pribadi_PakaianOR();
     }
 
     /**
-     * @And /^I click Perhiasan sub-category$/
+     * @When /^I click Perhiasan sub-category$/
      */
     public function iClickPerhiasanSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PRIBADI_PERHIASAN);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PRIBADI_PERHIASAN);
     }
 
     /**
      * @Then /^I am in Perhiasan page$/
      */
     public function iAmInSubCategoryPerhiasanPage(){
-        $this->iClickPerhiasanSubCategory()->verifyCategoryPage_Pribadi_Perhiasan();
+        $this->listings->verifyCategoryPage_Pribadi_Perhiasan();
     }
 
     /**
-     * @And /^I click Make Up and Parfume sub-category$/
+     * @When /^I click Make Up and Parfume sub-category$/
      */
     public function iClickMakeUpAndParfumeSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PRIBADI_MAKEUP_PARFUM);
+        $this->listings =  $this->homepage->clickElementLevel2($this->ID_PRIBADI_MAKEUP_PARFUM);
     }
 
     /**
      * @Then /^I am in Make Up and Parfume page$/
      */
     public function iAmInSubCategoryMakeUpAndParfumePage(){
-        $this->iClickMakeUpAndParfumeSubCategory()->verifyCategoryPage_Pribadi_MakeUp_Parfume();
+        $this->listings->verifyCategoryPage_Pribadi_MakeUp_Parfume();
     }
 
     /**
-     * @And /^I click Terapi Pengobatan sub-category$/
+     * @When /^I click Terapi Pengobatan sub-category$/
      */
     public function iClickTerapiPengobatanSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PRIBADI_TERAPI_PENGOBATAN);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PRIBADI_TERAPI_PENGOBATAN);
     }
 
     /**
      * @Then /^I am in Terapi Pengobatan page$/
      */
     public function iAmSubCategoryTerapiPengobatanPage(){
-        $this->iClickTerapiPengobatanSubCategory()->verifyCategoryPage_Pribadi_Terapi_Pengobatan();
+        $this->listings->verifyCategoryPage_Pribadi_Terapi_Pengobatan();
     }
 
     /**
-     * @And /^I click Perawatan sub-category$/
+     * @When /^I click Perawatan sub-category$/
      */
     public function iClickPerawatanSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PRIBADI_PERAWATAN);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PRIBADI_PERAWATAN);
     }
 
     /**
      * @Then /^I am in Perawatan page$/
      */
     public function iAmInSubCategoryPerawatanPage(){
-        $this->iClickPerawatanSubCategory()->verifyCategoryPage_Pribadi_Perawatan();
+        $this->listings->verifyCategoryPage_Pribadi_Perawatan();
     }
 
     /**
-     * @And /^I click Nutrisi Suplemen sub-category$/
+     * @When /^I click Nutrisi Suplemen sub-category$/
      */
     public function iClickNutrisiSuplemenSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PRIBADI_NUTRISI_SUPLEMEN);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PRIBADI_NUTRISI_SUPLEMEN);
     }
 
     /**
      * @Then /^I am in Nutrisi Suplemen page$/
      */
     public function iAmInSubCategoryNutrisiSuplemenPage(){
-        $this->iClickNutrisiSuplemenSubCategory()->verifyCategoryPage_Pribadi_Nutrisi_Suplemen();
+        $this->listings->verifyCategoryPage_Pribadi_Nutrisi_Suplemen();
     }
 
     /**
-     * @And /^I click Keperluan Pribadi Lainnya sun-category$/
+     * @When /^I click Keperluan Pribadi Lainnya sun-category$/
      */
     public function iClickKeperluanPribadiLainnyaSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_PRIBADI_LAINNYA);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PRIBADI_LAINNYA);
     }
 
     /**
      * @Then /^I am in Keperluan pribadi Lainnya page$/
      */
     public function iAmInSubCategoryKeperluanPribadiLainnyaPage(){
-        $this->iClickKeperluanPribadiLainnyaSubCategory()->verifyCategoryPage_Pribadi_Lainnya();
+        $this->listings->verifyCategoryPage_Pribadi_Lainnya();
     }
 
     /**
@@ -540,129 +540,129 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Handphone sub-category$/
+     * @When /^I click Handphone sub-category$/
      */
     public function iClickHandphoneSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_ENG_HANDPHONE);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_ENG_HANDPHONE);
     }
 
     /**
      * @Then /^I am in Handphone page$/
      */
     public function iAmInSubCategoryHanphonePage(){
-        $this->iClickHandphoneSubCategory()->verifyCategoryPage_ENG_Handphone();
+        $this->listings->verifyCategoryPage_ENG_Handphone();
     }
 
     /**
-     * @And /^I click Tablet sub-category$/
+     * @When /^I click Tablet sub-category$/
      */
     public function iClickTabletSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_ENG_TABLET);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_ENG_TABLET);
     }
 
     /**
      * @Then /^I am in Tablet page$/
      */
     public function iAmInSubCategoryTabletPage(){
-        $this->iClickTabletSubCategory()->verifyCategoryPage_ENG_Tablet();
+        $this->listings->verifyCategoryPage_ENG_Tablet();
     }
 
     /**
-     * @And /^I click Aksesoris HP and Tablet sub-category$/
+     * @When /^I click Aksesoris HP and Tablet sub-category$/
      */
     public function iClickAksesorisHPTabletSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_ENG_AKSESORIS_HP_TABLET);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_ENG_AKSESORIS_HP_TABLET);
     }
 
     /**
      * @Then /^I am in Aksesoris HP and Tablet page$/
      */
     public function iAmInSubCategoryAksesorisHpTabletPage(){
-        $this->iClickAksesorisHPTabletSubCategory()->verifyCategoryPage_ENG_Aksesoris_HP_Tablet();
+        $this->listings->verifyCategoryPage_ENG_Aksesoris_HP_Tablet();
     }
 
     /**
-     * @And /^I click Fotografi sub-category$/
+     * @When /^I click Fotografi sub-category$/
      */
     public function iClickFotografiSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_ENG_FOTOGRAFI);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_ENG_FOTOGRAFI);
     }
 
     /**
      * @Then /^I am in Fotografi page$/
      */
     public function iAmInSubCategoryFotografiPage(){
-        $this->iClickFotografiSubCategory()->verifyCategoryPage_ENG_Fotografi();
+        $this->listings->verifyCategoryPage_ENG_Fotografi();
     }
 
     /**
-     * @And /^I click Rumah Tangga sub-category$/
+     * @When /^I click Rumah Tangga sub-category$/
      */
     public function iClickRumahTanggaSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_ENG_RUMAH_TANGGA);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_ENG_RUMAH_TANGGA);
     }
 
     /**
      * @Then /^I am in Rumah Tangga page$/
      */
     public function iAmInSubCategoryRumahTanggaPage(){
-        $this->iClickRumahTanggaSubCategory()->verifyCategoryPage_ENG_RumahTangga();
+        $this->listings->verifyCategoryPage_ENG_RumahTangga();
     }
 
     /**
-     * @And /^I click Games Console sub-category$/
+     * @When /^I click Games Console sub-category$/
      */
     public function iClickGamesConsoleSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_ENG_GAMES_CONSOLE);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_ENG_GAMES_CONSOLE);
     }
 
     /**
      * @Then /^I am in Games Console page$/
      */
     public function iAmInSubCategoryGamesConsolePage(){
-        $this->iClickGamesConsoleSubCategory()->verifyCategoryPage_ENG_Games_Console();
+        $this->listings->verifyCategoryPage_ENG_Games_Console();
     }
 
     /**
-     * @And /^I click Komputer sub-category$/
+     * @When /^I click Komputer sub-category$/
      */
     public function iClickKomputerSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_ENG_KOMPUTER);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_ENG_KOMPUTER);
     }
 
     /**
      * @Then /^I am in Komputer page$/
      */
     public function iAmInSubCategoryKomputerPage(){
-        $this->iClickKomputerSubCategory()->verifyCategoryPage_ENG_Komputer();
+        $this->listings->verifyCategoryPage_ENG_Komputer();
     }
 
     /**
-     * @And /^I click Lampu sub-category$/
+     * @When /^I click Lampu sub-category$/
      */
     public function iClickLampuSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_ENG_LAMPU);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_ENG_LAMPU);
     }
 
     /**
      * @Then /^I am in Lampu page$/
      */
     public function iAmInSubCategoryLampuPage(){
-        $this->iClickLampuSubCategory()->verifyCategoryPage_ENG_Lampu();
+        $this->listings->verifyCategoryPage_ENG_Lampu();
     }
 
     /**
-     * @And /^I click TV and Audio, Video sub-category$/
+     * @When /^I click TV and Audio, Video sub-category$/
      */
     public function iClickTVAudioVideoSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_ENG_TV_AUDIO_VIDEO);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_ENG_TV_AUDIO_VIDEO);
     }
 
     /**
      * @Then /^I am in TV and Audio, Video page$/
      */
     public function iAmInSubCategoryTVAudioVideoPage(){
-        $this->iClickTVAudioVideoSubCategory()->verifyCategoryPage_ENG_TV_Audio_Video();
+        $this->listings->verifyCategoryPage_ENG_TV_Audio_Video();
     }
 
     /**
@@ -673,143 +673,143 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Alat Musik sub-category$/
+     * @When /^I click Alat Musik sub-category$/
      */
     public function iClickAlatMasukSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_HO_ALAT_MUSIK);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_HO_ALAT_MUSIK);
     }
 
     /**
      * @Then /^I am in Alat Musik page$/
      */
     public function iAmInSubCategoryAlatMusikPage(){
-        $this->iClickAlatMasukSubCategory()->verifyCategoryPage_HO_Alatmusik();
+        $this->listings->verifyCategoryPage_HO_Alatmusik();
     }
 
     /**
-     * @And /^I click Hobi Olahraga sub-category$/
+     * @When /^I click Hobi Olahraga sub-category$/
      */
     public function iClickHobiOlahragaSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_HO_OLAH_RAGA);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_HO_OLAH_RAGA);
     }
 
     /**
      * @Then /^I am in Hobi Olahraga page$/
      */
     public function iAmInSubCategoryHobiOlahragaPage(){
-        $this->iClickHobiOlahragaSubCategory()->verifyCategoryPage_HO_Olahraga();
+        $this->listings->verifyCategoryPage_HO_Olahraga();
     }
 
     /**
-     * @And /^I click Sepeda & Aksesoris sub-category$/
+     * @When /^I click Sepeda & Aksesoris sub-category$/
      */
     public function iClickSepedaAsesorisSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_HO_SEPEDA_AKSESORIS);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_HO_SEPEDA_AKSESORIS);
     }
 
     /**
      * @Then /^I am in Sepeda & Aksesoris page$/
      */
     public function iAmInSunCategorySepedaAksesorisPage(){
-        $this->iClickSepedaAsesorisSubCategory()->verifyCategoryPage_HO_SepedaAksesoris();
+        $this->listings->verifyCategoryPage_HO_SepedaAksesoris();
     }
 
     /**
-     * @And /^I click Handicrafts sub-category$/
+     * @When /^I click Handicrafts sub-category$/
      */
     public function iClickHandicraftsSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_HO_HANDICRAFTS);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_HO_HANDICRAFTS);
     }
 
     /**
      * @Then /^I am in Handicrafts page$/
      */
     public function iAmInSubCategoryHandicraftsPage(){
-        $this->iClickHandicraftsSubCategory()->verifyCategoryPage_HO_Handicrafts();
+        $this->listings ->verifyCategoryPage_HO_Handicrafts();
     }
 
     /**
-     * @And /^I click Barang Antik sub-category$/
+     * @When /^I click Barang Antik sub-category$/
      */
     public function iClickBarangAntikSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_HO_BARANG_ANTIK);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_HO_BARANG_ANTIK);
     }
 
     /**
      * @Then /^I am in Barang Antik page$/
      */
     public function iAmInSubCategoryBarangAntikPage(){
-        $this->iClickBarangAntikSubCategory()->verifyCategoryPage_HO_BarangAntik();
+        $this->listings->verifyCategoryPage_HO_BarangAntik();
     }
 
     /**
-     * @And /^I click Buku & Majalah sub-category$/
+     * @When /^I click Buku & Majalah sub-category$/
      */
     public function iClickBukuMajalahSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_HO_BUKU_MAJALAH);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_HO_BUKU_MAJALAH);
     }
 
     /**
      * @Then /^I am in Buku & Majalah page$/
      */
     public function iAmInSUbCategoryBukuMajalahPage(){
-        $this->iClickBukuMajalahSubCategory()->verifyCategoryPage_HO_BukuMajalah();
+        $this->listings->verifyCategoryPage_HO_BukuMajalah();
     }
 
     /**
-     * @And /^I click Koleksi sub-category$/
+     * @When /^I click Koleksi sub-category$/
      */
     public function iClickKoleksiSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_HO_KOLEKSI);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_HO_KOLEKSI);
     }
 
     /**
      * @Then /^I am in Koleksi page$/
      */
     public function iAmInSubCategoryKolekasiPage(){
-        $this->iClickKoleksiSubCategory()->verifyCategoryPage_HO_Koleksi();
+        $this->listings->verifyCategoryPage_HO_Koleksi();
     }
 
     /**
-     * @And /^I click Mainan Hobi sub-category$/
+     * @When /^I click Mainan Hobi sub-category$/
      */
     public function iClickMainanHobiSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_HO_MAINAN_HOBI);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_HO_MAINAN_HOBI);
     }
 
     /**
      * @Then /^I am in Mainan Hobi page$/
      */
     public function iAmInSubCategoryMainanHobiPage(){
-        $this->iClickMainanHobiSubCategory()->verifyCategoryPage_HO_MainanHobi();
+        $this->listings->verifyCategoryPage_HO_MainanHobi();
     }
 
     /**
-     * @And /^I click Musik & Film sub-category$/
+     * @When /^I click Musik & Film sub-category$/
      */
     public function iClickMusikAndFilmSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_HO_MUSIK_FILM);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_HO_MUSIK_FILM);
     }
 
     /**
      * @Then /^I am in Musik & Film page$/
      */
     public function iAmInSubCategoryMusikAndFilmPage(){
-        $this->iClickMusikAndFilmSubCategory()->verifyCategoryPage_HO_MusikFilm();
+        $this->listings->verifyCategoryPage_HO_MusikFilm();
     }
 
     /**
-     * @And /^I click Hewan Peliharaan sub-category$/
+     * @When /^I click Hewan Peliharaan sub-category$/
      */
     public function iClickHewanPeliharaanSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_HO_HEWAN_PELIHARAAN);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_HO_HEWAN_PELIHARAAN);
     }
 
     /**
      * @Then /^I am in Hewan Peliharaan page$/
      */
     public function iAmInSubCategoryHewanPeliharaanPage(){
-        $this->iClickHewanPeliharaanSubCategory();
+        $this->listings->verifyCategoryPage_HO_HewanPeliharaan();
     }
 
     /**
@@ -820,115 +820,115 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Makanan & Minuman sub-category$/
+     * @When /^I click Makanan & Minuman sub-category$/
      */
     public function iClickMakananMinumanSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_RT_MAKANAN_MINUMAN);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_RT_MAKANAN_MINUMAN);
     }
 
     /**
      * @Then /^I am in Makanan & Minuman page$/
      */
     public function iAmInSubCategoryMakananMinumanPage(){
-        $this->iClickMakananMinumanSubCategory()->verifyCategoryPage_RT_MakananMinuman();
+        $this->listings->verifyCategoryPage_RT_MakananMinuman();
     }
 
     /**
-     * @And /^I click Furniture sub-category$/
+     * @When /^I click Furniture sub-category$/
      */
     public function iClickFurnitureSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_RT_FURNITURE);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_RT_FURNITURE);
     }
 
     /**
      * @Then /^I am in Furniture page$/
      */
     public function iAmInSubCategoryFurniturePage(){
-        $this->iClickFurnitureSubCategory()->verifyCategoryPage_RT_Furniture();
+        $this->listings->verifyCategoryPage_RT_Furniture();
     }
 
     /**
-     * @And /^I click Dekorasi Rumah sub-category$/
+     * @When /^I click Dekorasi Rumah sub-category$/
      */
     public function iClickDekorasiRumahSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_RT_DEKORASI_RUMAH);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_RT_DEKORASI_RUMAH);
     }
 
     /**
      * @Then /^I am in Dekorasi Rumah page$/
      */
     public function iAmInSubCategoryDekorasiRumahPage(){
-        $this->iClickDekorasiRumahSubCategory()->verifyCategoryPage_RT_DekorasiRumah();
+        $this->listings->verifyCategoryPage_RT_DekorasiRumah();
     }
 
     /**
-     * @And /^I click Konstruksi dan Taman sub-category$/
+     * @When /^I click Konstruksi dan Taman sub-category$/
      */
     public function iClickKonstruksiDanTamanSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_RT_KONSTRUKSI_TAMAN);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_RT_KONSTRUKSI_TAMAN);
     }
 
     /**
      * @Then /^I am in Kontruksi dan Taman page$/
      */
     public function iAmInSubCategoryKonstruksiDanTamanPage(){
-        $this->iClickKonstruksiDanTamanSubCategory()->verifyCategoryPage_RT_KontruksiTaman();
+        $this->listings->verifyCategoryPage_RT_KontruksiTaman();
     }
 
     /**
-     * @And /^I click Jam sub-category$/
+     * @When /^I click Jam sub-category$/
      */
     public function iClickJamSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_RT_JAM);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_RT_JAM);
     }
 
     /**
      * @Then /^I am in Jam page$/
      */
     public function iAmInSubCategoryJamPage(){
-        $this->iClickJamSubCategory()->verifyCategoryPage_RT_Jam();
+        $this->listings->verifyCategoryPage_RT_Jam();
     }
 
     /**
-     * @And /^I click Lampu Rumah Tangga sub-category$/
+     * @When /^I click Lampu Rumah Tangga sub-category$/
      */
     public function iClickLampuRumahTanggaSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_RT_LAMPU);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_RT_LAMPU);
     }
 
     /**
      * @Then /^I am in Lampu Rumah Tangga page$/
      */
     public function iAmInSubCategoryLampuRumahTanggaPage(){
-        $this->iClickLampuRumahTanggaSubCategory();
+        $this->listings->verifyCategoryPage_RT_Lampu();
     }
 
     /**
-     * @And /^I click Perlengkapan Rumah sub-category$/
+     * @When /^I click Perlengkapan Rumah sub-category$/
      */
     public function iClickPerlengkapanRumahSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_RT_PERLENGKAPAN_RUMAH_TANGGA);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_RT_PERLENGKAPAN_RUMAH_TANGGA);
     }
 
     /**
      * @Then /^I am in Perlengkapan Rumah page$/
      */
     public function iAmInSubCategoryPerlengkapanRumahPage(){
-        $this->iClickPerlengkapanRumahSubCategory()->verifyCategoryPage_RT_PerlengkapanRumah();
+        $this->listings->verifyCategoryPage_RT_PerlengkapanRumah();
     }
 
     /**
-     * @And /^I click Rumah Tangga Lainnya sub-category$/
+     * @When /^I click Rumah Tangga Lainnya sub-category$/
      */
     public function iClickRumahTanggaLainnyaSubCategory(){
-        return $this->homepage->clickElementLevel2($this->ID_RT_LAINNYA);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_RT_LAINNYA);
     }
 
     /**
      * @Then /^I am in Rumah Tangga Lainnya page$/
      */
     public function iAmInSubCategoryRumahTanggaLainnyaPage(){
-        $this->iClickRumahTanggaLainnyaSubCategory()->verifyCategoryPage_RT_Lainnya();
+        $this->listings->verifyCategoryPage_RT_Lainnya();
     }
 
     /**
@@ -939,11 +939,11 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Pakaian Bayi sub-category$/
+     * @When /^I click Pakaian Bayi sub-category$/
      */
     public function iClickPakaianBayiSubCategory()
     {
-        return $this->homepage->clickElementLevel2($this->ID_PBA_PAKAIAN);
+        $this->listings = $this->homepage->clickElementLevel2($this->ID_PBA_PAKAIAN);
     }
 
     /**
@@ -951,12 +951,12 @@ class OpenHomepageContext extends BaseContext
      */
     public function iAmInPakaianBayiPage()
     {
-        $this->iClickPakaianBayiSubCategory()->verifyCategoryPage_PBA_Pakaian();
+        $this->listings->verifyCategoryPage_PBA_Pakaian();
     }
 
 
     /**
-     * @And /^I click Perlengkapan Bayi sub-category$/
+     * @When /^I click Perlengkapan Bayi sub-category$/
      */
     public function iClickPerlengkapanBayiSubCategory(){
         $this->listings=$this->homepage->clickElementLevel2($this->ID_PBA_PERLENGKAPAN_BAYI);
@@ -970,7 +970,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Perlengkapan Ibu Bayi sub-category$/
+     * @When /^I click Perlengkapan Ibu Bayi sub-category$/
      */
     public function iClickPerlengkapanIbuBayiSubCategory(){
         $this->listings=$this->homepage->clickElementLevel2($this->ID_PBA_PERLENGKAPAN_IBU_BAYI);
@@ -984,7 +984,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Boneka & Mainan Anak sub\-ctegory$/
+     * @When /^I click Boneka & Mainan Anak sub\-ctegory$/
      */
     public function iClickBonekaMainanAnakSubCtegory()
     {
@@ -1000,7 +1000,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Buku Anak\-anak sub\-category$/
+     * @When /^I click Buku Anak\-anak sub\-category$/
      */
     public function iClickBukuAnakAnakSubCategory()
     {
@@ -1016,7 +1016,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Stroller sub\-category$/
+     * @When /^I click Stroller sub\-category$/
      */
     public function iClickStrollerSubCategory()
     {
@@ -1032,7 +1032,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Perlengkapan Bayi & Anak Lainnya sub\-category$/
+     * @When /^I click Perlengkapan Bayi & Anak Lainnya sub\-category$/
      */
     public function iClickPerlengkapanBayiAnakLainnyaSubCategory()
     {
@@ -1056,7 +1056,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Peralatan Kantor sub\-category$/
+     * @When /^I click Peralatan Kantor sub\-category$/
      */
     public function iClickPeralatanKantorSubCategory()
     {
@@ -1072,7 +1072,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Perlengkapan Usaha sub\-category$/
+     * @When /^I click Perlengkapan Usaha sub\-category$/
      */
     public function iClickPerlengkapanUsahaSubCategory()
     {
@@ -1088,7 +1088,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Mesin & Keperluan Industri sub\-category$/
+     * @When /^I click Mesin & Keperluan Industri sub\-category$/
      */
     public function iClickMesinKeperluanIndustriSubCategory()
     {
@@ -1104,7 +1104,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Stationery sub\-category$/
+     * @When /^I click Stationery sub\-category$/
      */
     public function iClickStationerySubCategory()
     {
@@ -1120,7 +1120,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Kantor & Industri Lainnya sub\-category$/
+     * @When /^I click Kantor & Industri Lainnya sub\-category$/
      */
     public function iClickKantorIndustriLainnyaSubCategory()
     {
@@ -1144,7 +1144,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Lowongan sub\-category$/
+     * @When /^I click Lowongan sub\-category$/
      */
     public function iClickLowonganSubCategory()
     {
@@ -1160,7 +1160,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Cari Pekerjaan sub\-category$/
+     * @When /^I click Cari Pekerjaan sub\-category$/
      */
     public function iClickCariPekerjaanSubCategory()
     {
@@ -1176,7 +1176,7 @@ class OpenHomepageContext extends BaseContext
     }
 
     /**
-     * @And /^I click Jasa sub\-category$/
+     * @When /^I click Jasa sub\-category$/
      */
     public function iClickJasaSubCategory()
     {

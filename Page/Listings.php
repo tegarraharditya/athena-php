@@ -10,6 +10,9 @@ namespace Tests\Page;
 
 
 use Athena\Athena;
+use Athena\Browser\Page\Find\Assertion\ElementExistsAtLeastOnceAssertion;
+use Athena\Tests\Browser\Page\Find\Assertion\ElementExistsAtLeastOnceAssertionTest;
+use Athena\Tests\Browser\Page\Find\Assertion\ElementValueEqualsAssertionTest;
 
 class Listings extends OneWeb
 {
@@ -92,6 +95,9 @@ class Listings extends OneWeb
     private $XPATH_PAGING_BAR = "//*[@id='page_nav_pagination']li";
     private $NEXT_PAGE = 'Next';
     private $PREV_PAGE = 'Previous';
+    private $ID_IKLAN_PROMOSI = 'js-ad-promotion-group';
+    private $ID_IKLAN_LAINNYA = 'js-ad-listing-group';
+    private $XPATH_LABEL_ISTIMEWA_IN_IKLAN_PROMOSI = './/*[@id=\'js-ad-promotion-group\']//*[text()=\'ISTIMEWAA\']';
 
     /**
      * @var String
@@ -101,6 +107,46 @@ class Listings extends OneWeb
     public function __construct()
     {
         parent::__construct('game-console');
+    }
+
+
+    private function getElementIklanPromosiSection(){
+        return $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_IKLAN_PROMOSI);
+    }
+
+    private function getElementIklanLainnyaSection(){
+        return $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_IKLAN_LAINNYA);
+    }
+
+    private function getElementPage($page){
+        return $this->getBrowser()->getCurrentPage()->getElement()->withLinkText($page);
+    }
+
+    private function getElementListingsIndex1(){
+        return $this->getBrowser()->getCurrentPage()->getElement()
+            ->withXpath('//*[@id=\'js-ad-promotion-group\']/article[1]/div//div/a');
+    }
+
+    private function getElementNextPage(){
+        return $this->getElementWithOther('aria-label',$this->NEXT_PAGE);
+    }
+
+    private function getElementPrevPage()
+    {
+        return $this->getElementWithOther('aria-label', $this->PREV_PAGE);
+    }
+
+    private function getTotalElementByXpath($xpath){
+        $elements=$this->getBrowser()->getCurrentPage()->find()->elementsWithXpath($xpath);
+        return $total = count($elements);
+    }
+
+    /**
+     * @param $xpath
+     * @return \Facebook\WebDriver\Remote\RemoteWebElement[]
+     */
+    private function getListElementByXpath($xpath){
+        return $elements=$this->getBrowser()->getCurrentPage()->find()->elementsWithXpath($xpath);
     }
 
     public function getCurrentListingsLink(){
@@ -128,26 +174,26 @@ class Listings extends OneWeb
         return new ListingsDetails();
     }
 
-    private function getElementPage($page){
-        return $this->getBrowser()->getCurrentPage()->getElement()->withLinkText($page);
+    public function verifyIstimewaLabelOnlyInIklanPromosiSection(){
+        $elements=$this->getListElementByXpath($this->XPATH_LABEL_ISTIMEWA_IN_IKLAN_PROMOSI);
+        if($this->getTotalElementByXpath($this->XPATH_LABEL_ISTIMEWA_IN_IKLAN_PROMOSI)>0){
+            foreach($elements as $obj){
+                if(!$obj->isDisplayed()){
+                    \PHPUnit_Framework_Assert::fail('element is not displayed');
+                }
+            }
+        }else{
+            \PHPUnit_Framework_Assert::fail('element is not found');
+        }
+
     }
 
-    private function getElementListingsIndex1(){
-        return $this->getBrowser()->getCurrentPage()->getElement()
-            ->withXpath('//*[@id=\'js-ad-promotion-group\']/article[1]/div//div/a');
+    public function verifyIklanPromosiSection(){
+        $this->getElementIklanPromosiSection()->assertThat()->isDisplayed();
     }
 
-    public function getTotalElementPagingBar(){
-        $elements=$this->getBrowser()->getCurrentPage()->find()->elementsWithXpath($this->XPATH_PAGING_BAR);
-        return $total = count($elements);
-    }
-
-    private function getElementNextPage(){
-        return $this->getElementWithOther('aria-label',$this->NEXT_PAGE);
-    }
-
-    private function getElementPrevPage(){
-        return $this->getElementWithOther('aria-label',$this->PREV_PAGE);
+    public function verifyIklanLainnyaSection(){
+        $this->getElementIklanLainnyaSection()->assertThat()->isDisplayed();
     }
 
     public function verifyCategoryPage_Mobil_MobilBekas(){

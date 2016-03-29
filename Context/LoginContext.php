@@ -32,7 +32,7 @@ class LoginContext extends BaseContext
     public function __construct()
     {
         //Athena::settings()->getByPath('strings.byPage.homepage');
-        $this->loginPage = new LoginPage();
+        $this->loginPage = new LoginPage(Athena::browser());
     }
 
     /**
