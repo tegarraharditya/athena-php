@@ -51,3 +51,14 @@ Feature: Search
     |keyword|area|
     |       |0|
 
+  Scenario Outline:
+    Given I am in homepage
+    And I type <keyword>
+    When I press enter
+    Then I get products list containing <keyword>
+
+    Examples:
+    |keyword|
+    |       |
+
+

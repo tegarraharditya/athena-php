@@ -26,4 +26,21 @@ class OneWeb extends BasePage
             ->withXpath("//*[@".$attribute."='".$value."']");
     }
 
+    public function checkUrl($url){
+        if($this->getUrlStatus($url)!=200){
+            \PHPUnit_Framework_Assert::fail($url.' is broken. status : '.$this->getUrlStatus($url));
+        }
+    }
+
+    public function getUrlStatus($url){
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_NOBODY, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_exec($ch);
+        $returnCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        return $returnCode;
+    }
+
 }
+

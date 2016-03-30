@@ -80,4 +80,20 @@ class SearchContext extends BaseContext
     {
         throw new PendingException();
     }
+
+    /**
+     * @When /^I press enter$/
+     */
+    public function iPressEnter()
+    {
+        $this->searchBar->pressEnter();
+    }
+
+    /**
+     * @Then /^link is not broken$/
+     */
+    public function linkIsNotBroken()
+    {
+        $this->searchBar->checkUrl('http://olx.co.id');
+    }
 }

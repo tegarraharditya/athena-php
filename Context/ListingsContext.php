@@ -122,4 +122,5 @@ class ListingsContext extends BaseContext
     {
         echo 'hello';
     }
+
 }
