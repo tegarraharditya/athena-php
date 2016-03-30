@@ -12,8 +12,8 @@ namespace Tests\Context;
 use Athena\Athena;
 use Athena\Test\AthenaTestContext;
 use Behat\Behat\Tester\Exception\PendingException;
-use Tests\Page\Listings;
-use Tests\Page\ListingsDetails;
+use Tests\Pages\bdd\Listings;
+use Tests\Pages\bdd\ListingsDetails;
 
 class ListingsContext extends BaseContext
 {

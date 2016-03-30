@@ -6,7 +6,7 @@ use Athena\Athena;
 use Athena\Browser\BrowserInterface;
 use Athena\Test\AthenaTestContext;
 use Behat\Behat\Tester\Exception\PendingException;
-use Tests\Page\LoginPage;
+use Tests\Pages\bdd\LoginPage;
 
 /**
  * Created by PhpStorm.

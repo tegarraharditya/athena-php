@@ -6,7 +6,7 @@
  * Time: 11:49 AM
  */
 
-namespace Tests\Page;
+namespace Tests\Pages\bdd;
 
 
 class ListingsDetails extends OneWeb

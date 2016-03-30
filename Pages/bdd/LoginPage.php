@@ -1,5 +1,5 @@
 <?php
-namespace Tests\Page;
+namespace Tests\Pages\bdd;
 use Athena\Browser\BrowserInterface;
 use Athena\Page\BasePage;
 use Facebook\WebDriver\WebDriverBy;

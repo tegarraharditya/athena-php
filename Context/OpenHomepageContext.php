@@ -12,8 +12,8 @@ namespace Tests\Context;
 use Athena\Athena;
 use Athena\Test\AthenaTestContext;
 use Behat\Behat\Tester\Exception\PendingException;
-use Tests\Page\Homepage;
-use Tests\Page\Listings;
+use Tests\Pages\bdd\Homepage;
+use Tests\Pages\bdd\Listings;
 
 class OpenHomepageContext extends BaseContext
 {

@@ -11,7 +11,7 @@ namespace Tests\Context;
 use Athena\Athena;
 use Behat\Behat\Tester\Exception\PendingException;
 use GuzzleHttp\Url;
-use Tests\Page\ListingsDetails;
+use Tests\Pages\bdd\ListingsDetails;
 
 class ListingsDetailsContext extends BaseContext
 {

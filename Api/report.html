@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+    <title>Test Automation Report</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <style type="text/css">
+        pre {
+            word-break: keep-all !important;
+            word-wrap: normal !important;
+            overflow-x: scroll !important;
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(function () {
+
+        $(".show-expected-exception").on("click", function (e) {
+            $(this).siblings(".expected-exception-stacktrace").show();
+            $(this).hide();
+            e.preventDefault();
+        });
+
+        $(".test-execution-item-action").each(function () {
+            this.innerHTML = this.innerHTML.replace(/https?:\/\/[^ ]+/, function (match) {
+                return "<a href=\"" + match + "\" target=\"_blank\">" + match + "</a>"
+            })
+        });
+    });
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Details</h4>
+            </div>
+            <div class="modal-body" id="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>

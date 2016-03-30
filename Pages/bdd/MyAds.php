@@ -1,5 +1,5 @@
 <?php
-namespace Tests\Page;
+namespace Tests\Pages\bdd;
 
 use Athena\Page\BasePage;
 use Exception;

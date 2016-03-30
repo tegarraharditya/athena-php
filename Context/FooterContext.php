@@ -11,7 +11,7 @@ namespace Tests\Context;
 
 use Athena\Test\AthenaTestContext;
 use Behat\Behat\Tester\Exception\PendingException;
-use Tests\Page\Footer;
+use Tests\Pages\bdd\Footer;
 
 class FooterContext extends BaseContext
 {
