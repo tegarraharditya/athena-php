@@ -6,7 +6,7 @@
  * Time: 11:48 AM
  */
 
-namespace Tests\Page;
+namespace Tests\Pages\bdd;
 
 
 use Facebook\WebDriver\WebDriverKeys;

@@ -1,0 +1,34 @@
+{
+  "screenshots" : true,
+  "proxy" : {
+    "connectTimeout" : 20000,
+    "readTimeout" : 20000,
+    "url" : "http://athena-proxy",
+    "port" : 9090,
+    "internalPort" : 9991,
+    "proxyType" : "manual",
+    "httpProxy" : "athena-proxy:9991",
+    "sslProxy" : "athena-proxy:9991",
+    "remapHosts" : {
+      "api.myolx.co.id": "192.168.99.100"
+    },
+    "backlist_urls" : {
+      ".*facebook.com" : 200,
+      ".*gemius\\..*" : 200,
+      ".*plus\\..*" : 200,
+      ".*optimizely\\..*" : 200,
+      ".*doubleclick.net" : 200
+    },
+    "recording" : true
+  },
+  "urls" : {
+    "/" : "http://api.myolx.co.id"
+  },
+  "selenium" : {
+	    "hub_url" : "http://192.168.99.101:4444/wd/hub"
+  },
+  "report" : {
+    "format" : "html",
+    "outputDirectory" : "./Report"
+  }
+}

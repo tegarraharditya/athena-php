@@ -11,7 +11,7 @@ namespace Tests\Context;
 
 use Athena\Test\AthenaTestContext;
 use Behat\Behat\Tester\Exception\PendingException;
-use Tests\Page\SearchBar;
+use Tests\Pages\bdd\SearchBar;
 
 class SearchContext extends BaseContext
 {

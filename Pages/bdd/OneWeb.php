@@ -6,7 +6,7 @@
  * Time: 3:33 PM
  */
 
-namespace Tests\Page;
+namespace Tests\Pages\bdd;
 
 
 use Athena\Page\BasePage;
