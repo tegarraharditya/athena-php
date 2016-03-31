@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Api\open\pages;
+namespace Tests\Api\v1\pages;
 
 class CityPage extends BasePage {
 
@@ -16,7 +16,7 @@ class CityPage extends BasePage {
     public function getWithIdAction($cityId, $accessToken)
     {
         return $this->client()
-            ->get(sprintf('/api/open/cities/%s/?access_token=%s', $cityId, $accessToken))
+            ->get(sprintf('/api/v1/cities/%s/?access_token=%s', $cityId, $accessToken))
             ->withOption('exceptions', FALSE)
             ->then()
             ->retrieve();
@@ -32,7 +32,7 @@ class CityPage extends BasePage {
     public function getAction($accessToken)
     {
         return $this->client()
-            ->get('/api/open/cities/?access_token=' . $accessToken)
+            ->get('/api/v1/cities/?access_token=' . $accessToken)
             ->then()
             ->retrieve();
     }

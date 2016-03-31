@@ -1,5 +1,5 @@
 <?php
-namespace Tests\Api\open\pages;
+namespace Tests\Api\v1\pages;
 
 use Tests\Atlas\Sinon;
 
@@ -24,7 +24,7 @@ class AdvertPage extends BasePage {
         $data = json_encode($fixture);
 
         return $this->client()
-            ->post('/api/open/account/adverts?access_token=' . $accessToken)
+            ->post('/api/v1/account/adverts?access_token=' . $accessToken)
             ->withBody($data, 'application/json')
             ->then()
             ->retrieve();
@@ -44,7 +44,7 @@ class AdvertPage extends BasePage {
         $data = json_encode($fixture);
         
         return $this->client()
-            ->post('/api/open/account/adverts?access_token=' . $accessToken)
+            ->post('/api/v1/account/adverts?access_token=' . $accessToken)
             ->withBody($data, 'application/json')
             ->withOption('exceptions', FALSE)
             ->then()
@@ -66,7 +66,7 @@ class AdvertPage extends BasePage {
         $data = json_encode($modifiedAdvertData);
 
         return $this->client()
-            ->put(sprintf('/api/open/account/adverts/%s/?access_token=%s', $id, $accessToken))
+            ->put(sprintf('/api/v1/account/adverts/%s/?access_token=%s', $id, $accessToken))
             ->withBody($data, 'application/json')
             ->withOption('exceptions', FALSE)
             ->then()
@@ -137,10 +137,8 @@ DESC;
     {
         $sinonAd = (new Sinon())->createActiveAd($userId)['ad'];
 
+        
         $params = [];
-        foreach ($sinonAd['params'] as $param) {
-            $params[$param['unique_key']] = $param['value'];
-        }
 
         $struct = [
             'id'              => $sinonAd['id'],

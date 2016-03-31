@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Api\open\tests\account;
+namespace Tests\Api\v1\tests\account;
 
 use Athena\Test\AthenaAPITestCase;
-use Tests\Api\open\pages\AccountPage;
+use Tests\Api\v1\pages\AccountPage;
 
 class PasswordTest extends AthenaAPITestCase {
     
@@ -22,6 +22,7 @@ class PasswordTest extends AthenaAPITestCase {
     {   
         $page = new AccountPage();
         $result = $page->changePasswordAction($page->getUserData()['password'],'123456', $page->getAccessToken());
+        print_r($result);
         $this->assertArrayHasKey('result', $result);
         $this->assertEquals($result['result'], 'OK');
     }

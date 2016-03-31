@@ -1,8 +1,8 @@
 <?php
-namespace Tests\Api\open\tests\account;
+namespace Tests\Api\v1\tests\account;
 
 use Athena\Test\AthenaAPITestCase;
-use Tests\Api\open\pages\AdvertPage;
+use Tests\Api\v1\pages\AdvertPage;
 
 class AdvertsTest extends AthenaAPITestCase {
     

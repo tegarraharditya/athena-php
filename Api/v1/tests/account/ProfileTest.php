@@ -1,8 +1,8 @@
 <?php
-namespace Tests\Api\open\tests\account;
+namespace Tests\Api\v1\tests\account;
 
 use Athena\Test\AthenaAPITestCase;
-use Tests\Api\open\pages\AccountPage;
+use Tests\Api\v1\pages\AccountPage;
 
 class ProfileTest extends AthenaAPITestCase {
     

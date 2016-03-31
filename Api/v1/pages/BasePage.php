@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Api\open\pages;
+namespace Tests\Api\v1\pages;
 
 use Tests\Atlas\Sinon;
 use Athena\Page\BaseApiPage;

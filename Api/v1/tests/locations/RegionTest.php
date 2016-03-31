@@ -1,10 +1,9 @@
 <?php
-namespace Tests\api\open\tests\locations;
+namespace Tests\Api\v1\tests\locations;
 
 use Athena\Test\AthenaAPITestCase;
 use Tests\atlas\Sinon;
-use Tests\atlas\sinon\Region;
-use Tests\api\open\pages\RegionPage;
+use Tests\Api\v1\pages\RegionPage;
 
 class RegionTest extends AthenaAPITestCase {
     
@@ -16,7 +15,7 @@ class RegionTest extends AthenaAPITestCase {
 
         $regionFromApi = $regionApiPage->getWithIdAction($expectedRegion['id'], $regionApiPage->getAccessToken());
 
-        $this->assertEquals($regionFromApi->fromJson(), $expectedRegion);
+        $this->assertEquals($expectedRegion, $regionFromApi->fromJson());
         $this->assertEquals(200, $regionFromApi->getResponse()->getStatusCode());
     }
 
@@ -25,8 +24,6 @@ class RegionTest extends AthenaAPITestCase {
         $regionApiPage = new RegionPage();
 
         $expectedRegions = (new Sinon())->allRegions();
-        $lang = $expectedRegions['lang'];
-        unset($expectedRegions['lang']);
 
         $regionsResp   = $regionApiPage->getAction($regionApiPage->getAccessToken());
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\api\open\tests\locations;
+namespace Tests\Api\v1\tests\locations;
 
 use Athena\Test\AthenaAPITestCase;
-use Tests\Api\open\pages\CityPage;
+use Tests\Api\v1\pages\CityPage;
 use Tests\Atlas\Sinon;
 
 class CityTest extends AthenaAPITestCase {
@@ -16,7 +16,9 @@ class CityTest extends AthenaAPITestCase {
         
         $cityFromApi = $cityApiPage->getWithIdAction($expectedCities['id'], $cityApiPage->getAccessToken());
 
-        $this->assertEquals($expectedCities, $cityFromApi->fromJson());
+        $this->assertEquals($expectedCities['id'], $cityFromApi->fromJson()['id']);
+        $this->assertEquals($expectedCities['name'], $cityFromApi->fromJson()['name']);
+        $this->assertEquals($expectedCities['region_id'], $cityFromApi->fromJson()['region_id']);
         $this->assertEquals(200, $cityFromApi->getResponse()->getStatusCode());
     }
 
@@ -25,26 +27,27 @@ class CityTest extends AthenaAPITestCase {
         $cityApiPage = new CityPage();
 
         $expectedCities = json_decode((new Sinon())->allCities(), true);
-        $lang = $expectedCities["lang"];    
+        $lang = $expectedCities['lang'];
         unset($expectedCities['lang']);
         
         $citiesResp  = $cityApiPage->getAction($cityApiPage->getAccessToken());
 
-        $citiesResponse   = $citiesResp->fromJson()['results'];
+        $citiesApiResponse   = $citiesResp->fromJson()['results'];
         $citiesStatusCode = $citiesResp->getResponse()->getStatusCode();
 
-        usort($citiesResponse, function ($a, $b) {
+        usort($citiesApiResponse, function ($a, $b) {
             return $a['id'] > $b['id'] ? -1 : 1;
         });
 
         usort($expectedCities, function ($a, $b) {
             return $a['id'] > $b['id'] ? -1 : 1;
         });
+        
+        $rand_id = rand(0, (count($expectedCities) - 1));
 
-        for ($idx = 0; $idx < count($expectedCities); $idx++) {
-            $this->assertEquals($expectedCities[$idx], $citiesResponse[$idx]);
-        }
-
+        
+        $this->assertEquals($expectedCities[$rand_id]['id'], $citiesApiResponse[$rand_id]['id']);
+        $this->assertEquals($expectedCities[$rand_id]['region_id'], $citiesApiResponse[$rand_id]['region_id']);
         $this->assertEquals(200, $citiesStatusCode);
     }
 

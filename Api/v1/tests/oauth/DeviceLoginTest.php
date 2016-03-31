@@ -1,21 +1,21 @@
 <?php
 
-namespace Tests\api\open\tests\oauth;
+namespace Tests\Api\v1\tests\oauth;
 
 use Athena\Test\AthenaAPITestCase;
-use Tests\atlas\Sinon;
-use Tests\api\open\pages\OauthPage;
+use Tests\Atlas\Sinon;
+use Tests\Libs\Device;
+use Tests\Api\v1\pages\OauthPage;
 
-class PartnerLoginTest extends AthenaAPITestCase {
+class DeviceLoginTest extends AthenaAPITestCase {
     
     public function testLogin_EmptyDeviceDataIsGiven_ReturnInvalidRequestErrorAndHttpCode400()
     {
-        $sinon = new Sinon();
-        $client = $sinon->oAuthClientData();
+        $client = (new Sinon())->oAuthClientData();
 
         $oauthApiPage = new OauthPage();
 
-        $apiResp = $oauthApiPage->loginWithPartnerCodeAction(
+        $apiResp = $oauthApiPage->loginWithDeviceIdAction(
             null,
             null,
             $client
@@ -28,17 +28,16 @@ class PartnerLoginTest extends AthenaAPITestCase {
         $this->assertEquals('invalid_request', $data->error);
     }
 
-    public function testLogin_PartnerSecretIsIncorrect_ReturnInvalidGrantErrorAndHttpCode400()
+    public function testLogin_DeviceTokenIsFromDifferentDevice_ReturnInvalidGrantErrorAndHttpCode400()
     {
-        $sinon = new Sinon();
-        $client = $sinon->oAuthClientData();
-        $partner = $sinon->createApiPartner();
+        $client = (new Sinon())->oAuthClientData();
+        $device = Device::random();
+        $anotherDevice = Device::random();
 
         $oauthApiPage = new OauthPage();
-
-        $apiResp = $oauthApiPage->loginWithPartnerCodeAction(
-            $partner['code'],
-            sha1(rand(0, 99999999)),
+        $apiResp = $oauthApiPage->loginWithDeviceIdAction(
+            $device->getDeviceId(),
+            $anotherDevice->getOauthValidationToken(),
             $client
         );
 
@@ -49,17 +48,16 @@ class PartnerLoginTest extends AthenaAPITestCase {
         $this->assertEquals('invalid_grant', $data->error);
     }
 
-    public function testLogin_CorrectPartnerDataIsGiven_ReturnTokensAndHttpCode200()
+    public function testLogin_CorrectDeviceDataIsGiven_ReturnTokensAndHttpCode200()
     {
-        $sinon = new Sinon();
-        $client = $sinon->oAuthClientData();
-        $partner = $sinon->createApiPartner();
+        $client = (new Sinon())->oAuthClientData();
+        $device = Device::random();
 
         $oauthApiPage = new OauthPage();
 
-        $apiResp = $oauthApiPage->loginWithPartnerCodeAction(
-            $partner['code'],
-            $partner['secret'],
+        $apiResp = $oauthApiPage->loginWithDeviceIdAction(
+            $device->getDeviceId(),
+            $device->getOauthValidationToken(),
             $client
         );
 
@@ -69,5 +67,4 @@ class PartnerLoginTest extends AthenaAPITestCase {
         $this->assertObjectHasAttribute('access_token', $data);
         $this->assertObjectHasAttribute('refresh_token', $data);
     }
-    
 }

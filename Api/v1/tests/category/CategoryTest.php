@@ -1,8 +1,8 @@
 <?php
-namespace Tests\Api\open\tests\category;
+namespace Tests\Api\v1\tests\category;
 
 use Athena\Test\AthenaAPITestCase;
-use Tests\Api\open\pages\CategoryPage;
+use Tests\Api\v1\pages\CategoryPage;
 use Tests\Atlas\Sinon;
 
 class CategoryTest extends AthenaAPITestCase {

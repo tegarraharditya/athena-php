@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\api\open\tests\oauth;
+namespace Tests\Api\v1\tests\oauth;
 
 use Athena\Test\AthenaAPITestCase;
-use Tests\Api\open\pages\OauthPage;
+use Tests\Api\v1\pages\OauthPage;
 
 class UserLoginTest extends AthenaAPITestCase {
     

@@ -1,5 +1,5 @@
 <?php
-namespace Tests\Api\open\pages;
+namespace Tests\Api\v1\pages;
 
 class CategoryPage extends BasePage {
 
@@ -11,7 +11,7 @@ class CategoryPage extends BasePage {
     public function getAction($accessToken)
     {
         return $this->client()
-            ->get('/api/open/categories?access_token='.$accessToken)
+            ->get('/api/v1/categories?access_token='.$accessToken)
             ->then()
             ->retrieve();
     }
@@ -27,7 +27,7 @@ class CategoryPage extends BasePage {
     public function getWithIdAction($categoryId, $accessToken)
     {
         return $this->client()
-            ->get('/api/open/categories/' . $categoryId . '?access_token=' . $accessToken)
+            ->get('/api/v1/categories/' . $categoryId . '?access_token=' . $accessToken)
             ->withOption('exceptions', FALSE)
             ->then()
             ->retrieve();

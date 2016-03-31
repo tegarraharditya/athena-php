@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Api\open\pages;
+namespace Tests\Api\v1\pages;
 
 class RegionPage extends BasePage {
     
@@ -16,7 +16,7 @@ class RegionPage extends BasePage {
     public function getWithIdAction($regionId, $accessToken)
     {
         return $this->client()
-            ->get(sprintf('/api/open/regions/%s/?access_token=%s', $regionId, $accessToken))
+            ->get(sprintf('/api/v1/regions/%s/?access_token=%s', $regionId, $accessToken))
             ->then()
             ->retrieve();
     }
@@ -31,7 +31,7 @@ class RegionPage extends BasePage {
     public function getAction($accessToken)
     {
         return $this->client()
-            ->get('/api/open/regions/?access_token=' . $accessToken)
+            ->get('/api/v1/regions/?access_token=' . $accessToken)
             ->then()
             ->retrieve();
     }
