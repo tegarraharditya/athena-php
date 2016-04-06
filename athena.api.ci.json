@@ -1,0 +1,25 @@
+{
+  "screenshots" : true,
+  "proxy" : {
+    "connectTimeout" : 20000,
+    "readTimeout" : 20000,
+    "url" : "http://athena-proxy",
+    "port" : 9090,
+    "internalPort" : 9991,
+    "proxyType" : "manual",
+    "httpProxy" : "athena-proxy:9991",
+    "sslProxy" : "athena-proxy:9991",
+    "remapHosts" : {
+      "api.myolx.co.id": "ENV[ATHENA_WEBSERVER_IP]"
+    },
+    "recording" : true
+  },
+  "urls" : {
+    "/" : "http://api.myolx.co.id"
+  },
+  "report" : {
+    "format" : "html",
+    "outputDirectory" : "./Report"
+  }
+
+}
