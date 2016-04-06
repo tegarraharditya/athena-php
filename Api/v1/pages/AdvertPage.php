@@ -81,7 +81,7 @@ class AdvertPage extends BasePage {
     public function getSampleAdvertData()
     {
         $sinon = new Sinon();
-        $city = $sinon->randomCity()['details'];
+        $city = $sinon->randomCity();
         $category = $sinon->randomCategoryParametersData();
         $description = <<<DESC
 Lorem ipsum dolor sit amet, nec alia postea accusata id, illum perpetua vel ad. Sed an scripserit deterruisset. At feugait noluisse facilisis vel, veri nominavi ea usu. Vim alii diceret ex, eam graecis dignissim argumentum ad.
