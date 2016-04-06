@@ -45,12 +45,11 @@ class AccountPage extends BasePage {
     {
         $data = [
             'old_password' => $oldPassword,
-            'new_password' => $newPassword,
-            'access_token' => $accessToken
+            'new_password' => $newPassword
         ];
         
-        return $this->client()->put(static::URI_CHANGE_PASSWORD)
-                ->withParameters($data)
+        return $this->client()->put(static::URI_CHANGE_PASSWORD."?access_token=".$accessToken)
+                ->withBody($data,'')
                 ->then()
                 ->retrieve()
                 ->fromJson();

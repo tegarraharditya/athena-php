@@ -205,7 +205,7 @@ class Sinon {
     public function allCategories()
     {
 
-        return Athena::api()->get("/api/v1/trojan/getallcategories/")
+        return Athena::api()->get("/api/v1/trojan/allcategories/")
                                 ->then()
                                 ->assertThat()
                                 ->responseIsJson()
@@ -220,7 +220,8 @@ class Sinon {
     {
         $categories = $this->allCategories();
         return array_filter($categories, function ($category) {
-            return $category['level'] === 1;
+            
+            return $category['depth'] === 1;
         });
     }
 
@@ -235,7 +236,7 @@ class Sinon {
         
         while(empty($parents))
         {
-            $category = $categories[rand(0, count($categories))];
+            $category = array_pop($categories);
             $parents = $category['parents'];
         }
         

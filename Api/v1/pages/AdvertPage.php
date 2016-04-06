@@ -22,9 +22,9 @@ class AdvertPage extends BasePage {
     public function createAdvertAction(array $fixture, $accessToken)
     {
         $data = json_encode($fixture);
-
+        
         return $this->client()
-            ->post('/api/v1/account/adverts?access_token=' . $accessToken)
+            ->post('/api/v1/account/adverts/?access_token='.$accessToken)
             ->withBody($data, 'application/json')
             ->then()
             ->retrieve();
@@ -44,7 +44,7 @@ class AdvertPage extends BasePage {
         $data = json_encode($fixture);
         
         return $this->client()
-            ->post('/api/v1/account/adverts?access_token=' . $accessToken)
+            ->post('/api/v1/account/adverts/?access_token=' . $accessToken)
             ->withBody($data, 'application/json')
             ->withOption('exceptions', FALSE)
             ->then()
@@ -136,9 +136,8 @@ DESC;
     public function getNewAdvertWithProperStructureForRequest($userId = null)
     {
         $sinonAd = (new Sinon())->createActiveAd($userId)['ad'];
-
         
-        $params = [];
+        $params = isset($sinonAd['params']) ? $this->convertParams($sinonAd['params']) : [];
 
         $struct = [
             'id'              => $sinonAd['id'],
@@ -161,5 +160,25 @@ DESC;
         }
 
         return $struct;
+    }
+    
+    private function convertParams($stringParams)
+    {
+        $level1 = explode("<br>", $stringParams);
+        $result = [];
+        
+        foreach ($level1 as $string)
+        {
+            $level2 = explode("<=>", $string);
+            if($level2[0] == 'price')
+            {
+                $result['price'][] = $level2[1];
+            } else 
+            {
+                $result[$level2[0]] = $level2[1];
+            }
+        }
+        
+        return $result;
     }
 }

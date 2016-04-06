@@ -19,7 +19,6 @@ class PasswordTest extends AthenaAPITestCase {
     
     public function testAccountPassword_changePasswordCorrectOldPassword_shouldReturn200HttpCode()
     {   
-        $this->markTestSkipped("Fixing..");
         $page = new AccountPage();
         $result = $page->changePasswordAction($page->getUserData()['password'],'123456', $page->getAccessToken());
         

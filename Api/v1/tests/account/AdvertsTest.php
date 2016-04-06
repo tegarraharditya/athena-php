@@ -17,7 +17,6 @@ class AdvertsTest extends AthenaAPITestCase {
     
     public function testAdvertsCreate_UserIsLoggedAndDataIsCorrect_ReturnHttpStatus201()
     {
-        $this->markTestSkipped("Fixing..");
         $accAdPage  = new AdvertPage();
         $advertResp = $accAdPage->createAdvertAction($accAdPage->getSampleAdvertData(), $accAdPage->getAccessToken());
 
@@ -26,7 +25,6 @@ class AdvertsTest extends AthenaAPITestCase {
     
     public function testAdvertsCreate_UserIsLoggedAndLocationIsMissing_ReturnFieldErrorAndHttpCode400()
     {
-        $this->markTestSkipped("Fixing..");
         $accAdPage  = new AdvertPage();
         $errorsResp = $accAdPage->createAdvertAndReturnErrors($accAdPage->getSampleAdvertDataWithoutLocation(), $accAdPage->getAccessToken());
 
@@ -36,12 +34,11 @@ class AdvertsTest extends AthenaAPITestCase {
         $errorDetails = $errorsList['error']['details'];
         $this->assertEquals(400, $errorsResp->getResponse()->getStatusCode());
         $this->assertArrayHasKey('region_id', $errorDetails);
-        $this->assertArrayHasKey('city_id', $errorDetails);
+        $this->assertArrayHasKey('subregion_id', $errorDetails);
     }
     
     public function testAdvertsCreate_UserIsLoggedAndCategoryIsMissing_ReturnFieldErrorAndHttpCode400()
     {
-        $this->markTestSkipped("Fixing..");
         $accAdPage  = new AdvertPage();
         $errorsResp = $accAdPage->createAdvertAndReturnErrors($accAdPage->getSampleAdvertDataWithoutCategory(), $accAdPage->getAccessToken());
 
@@ -69,8 +66,9 @@ class AdvertsTest extends AthenaAPITestCase {
         $actualAd = $advertResp->fromJson();
 
         $this->assertEquals(200, $advertResp->getResponse()->getStatusCode());
-        $this->assertAttributeEquals($expectedAd['title'], 'title', $actualAd);
-        $this->assertAttributeEquals($expectedAd['description'], 'description', $actualAd);
+        
+        $this->assertAttributeEquals($expectedAd, 'title', $actualAd);
+        $this->assertAttributeEquals($expectedAd, 'description', $actualAd);
     }
     
     public function testAdvertsModify_IdIsGivenAndModifiedCityIdIsWrong_ReturnJsonWithFieldErrorAndHttpCode400()

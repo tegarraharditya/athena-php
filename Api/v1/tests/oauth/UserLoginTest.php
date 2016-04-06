@@ -9,7 +9,6 @@ class UserLoginTest extends AthenaAPITestCase {
     
     public function testLogin_CorrectCredentialsAreGiven_ReturnTokensAndHttpCode200()
     {
-        $this->markTestSkipped("Fixing..");
         $oauthApiPage = new OauthPage();
         $user = $oauthApiPage->getUserData();
         $oauthData = $oauthApiPage->getOauthData();
@@ -24,8 +23,8 @@ class UserLoginTest extends AthenaAPITestCase {
         $data = $apiResp->fromJson();
 
         $this->assertEquals(200, $apiResp->getResponse()->getStatusCode());
-        $this->assertObjectHasAttribute('access_token', $data);
-        $this->assertObjectHasAttribute('refresh_token', $data);
+        $this->assertArrayHasKey('access_token', $data);
+        $this->assertArrayHasKey('refresh_token', $data);
     }
 
     public function testLogin_WrongPasswordIsGiven_ReturnInvalidGrantErrorAndHttpCode400()
