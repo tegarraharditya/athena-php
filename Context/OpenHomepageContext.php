@@ -126,7 +126,7 @@ class OpenHomepageContext extends BaseContext
     private $ID_JASA_JASA = 'jasa-lowongan-kerja-jasa_228';
 
     public function __construct(){
-        $this->homepage = new Homepage();
+        $this->homepage = new Homepage(Athena::browser());
     }
 
     /**

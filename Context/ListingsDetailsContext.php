@@ -26,14 +26,6 @@ class ListingsDetailsContext extends BaseContext
     }
 
     /**
-     * @Given /^I should see details of seller$/
-     */
-    public function iShouldSeeDetailsOfSeller()
-    {
-        $this->listingsDetails->verifyListingsDetailsSellerInfo();
-    }
-
-    /**
      * @When /^I click phone number$/
      */
     public function iClickPhoneNumber()
@@ -150,6 +142,25 @@ class ListingsDetailsContext extends BaseContext
      */
     public function iShouldSeeDetailsOfListingsForCategory($category)
     {
-
+        $this->listingsDetails->verifyListingDetails($category);
     }
+
+    /**
+     * @Then /^I click Next Listings Details Page$/
+     */
+    public function iClickNextListingsDetailsPage()
+    {
+        $this->listingsDetails->clickNextPage();
+        $this->listingsDetails->verifyAttributeClassBody();
+    }
+
+    /**
+     * @Then /^I click Prev Listings Details Page$/
+     */
+    public function iClickPrevListingsDetailsPage()
+    {
+        $this->listingsDetails->clickPrevPage();
+        $this->listingsDetails->verifyAttributeClassBody();
+    }
+
 }

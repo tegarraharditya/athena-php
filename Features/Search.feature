@@ -12,21 +12,22 @@ Feature: Search
 
     Examples:
     |keyword    |
-    |sepeda     |
-    |samsung s6 |
+    |Sepeda     |
+    |Samsung    |
 
   @parallel-scenario
   Scenario Outline: TC_OW_004_002 - Search in specific area
     Given I am in homepage
     And I type <keyword>
-    And I choose <area>
-    When I click search button
-    Then I get product list containing <keyword> in <area>
+    When I click Pilih Lokasi Button
+    And I choose province <province>
+    And I choose city <city>
+    Then I get products list in specific area containing <keyword>
 
     Examples:
-    |keyword    |area|
-    |sepeda     |0 |
-    |samsung s6 |1 |
+      |keyword    |province|city|
+      |Sepeda     |2 |3         |
+      |Samsung    |2 |3         |
 
   @parallel-scenario
   Scenario Outline: TC_OW_004_003 - Search using blank keyword in all areas
@@ -43,22 +44,14 @@ Feature: Search
   Scenario Outline: TC_OW_004_004 - Search using blank keyword in specific area
     Given I am in homepage
     And I type <keyword>
-    And I choose <area>
-    When I click search button
+    When I click Pilih Lokasi Button
+    And I choose province <province>
+    And I choose city <city>
     Then I get all products in specific area
 
     Examples:
-    |keyword|area|
-    |       |0|
+      |keyword|province|city|
+      |       |2       |3   |
 
-  Scenario Outline:
-    Given I am in homepage
-    And I type <keyword>
-    When I press enter
-    Then I get products list containing <keyword>
-
-    Examples:
-    |keyword|
-    |       |
 
 

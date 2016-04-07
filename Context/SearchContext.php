@@ -12,6 +12,7 @@ namespace Tests\Context;
 use Athena\Test\AthenaTestContext;
 use Behat\Behat\Tester\Exception\PendingException;
 use Tests\Pages\bdd\SearchBar;
+use Tests\Pages\bdd\SearchResult;
 
 class SearchContext extends BaseContext
 {
@@ -19,6 +20,12 @@ class SearchContext extends BaseContext
      * @var SearchBar
      */
     private $searchBar;
+
+    /**
+     * @var SearchResult
+     */
+    private $searchResult;
+    private $cityName;
     public function __construct()
     {
         $this->searchBar = new SearchBar();
@@ -37,32 +44,38 @@ class SearchContext extends BaseContext
      */
     public function iClickSearchButton()
     {
-        $this->searchBar->clickSearchButton();
+        $this->searchResult=$this->searchBar->clickSearchButton();
     }
 
     /**
-     * @Then /^I get products list containing (.*)$/
+     * @When /^I choose province (.*)$/
      */
-    public function iGetProductsListContaining($keyword)
+    public function iChooseProvince($area)
     {
-        throw new PendingException();
+
+        $this->searchBar->clickLokasiProvince($area);
     }
 
     /**
-     * @Given /^I choose (.*)$/
+     * @When /^I choose city (.*)$/
      */
-    public function iChoose($area)
+    public function iChooseCity($area)
     {
-        $this->searchBar->clickPilihLokasiButton();
-        $this->searchBar->clickLokasi($area);//index area as shown on 'Pilih Lokasi' Pop Up Box
+        $this->cityName=$this->searchBar->getCityNameFromIndex($area);
+        $this->searchResult=$this->searchBar->clickLokasiCity($area);
     }
 
     /**
-     * @Then /^I get product list containing (.*) in (.*)$/
+     * @Then /^I get products list in specific area containing (.*)$/
      */
-    public function iGetProductListContainingIn($keyword, $area)
+    public function iGetProductListContainingIn($keyword)
     {
-        throw new PendingException();
+        try{
+            $this->searchResult->verifyListingsResultByTitleInSpecificArea($keyword,$this->cityName);
+
+        }catch(\Exception $e){
+            $this->searchResult->verifyListingsResultByListingsDetailsInSpecificArea($keyword,$this->cityName);
+        }
     }
 
     /**
@@ -70,15 +83,16 @@ class SearchContext extends BaseContext
      */
     public function iGetAllProductInAllAreas()
     {
-        throw new PendingException();
+        $this->searchResult->verifyAllCategory();
     }
 
     /**
      * @Then /^I get all products in specific area$/
      */
-    public function iGetAllProductsInSpecificArea()
+    public function iGetAllProductsInSpecificArea1()
     {
-        throw new PendingException();
+        $this->searchResult->verifyAllCategory();
+        $this->searchResult->verifyAllListingsByListingsDetailsInSpecificArea($this->cityName);
     }
 
     /**
@@ -90,10 +104,24 @@ class SearchContext extends BaseContext
     }
 
     /**
-     * @Then /^link is not broken$/
+     * @Given /^I click Pilih Lokasi Button$/
      */
-    public function linkIsNotBroken()
+    public function iClickPiihLokasiButton()
     {
-        $this->searchBar->checkUrl('http://olx.co.id');
+        $this->searchBar->clickPilihLokasiButton();
     }
+
+    /**
+     * @Then /^I get products list containing (.*)$/
+     */
+    public function iGetProductsListContaining($keyword)
+    {
+        try{
+            $this->searchResult->verifyListingsResultByTitle($keyword);
+        }catch(\Exception $e){
+            $this->searchResult->verifyListingsResultByListingsDetails($keyword);
+        }
+    }
+
+
 }

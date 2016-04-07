@@ -92,4 +92,5 @@ class LoginContext extends BaseContext
     {
         $this->loginPage->verifyFormLoginIsDisplayed();
     }
+
 }

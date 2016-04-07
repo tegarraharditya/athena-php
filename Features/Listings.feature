@@ -15,19 +15,65 @@
 
   Scenario:
     Given I am in a Listings page
-    Then I can see Iklan Promosi
-    And I can see Iklan lainnya
+    Then I can see Iklan Promosi Section
+    And I can verify only top listings on Iklan Promosi section
+    And I can see Iklan Lainnya section
+    And I can verify listing with yellow background
+    And I can verify listing with Istimewa label
 
   Scenario:
     Given I am in a Listings page
-    Then I can see Listings with Yellow Background on Top section
-    And I can see Istimewa Label in Iklan Promosi Section
-    And I can see Top Listings
+    When I click ads
+    Then I am in Listings Details page
 
-    Scenario:
-      Given I am in a Listings page
-      When I click ads
-      Then I am in Listings Details page
+  Scenario Outline:
+    Given I am in a Listings page
+    When I click pilih sub-categoty button
+    And I click sub-category level2 <level2>
+    And I click sub-category level3 <level3>
+    Then I can see Ads Listings in page
+
+    Examples:
+    |level2|level3|
+    |Mobil Bekas|Honda|
+
+  Scenario:
+    Given I am in a Listings page
+    When I click ubah urutan button
+    And I click Iklan Termahal
+    Then I can verify that it's sorted by the most expensive listings
+
+  Scenario:
+    Given I am in a Listings page
+    When I click ubah urutan button
+    And I click Iklan Termurah
+    Then I can verify that it's sorted by the cheapest
+
+  Scenario:
+    Given I am in a Listings page
+    When I click ubah urutan button
+    And I click Iklan Terbaru
+    Then I can verify that it's sorted by the newest
+
+  Scenario:
+    Given I am in a Listings page
+    When I click ubah urutan button
+    And I click Iklan Terlama
+    Then I can verify that it's sorted by oldest
+
+  Scenario:
+    Given I am in a Listings page
+    When I click Pilih Kondisi button
+    And I click Baru
+    Then I can verify that condition of product is new
+
+  Scenario:
+    Given I am in a Listings page
+    When I click Pilih Kondisi button
+    And I click Bekas
+    Then I can verify that condition of product is second hand
+
+
 
 
 

@@ -6,7 +6,6 @@ Feature:
   Scenario Outline: TC_OW_005_001
     Given I am in Listings Details <category> page
     Then I should see details of listings for Category <category>
-    And I should see details of seller
 
     Examples:
     |category|
@@ -54,4 +53,13 @@ Feature:
     Examples:
       |category|
       |mobil-bekas-details|
+
+  Scenario Outline:
+    Given I am in Listings Details <category> page
+    Then I click Next Listings Details Page
+    And I click Prev Listings Details Page
+
+    Examples:
+    |category|
+    |mobil-bekas-details|
 

@@ -10,17 +10,12 @@
     "/" : "http://olex.id",
     "login" : "/masuk",
     "myads" : "/iklanku",
-    "listings_details" : "/bla",
-    "search" : "/search",
     "game-console" : "/elektronik-gadget/games-console",
-    "mobil-bekas-details" : "/iklan/test-extend-validate-coba-edit-IDa7yQb.html",
-    "property-details" : "/iklan/paywall-ke-9-belom-kena-IDa7yKQ.html",
-    "jasa-lowongan-details" : "/iklan/admin-laundry-sepatu-online-di-bandung-ID9NxgM.html"
+    "mobil-bekas" : "/mobil/bekas",
+    "mobil-bekas-details" : "/iklan/toyota-innova-2-0-g-at-2012-silver-IDhFAhA.html",
+    "property-details" : "/iklan/dijual-cepat-1-unit-apartemen-bassura-city-studio-tower-e-lantai-22-IDgp0KT.html",
+    "jasa-lowongan-details" : "http://localhost:8000/iklan/sales-marketing-rettail-IDhFvQ1.html"
   },
   "username" : "suci.istch@gmail.com",
-  "password" : "testing123",
-  "attributeByBody" : {
-      "homepage" : "home"
-
-  }
+  "password" : "testing123"
 }

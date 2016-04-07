@@ -14,12 +14,11 @@ default:
     suites:
         default:
             filters:
-              tags: @footer
+              tags: @coba
             paths:
                 - %paths.base%/Features
             contexts:
                 - Tests\Context\OpenHomepageContext
-                - Tests\Context\FooterContext
                 - Tests\Context\ListingsContext
                 - Tests\Context\ListingsDetailsContext
                 - Tests\Context\LoginContext

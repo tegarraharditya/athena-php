@@ -13,10 +13,12 @@ use Athena\Athena;
 use Athena\Browser\Page\Find\Assertion\ElementExistsAtLeastOnceAssertion;
 use Athena\Tests\Browser\Page\Find\Assertion\ElementExistsAtLeastOnceAssertionTest;
 use Athena\Tests\Browser\Page\Find\Assertion\ElementValueEqualsAssertionTest;
+use Behat\Behat\Tester\Exception\PendingException;
 use Facebook\WebDriver\WebDriverKeys;
 
 class Listings extends OneWeb
 {
+    private $ALL_CATEGORY = 'adverts';
     private $MOBIL_MOBIL_BEKAS ='adverts';
     private $MOBIL_AKSESORIS_MOBIL = 'adverts';
     private $MOBIL_AUDIO_MOBIL = 'adverts';
@@ -94,11 +96,22 @@ class Listings extends OneWeb
     private $LOKER_JASA = 'adverts';
 
     private $XPATH_PAGING_BAR = "//*[@id='page_nav_pagination']li";
+    private $XPATH_ALL_TOP_LISTINGS = '//*[@id=\'js-ad-promotion-group\']/article';
     private $NEXT_PAGE = 'Next';
     private $PREV_PAGE = 'Previous';
     private $ID_IKLAN_PROMOSI = 'js-ad-promotion-group';
     private $ID_IKLAN_LAINNYA = 'js-ad-listing-group';
     private $XPATH_LABEL_ISTIMEWA_IN_IKLAN_PROMOSI = './/*[@id=\'js-ad-promotion-group\']//*[text()=\'ISTIMEWAA\']';
+    private $ID_SUB_CATEGORY_BUTTON = 'btn_filter__modal_l3';
+    private $ID_UBAH_URUTAN_BUTTON = 'btn_filter__modal_sort';
+    private $ID_PILIH_KONDISI_BUTTON = 'btn_filter__modal_condition';
+    private $ID_POPUP_CHOOSE_SUBCAT_LEVEL1 = 'modal-inner-category-l1';
+    private $ID_POPUP_CHOOSE_SUBCAT_LEVEL2 = 'modal-inner-category-l2';
+    private $ID_POPUP_CHOOSE_SUBCAT_LEVEL3 = 'modal-inner-category-l3';
+
+    private $CLASS_TOP_LISTINGS = 'ad-listing__promoted-0';
+    private $CLASS_BADGED_LISTINGS = 'ad-listing__promoted-1';
+    private $CLASS_HIGHLIGHTED_LISTINGS = 'ad-listing__promoted-2';
 
     /**
      * @var String
@@ -107,7 +120,7 @@ class Listings extends OneWeb
 
     public function __construct()
     {
-        parent::__construct('game-console');
+        parent::__construct('mobil-bekas');
     }
 
 
@@ -123,13 +136,21 @@ class Listings extends OneWeb
         return $this->getBrowser()->getCurrentPage()->getElement()->withLinkText($page);
     }
 
-    private function getElementListingsIndex1(){
+    protected function getElementListingsIndex($index){
         return $this->getBrowser()->getCurrentPage()->getElement()
-            ->withXpath('//*[@id=\'js-ad-promotion-group\']/article[1]/div//div/a');
+            ->withXpath('.//*[@id=\'js-ad-listing-group\']/article['.$index.']//header/a');
     }
 
     private function getElementNextPage(){
         return $this->getElementWithOther('aria-label',$this->NEXT_PAGE);
+    }
+
+    /**
+     * @param $xpath
+     * @return \Facebook\WebDriver\Remote\RemoteWebElement[]
+     */
+    private function getListElementByXpath($xpath){
+        return $elements=$this->getBrowser()->getCurrentPage()->find()->elementsWithXpath($xpath);
     }
 
     private function getElementPrevPage()
@@ -142,13 +163,86 @@ class Listings extends OneWeb
         return $total = count($elements);
     }
 
-    /**
-     * @param $xpath
-     * @return \Facebook\WebDriver\Remote\RemoteWebElement[]
-     */
-    private function getListElementByXpath($xpath){
-        return $elements=$this->getBrowser()->getCurrentPage()->find()->elementsWithXpath($xpath);
+    private function getElementPilihSubCategory(){
+        return $this->getBrowser()->getCurrentPage()->getElement()
+            ->withId($this->ID_SUB_CATEGORY_BUTTON);
     }
+
+    private function getElementUbahUrutan(){
+        return $this->getBrowser()->getCurrentPage()->getElement()
+            ->withId($this->ID_UBAH_URUTAN_BUTTON);
+    }
+
+    private function getElementPilihKondisi(){
+        return $this->getBrowser()->getCurrentPage()->getElement()
+            ->withId($this->ID_PILIH_KONDISI_BUTTON);
+    }
+
+    private function getElementPopUpSubCategoryLevel1(){
+        return $this->getBrowser()->getCurrentPage()->getElement()
+            ->withId($this->ID_POPUP_CHOOSE_SUBCAT_LEVEL1);
+    }
+
+    private function getElementPopUpSubCategoryLevel2(){
+        return $this->getBrowser()->getCurrentPage()->getElement()
+            ->withId($this->ID_POPUP_CHOOSE_SUBCAT_LEVEL2);
+    }
+
+    private function getElementPopUpSubCategoryLevel3(){
+        return $this->getBrowser()->getCurrentPage()->getElement()
+            ->withId($this->ID_POPUP_CHOOSE_SUBCAT_LEVEL3);
+    }
+
+    private function getElementsAllTopListings(){
+        return $this->getBrowser()->getCurrentPage()->find()->elementsWithXpath($this->XPATH_ALL_TOP_LISTINGS);
+    }
+
+    public function clickPilihSubCategory(){
+        $this->getElementPilihSubCategory()->thenFind()->asHtmlElement()->click();
+    }
+
+    public function chooseCategoryLevel2($category){
+        $this->getElementPopUpSubCategoryLevel2()->assertThat()->isDisplayed();
+
+        $element = $this->getBrowser()->getCurrentPage()->getElement()
+            ->withXpath('//*[@id=\'sort__l2-list\']//p[text()=\''.$category.'\']');
+
+        $element->thenFind()->asHtmlElement()->click();
+    }
+
+    public function chooseCategoryLevel3($category){
+        $this->getElementPopUpSubCategoryLevel3()->assertThat()->isDisplayed();
+
+        $element = $this->getBrowser()->getCurrentPage()->getElement()
+            ->withXpath('//*[@id=\'sort__l3-list\']//p[text()=\''.$category.'\']');
+
+        $element->thenFind()->asHtmlElement()->click();
+    }
+
+    public function clickUbahUrutan(){
+        $this->getElementUbahUrutan()->thenFind()->asHtmlElement()->click();
+        throw new PendingException();//wait pop up sub-category
+    }
+
+    public function clickPilihKondisi(){
+        $this->getElementPilihKondisi()->thenFind()->asHtmlElement()->click();
+        throw new PendingException();//wait pop up pilih kondisi
+    }
+
+    public function chooseSorting($key){
+        if(strcasecmp($key,'termahal')==0){
+            throw new PendingException();//choose button then verify resultnya
+        }else if (strcasecmp($key,'termurah')==0){
+            throw new PendingException();//choose button then verify resultnya
+        }else if (strcasecmp($key,'terbaru')==0){
+            throw new PendingException();//choose button then verify resultnya
+        }else if (strcasecmp($key,'terlama')==0){
+            throw new PendingException();//choose button then verify resultnya
+        }else{
+            \PHPUnit_Framework_Assert::fail('key '.$key.'is undefined');
+        }
+    }
+
 
     public function getCurrentListingsLink(){
         return $this->listingsLink;
@@ -175,26 +269,46 @@ class Listings extends OneWeb
         return new ListingsDetails();
     }
 
-    public function verifyIstimewaLabelOnlyInIklanPromosiSection(){
-        $elements=$this->getListElementByXpath($this->XPATH_LABEL_ISTIMEWA_IN_IKLAN_PROMOSI);
-        if($this->getTotalElementByXpath($this->XPATH_LABEL_ISTIMEWA_IN_IKLAN_PROMOSI)>0){
-            foreach($elements as $obj){
-                if(!$obj->isDisplayed()){
-                    \PHPUnit_Framework_Assert::fail('element is not displayed');
-                }
-            }
-        }else{
-            \PHPUnit_Framework_Assert::fail('element is not found');
-        }
-
-    }
-
     public function verifyIklanPromosiSection(){
         $this->getElementIklanPromosiSection()->assertThat()->isDisplayed();
     }
 
+    public function verifyOnlyTopListingsOnIklanPromosiSection(){
+        $elements = $this->getElementsAllTopListings();
+
+        foreach($elements as $element){
+            $value=$element->getAttribute('class');
+            if(strpos($value,$this->CLASS_TOP_LISTINGS)===false){
+                \PHPUnit_Framework_Assert::fail('It should not be on top listings section');
+            }
+        }
+    }
+
     public function verifyIklanLainnyaSection(){
         $this->getElementIklanLainnyaSection()->assertThat()->isDisplayed();
+    }
+
+    public function verifyAtLeastOneListingsWithYellowBackgroundInThisPage(){
+        $elements = $this->getBrowser()->getCurrentPage()->find()->elementsWithXpath(
+            '//*[contains(@class,\''.$this->CLASS_HIGHLIGHTED_LISTINGS.'\')]');
+
+        if(!count($elements)>0){
+            \PHPUnit_Framework_Assert::fail('No Yellow Background Listings. Please check manually');
+        }
+    }
+
+    public function verifyAtLeastOneListingsWithIstimewaLabelInThisPage(){
+        $elements = $this->getBrowser()->getCurrentPage()->find()->elementsWithXpath(
+            '//*[contains(@class,\''.$this->CLASS_BADGED_LISTINGS.'\')]');
+
+        if(!count($elements)>0){
+            \PHPUnit_Framework_Assert::fail('No \'Istimewa\' listings. Please check manually');
+        }
+
+    }
+
+    public function verifyAllCategory(){
+        \PHPUnit_Framework_Assert::assertEquals($this->ALL_CATEGORY,$this->getAttributeBodyPage());
     }
 
     public function verifyCategoryPage_Mobil_MobilBekas(){

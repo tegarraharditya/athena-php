@@ -9,16 +9,15 @@
 namespace Tests\Pages\bdd;
 
 
+use Athena\Athena;
 use Facebook\WebDriver\WebDriverKeys;
 
 class SearchBar extends OneWeb
 {
     private $ID_SEARCH_BAR = 'js-field-search';
-    private $SEARCH_BUTTON = 'submit';
-    private $ID_PILIH_LOKASI = '';
+    private $ID_SEARCH_BUTTON = 'btn-submit-search';
+    private $ID_PILIH_LOKASI = 'btn-location-head';
     private $ID_LOCATION_LIST = 'location-list__metro';
-    private $XPATH_PILIH_LOKASI = './/*[@id=\'main-search__form\']/div/div/div[2]/a';
-    private $XPATH_SEARCH_BUTTON = './/*[@id=\'main-search__form\']/div/div/div[3]/a';
 
     public function __construct()
     {
@@ -33,16 +32,16 @@ class SearchBar extends OneWeb
     }
 
     private function getElementSearchButton(){
-        return $this->getBrowser()->getCurrentPage()->getElement()->withXpath($this->XPATH_SEARCH_BUTTON);
+        return $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_SEARCH_BUTTON);
     }
 
     private function getPilihLokasiButton(){
-        return $this->getBrowser()->getCurrentPage()->getElement()->withXpath($this->XPATH_PILIH_LOKASI);
+        return $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_PILIH_LOKASI);
     }
 
     private function getLokasi($index){
         return $this->getBrowser()->getCurrentPage()->getElement()
-            ->withXpath("//*[@id='location-list__metro']/li[".$index."]/a");
+            ->withXpath(".//*[@class='inner is-active']//*[@id='location-list__metro']/li[".$index."]/a");
     }
 
     private function getElementLocationList(){
@@ -55,6 +54,7 @@ class SearchBar extends OneWeb
 
     public function clickSearchButton(){
         $this->getElementSearchButton()->thenFind()->asHtmlElement()->click();
+        return new SearchResult(Athena::browser());
     }
 
     public function clickPilihLokasiButton(){
@@ -62,11 +62,11 @@ class SearchBar extends OneWeb
         $this->waitLoacationListVisible();
     }
 
-    private function waitLoacationListVisible(){
+    public function waitLoacationListVisible(){
         $this->getElementLocationList()->wait(5)->toBeVisible();
     }
 
-    private function waitLocationListinVisible(){
+    public function waitLocationListinVisible(){
         $this->getElementLocationList()->wait(5)->toBeInvisible();
     }
 
@@ -74,12 +74,21 @@ class SearchBar extends OneWeb
         $this->getElementSearchBar()->thenFind()->asHtmlElement()->sendKeys(WebDriverKeys::ENTER);
     }
 
-    /**
-     * @param $index
-     */
-    public function clickLokasi($index){
+    public function clickLokasiProvince($index){
+        $this->getLokasi($index)->wait(3)->toBeVisible();
         $this->getLokasi($index)->thenFind()->asHtmlElement()->click();
-        $this->waitLocationListinVisible();
+    }
+
+    public function clickLokasiCity($index){
+        $this->getLokasi($index)->wait(3)->toBeVisible();
+        $this->getLokasi($index)->thenFind()->asHtmlElement()->click();
+        return new SearchResult(Athena::browser());
+    }
+
+    public function getCityNameFromIndex($index){
+        $element = $this->getBrowser()->getCurrentPage()->getElement()
+            ->withXpath('.//*[@class=\'inner is-active\']//*[@id=\'location-list__metro\']/li['.$index.']/a/div/p');
+        return $element->thenFind()->asHtmlElement()->getText();
     }
 
 

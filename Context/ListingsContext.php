@@ -28,7 +28,7 @@ class ListingsContext extends BaseContext
     private $listingsDetails;
     public function __construct()
     {
-        $this->listings=new Listings(Athena::browser());
+        $this->listings=new Listings();
         //$this->listings->setCurrentListingList('games-console');
 
     }
@@ -84,43 +84,84 @@ class ListingsContext extends BaseContext
     }
 
     /**
-     * @Then /^I can see Iklan Promosi$/
+     * @When /^I click pilih sub\-categoty button$/
      */
-    public function iCanSeeIklanPromosi()
+    public function iClickPilihSubCategotyButton()
+    {
+        $this->listings->clickPilihSubCategory();
+    }
+
+    /**
+     * @When /^I click ubah urutan button$/
+     */
+    public function iClickUbahUrutanButton()
+    {
+        $this->listings->clickUbahUrutan();
+    }
+
+    /**
+     * @When /^I click Pilih Kondisi button$/
+     */
+    public function iClickPilihKondisiButton()
+    {
+        $this->listings->clickPilihKondisi();
+    }
+
+    /**
+     * @Then /^I can see Iklan Promosi Section$/
+     */
+    public function iCanSeeIklanPromosiSection()
     {
         $this->listings->verifyIklanPromosiSection();
     }
 
     /**
-     * @Given /^I can see Iklan lainnya$/
+     * @Given /^I can verify only top listings on Iklan Promosi section$/
      */
-    public function iCanSeeIklanLainnya()
+    public function iCanVerifyOnlyTopListingsOnIklanPromosiSection()
+    {
+        $this->listings->verifyOnlyTopListingsOnIklanPromosiSection();
+    }
+
+    /**
+     * @Given /^I can see Iklan Lainnya section$/
+     */
+    public function iCanSeeIklanLainnyaSection()
     {
         $this->listings->verifyIklanLainnyaSection();
     }
 
     /**
-     * @Then /^I can see Listings with Yellow Background on Top section$/
+     * @Given /^I can verify listing with yellow background$/
      */
-    public function iCanSeeListingsWithYellowBackgroundOnTopSection()
+    public function iCanVerifyListingWithYellowBackground()
     {
-        echo 'hello';
+        $this->listings->verifyAtLeastOneListingsWithYellowBackgroundInThisPage();
     }
 
     /**
-     * @Then /^I can see Istimewa Label in Iklan Promosi Section$/
+     * @Given /^I can verify listing with Istimewa label$/
      */
-    public function iCanSeeIstimewaLabelInIklanPromosiSection()
+    public function iCanVerifyListingWithIstimewaLabel()
     {
-        $this->listings->verifyIstimewaLabelOnlyInIklanPromosiSection();
+        $this->listings->verifyAtLeastOneListingsWithIstimewaLabelInThisPage();
     }
 
     /**
-     * @Given /^I can see Top Listings$/
+     * @Given /^I click sub\-category level2 (.*)$/
      */
-    public function iCanSeeTopListings()
+    public function iClickSubCategoryLevel($level2)
     {
-        echo 'hello';
+        $this->listings->chooseCategoryLevel2($level2);
     }
+
+    /**
+     * @Given /^I click sub\-category level3 (.*)$/
+     */
+    public function iClickSubCategoryLevel1($level3)
+    {
+        $this->listings->chooseCategoryLevel3($level3);
+    }
+
 
 }

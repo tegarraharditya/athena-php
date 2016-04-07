@@ -22,8 +22,6 @@ class Homepage extends OneWeb
     }
 
     public function verifyPage(){
-
-        //$homeAttr = Athena::settings()->getByPath('attributeByBody.homepage');
         \PHPUnit_Framework_Assert::assertEquals('home',$this->getAttributeBodyPage());
     }
 
