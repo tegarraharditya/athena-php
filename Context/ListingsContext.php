@@ -148,7 +148,7 @@ class ListingsContext extends BaseContext
     }
 
     /**
-     * @Given /^I click sub\-category level2 (.*)$/
+     * @When /^I click sub\-category level2 (.*)$/
      */
     public function iClickSubCategoryLevel($level2)
     {
@@ -156,11 +156,45 @@ class ListingsContext extends BaseContext
     }
 
     /**
-     * @Given /^I click sub\-category level3 (.*)$/
+     * @When /^I click sub\-category level3 (.*)$/
      */
     public function iClickSubCategoryLevel1($level3)
     {
         $this->listings->chooseCategoryLevel3($level3);
+    }
+
+    /**
+     * @When /^I click Iklan Termahal$/
+     */
+    public function iClickIklanTermahal()
+    {
+        $this->listings->chooseSorting('termahal');
+    }
+
+    /**
+     * @Then /^I can verify that it's sorted by the most expensive listings$/
+     */
+    public function iCanVerifyThatItSSortedByTheMostExpensiveListings()
+    {
+        $this->listings->verifySortedTermahalOnTopListings();
+        $this->listings->verifySortedTermahalOnListings();
+    }
+
+    /**
+     * @When /^I click Iklan Termurah$/
+     */
+    public function iClickIklanTermurah()
+    {
+        $this->listings->chooseSorting('termurah');
+    }
+
+    /**
+     * @Then /^I can verify that it's sorted by the cheapest$/
+     */
+    public function iCanVerifyThatItSSortedByTheCheapest()
+    {
+        $this->listings->verifySortedTermurahOnTopListings();
+        $this->listings->verifySortedTermurahOnListings();
     }
 
 

@@ -97,6 +97,8 @@ class Listings extends OneWeb
 
     private $XPATH_PAGING_BAR = "//*[@id='page_nav_pagination']li";
     private $XPATH_ALL_TOP_LISTINGS = '//*[@id=\'js-ad-promotion-group\']/article';
+    private $XPATH_ALL_TOP_LISTINGS_PRICE = './/*[@id=\'js-ad-promotion-group\']//*[contains(text(),\'Rp\')]';
+    private $XPATH_ALL_LISTINGS_PRICE = './/*[@id=\'js-ad-listing-group\']//*[contains(text(),\'Rp\')]';
     private $NEXT_PAGE = 'Next';
     private $PREV_PAGE = 'Previous';
     private $ID_IKLAN_PROMOSI = 'js-ad-promotion-group';
@@ -205,7 +207,7 @@ class Listings extends OneWeb
         $this->getElementPopUpSubCategoryLevel2()->assertThat()->isDisplayed();
 
         $element = $this->getBrowser()->getCurrentPage()->getElement()
-            ->withXpath('//*[@id=\'sort__l2-list\']//p[text()=\''.$category.'\']');
+            ->withXpath('.//*[@data-cat-name=\''.$category.'\']');
 
         $element->thenFind()->asHtmlElement()->click();
     }
@@ -214,7 +216,7 @@ class Listings extends OneWeb
         $this->getElementPopUpSubCategoryLevel3()->assertThat()->isDisplayed();
 
         $element = $this->getBrowser()->getCurrentPage()->getElement()
-            ->withXpath('//*[@id=\'sort__l3-list\']//p[text()=\''.$category.'\']');
+            ->withXpath('.//*[@data-cat-name=\''.$category.'\']');
 
         $element->thenFind()->asHtmlElement()->click();
     }
@@ -231,7 +233,7 @@ class Listings extends OneWeb
 
     public function chooseSorting($key){
         if(strcasecmp($key,'termahal')==0){
-            throw new PendingException();//choose button then verify resultnya
+
         }else if (strcasecmp($key,'termurah')==0){
             throw new PendingException();//choose button then verify resultnya
         }else if (strcasecmp($key,'terbaru')==0){
@@ -242,6 +244,65 @@ class Listings extends OneWeb
             \PHPUnit_Framework_Assert::fail('key '.$key.'is undefined');
         }
     }
+
+    private function getArrayPriceWihXpath($xpath){
+        $elements = $this->getBrowser()->getCurrentPage()->find()->elementsWithXpath($xpath);
+        $elements_price = [];
+        foreach($elements as $element){
+            $price = str_replace('Rp ','',$element->getText());
+            $price_final = str_replace('.','',$price);
+            $elements_price[] = array($price_final);
+        }
+        return $elements_price;
+    }
+
+    public function isSortedTermahal($array){
+        $prices_top = $array;
+        return rsort($prices_top,SORT_NUMERIC);
+    }
+
+    public function isSortedTermurah($array){
+        $prices_top = $array;
+        return sort($prices_top,SORT_NUMERIC);
+    }
+
+    public function verifySortedTermahalOnTopListings(){
+        $elements = $this->getArrayPriceWihXpath($this->XPATH_ALL_TOP_LISTINGS_PRICE);
+        $result = $this->isSortedTermahal($elements);
+
+        if(!$result){
+            \PHPUnit_Framework_Assert::fail('Top Listings is not sorted by the most expensive');
+        }
+    }
+
+    public function verifySortedTermahalOnListings(){
+        $elements = $this->getArrayPriceWihXpath($this->XPATH_ALL_LISTINGS_PRICE);
+        $result = $this->isSortedTermahal($elements);
+
+        if(!$result){
+            \PHPUnit_Framework_Assert::fail('Regular Listings is not sorted by the most expensive');
+        }
+    }
+
+    public function verifySortedTermurahOnTopListings(){
+        $elements = $this->getArrayPriceWihXpath($this->XPATH_ALL_TOP_LISTINGS_PRICE);
+        $result = $this->isSortedTermurah($elements);
+
+        if(!$result){
+            \PHPUnit_Framework_Assert::fail('Top Listings is not sorted by the cheapest');
+        }
+    }
+
+    public function verifySortedTermurahOnListings(){
+        $elements = $this->getArrayPriceWihXpath($this->XPATH_ALL_LISTINGS_PRICE);
+        $result = $this->isSortedTermurah($elements);
+
+        if(!$result){
+            \PHPUnit_Framework_Assert::fail('Regular Listings is not sorted by the cheapest');
+        }
+    }
+
+    public function isSortedTerbaru(){}
 
 
     public function getCurrentListingsLink(){

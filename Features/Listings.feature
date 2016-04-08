@@ -26,7 +26,7 @@
     When I click ads
     Then I am in Listings Details page
 
-  Scenario Outline:
+  Scenario Outline:please use data cat name for level 2 & level 3
     Given I am in a Listings page
     When I click pilih sub-categoty button
     And I click sub-category level2 <level2>
@@ -34,8 +34,8 @@
     Then I can see Ads Listings in page
 
     Examples:
-    |level2|level3|
-    |Mobil Bekas|Honda|
+      |level2|level3|
+      |mobil-bekas_198|mobil-bekas/honda_4677|
 
   Scenario:
     Given I am in a Listings page
