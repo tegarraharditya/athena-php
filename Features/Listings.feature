@@ -31,7 +31,7 @@
     When I click pilih sub-categoty button
     And I click sub-category level2 <level2>
     And I click sub-category level3 <level3>
-    Then I can see Ads Listings in page
+    Then I can see proper result from <level2> and <level3>
 
     Examples:
       |level2|level3|

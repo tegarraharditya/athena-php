@@ -302,6 +302,21 @@ class Listings extends OneWeb
         }
     }
 
+    public function verifySubCategoryListings($level2,$level3){
+        //check breadcrumb level2
+        //check category di listings details = level 3
+        //*ditrabslate dulu dari id ke text realnya
+        throw new PendingException();
+    }
+
+    public function chooseConditionBaru(){
+        throw new PendingException();//wait fixed element
+    }
+
+    public function chooseConditionBekas(){
+        throw new PendingException();
+    }
+
     public function isSortedTerbaru(){}
 
 

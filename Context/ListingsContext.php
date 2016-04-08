@@ -197,5 +197,13 @@ class ListingsContext extends BaseContext
         $this->listings->verifySortedTermurahOnListings();
     }
 
+    /**
+     * @Then /^I can see proper result from (.*) and (.*)$/
+     */
+    public function iCanSeeProperResultFromAnd($level2, $level3)
+    {
+        $this->listings->verifySubCategoryListings($level2,$level3);
+    }
+
 
 }
