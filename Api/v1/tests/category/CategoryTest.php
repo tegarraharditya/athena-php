@@ -45,12 +45,11 @@ class CategoryTest extends AthenaAPITestCase {
     }
 
     /**
-     * TODO Fix in atlas to return 404 when category is not found
      *
      * @throws GuzzleHttp\Exception\ClientException
-     * @expectedExceptionCode 503
+     * @expectedExceptionCode 404
      */
-    public function testCategories_WrongIdIsGiven_ReturnHttpCode503()
+    public function testCategories_WrongIdIsGiven_ReturnHttpCode404()
     {
         $catPage = new CategoryPage();
         $accessToken = $catPage->getAccessToken();

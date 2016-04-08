@@ -10,7 +10,6 @@ class PartnerLoginTest extends AthenaAPITestCase {
     
     public function testLogin_EmptyDeviceDataIsGiven_ReturnInvalidRequestErrorAndHttpCode400()
     {
-        $this->markTestSkipped("Fixing..");
         $sinon = new Sinon();
         $client = $sinon->oAuthClientData();
 
@@ -25,13 +24,12 @@ class PartnerLoginTest extends AthenaAPITestCase {
         $data = $apiResp->fromJson();
 
         $this->assertEquals(400, $apiResp->getResponse()->getStatusCode());
-        $this->assertObjectHasAttribute('error', $data);
-        $this->assertEquals('invalid_request', $data->error);
+        $this->assertArrayHasKey('error', $data);
+        $this->assertEquals('invalid_request', $data['error']);
     }
 
     public function testLogin_PartnerSecretIsIncorrect_ReturnInvalidGrantErrorAndHttpCode400()
     {
-        $this->markTestSkipped("Fixing..");
         $sinon = new Sinon();
         $client = $sinon->oAuthClientData();
         $partner = $sinon->createApiPartner();
@@ -39,7 +37,7 @@ class PartnerLoginTest extends AthenaAPITestCase {
         $oauthApiPage = new OauthPage();
 
         $apiResp = $oauthApiPage->loginWithPartnerCodeAction(
-            $partner['code'],
+            $partner['partner_code'],
             sha1(rand(0, 99999999)),
             $client
         );
@@ -47,13 +45,12 @@ class PartnerLoginTest extends AthenaAPITestCase {
         $data = $apiResp->fromJson();
 
         $this->assertEquals(400, $apiResp->getResponse()->getStatusCode());
-        $this->assertObjectHasAttribute('error', $data);
-        $this->assertEquals('invalid_grant', $data->error);
+        $this->assertArrayHasKey('error', $data);
+        $this->assertEquals('invalid_grant', $data['error']);
     }
 
     public function testLogin_CorrectPartnerDataIsGiven_ReturnTokensAndHttpCode200()
     {
-        $this->markTestSkipped("Fixing..");
         $sinon = new Sinon();
         $client = $sinon->oAuthClientData();
         $partner = $sinon->createApiPartner();
@@ -61,16 +58,16 @@ class PartnerLoginTest extends AthenaAPITestCase {
         $oauthApiPage = new OauthPage();
 
         $apiResp = $oauthApiPage->loginWithPartnerCodeAction(
-            $partner['code'],
-            $partner['secret'],
+            $partner['partner_code'],
+            $partner['key'],
             $client
         );
 
         $data = $apiResp->fromJson();
 
         $this->assertEquals(200, $apiResp->getResponse()->getStatusCode());
-        $this->assertObjectHasAttribute('access_token', $data);
-        $this->assertObjectHasAttribute('refresh_token', $data);
+        $this->assertArrayHasKey('access_token', $data);
+        $this->assertArrayHasKey('refresh_token', $data);
     }
     
 }

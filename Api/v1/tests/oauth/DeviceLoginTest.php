@@ -11,7 +11,6 @@ class DeviceLoginTest extends AthenaAPITestCase {
     
     public function testLogin_EmptyDeviceDataIsGiven_ReturnInvalidRequestErrorAndHttpCode400()
     {
-        $this->markTestSkipped("Fixing..");
         $client = (new Sinon())->oAuthClientData();
 
         $oauthApiPage = new OauthPage();
@@ -25,13 +24,12 @@ class DeviceLoginTest extends AthenaAPITestCase {
         $data = $apiResp->fromJson();
 
         $this->assertEquals(400, $apiResp->getResponse()->getStatusCode());
-        $this->assertObjectHasAttribute('error', $data);
-        $this->assertEquals('invalid_request', $data->error);
+        $this->assertArrayHasKey('error', $data);
+        $this->assertEquals('invalid_request', $data['error']);
     }
 
     public function testLogin_DeviceTokenIsFromDifferentDevice_ReturnInvalidGrantErrorAndHttpCode400()
     {
-        $this->markTestSkipped("Fixing..");
         $client = (new Sinon())->oAuthClientData();
         $device = Device::random();
         $anotherDevice = Device::random();
@@ -46,13 +44,12 @@ class DeviceLoginTest extends AthenaAPITestCase {
         $data = $apiResp->fromJson();
 
         $this->assertEquals(400, $apiResp->getResponse()->getStatusCode());
-        $this->assertObjectHasAttribute('error', $data);
-        $this->assertEquals('invalid_grant', $data->error);
+        $this->assertArrayHasKey('error', $data);
+        $this->assertEquals('invalid_grant', $data['error']);
     }
 
     public function testLogin_CorrectDeviceDataIsGiven_ReturnTokensAndHttpCode200()
     {
-        $this->markTestSkipped("Fixing..");
         $client = (new Sinon())->oAuthClientData();
         $device = Device::random();
 
@@ -67,7 +64,7 @@ class DeviceLoginTest extends AthenaAPITestCase {
         $data = $apiResp->fromJson();
 
         $this->assertEquals(200, $apiResp->getResponse()->getStatusCode());
-        $this->assertObjectHasAttribute('access_token', $data);
-        $this->assertObjectHasAttribute('refresh_token', $data);
+        $this->assertArrayHasKey('access_token', $data);
+        $this->assertArrayHasKey('refresh_token', $data);
     }
 }

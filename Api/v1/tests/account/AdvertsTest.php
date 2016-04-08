@@ -26,11 +26,12 @@ class AdvertsTest extends AthenaAPITestCase {
     public function testAdvertsCreate_UserIsLoggedAndLocationIsMissing_ReturnFieldErrorAndHttpCode400()
     {
         $accAdPage  = new AdvertPage();
+        
         $errorsResp = $accAdPage->createAdvertAndReturnErrors($accAdPage->getSampleAdvertDataWithoutLocation(), $accAdPage->getAccessToken());
-
         $errorsList = $errorsResp->fromJson();
+        
+        
         $this->assertArrayHasKey('error', $errorsList);
-
         $errorDetails = $errorsList['error']['details'];
         $this->assertEquals(400, $errorsResp->getResponse()->getStatusCode());
         $this->assertArrayHasKey('region_id', $errorDetails);
@@ -53,7 +54,6 @@ class AdvertsTest extends AthenaAPITestCase {
     
     public function testAdvertsModify_IdIsGivenAndTitleAndDescriptionModified_ReturnJsonWithModifiedDataAndHttp200()
     {
-        $this->markTestSkipped("Fixing...");
         $accAdPage  = new AdvertPage();
         $user       = $accAdPage->getUserData();
         $expectedAd = $accAdPage->getNewAdvertWithProperStructureForRequest($user['id']);
@@ -66,14 +66,13 @@ class AdvertsTest extends AthenaAPITestCase {
         $actualAd = $advertResp->fromJson();
 
         $this->assertEquals(200, $advertResp->getResponse()->getStatusCode());
-        
-        $this->assertAttributeEquals($expectedAd, 'title', $actualAd);
-        $this->assertAttributeEquals($expectedAd, 'description', $actualAd);
+        $this->assertEquals($expectedAd['id'], $actualAd['id']);
+        $this->assertEquals($expectedAd['title'], $actualAd['title']);
+        $this->assertEquals($expectedAd['description'], $actualAd['description']);
     }
     
     public function testAdvertsModify_IdIsGivenAndModifiedCityIdIsWrong_ReturnJsonWithFieldErrorAndHttpCode400()
     {
-        $this->markTestSkipped("Fixing...");
         $accAdPage = new AdvertPage();
         $user  = $accAdPage->getUserData();
         $token = $accAdPage->getAccessToken();
@@ -87,23 +86,20 @@ class AdvertsTest extends AthenaAPITestCase {
         $errorsObj = $advertResp->fromJson();
 
         
-        $this->assertObjectHasAttribute('error', $errorsObj);
-        $this->assertObjectHasAttribute('details', $errorsObj->error);
-        $this->assertObjectHasAttribute('city_id', $errorsObj->error->details);
+        $this->assertArrayHasKey('error', $errorsObj);
+        $this->assertArrayHasKey('details', $errorsObj['error']);
+        $this->assertArrayHasKey('subregion_id', $errorsObj['error']['details']);
     }
     
     /**
-     * TODO fix atlas response to give back a 400 or 404
+     * @expectedExceptionCode 400
      */
     public function testAdvertsModify_WrongIdIsGiven_ReturnHttpCode503()
     {
-        $this->markTestSkipped("Fixing..");
         $pageObj = new AdvertPage();
         $advert  = $pageObj->getSampleAdvertData();
 
-        $advertResp = $pageObj->modifyAdvertWithIdAction(time(), $advert, $pageObj->getAccessToken(), false);
-
-        $this->assertEquals(503, $advertResp->getResponse()->getStatusCode());
+        $pageObj->modifyAdvertWithIdAction(time(), $advert, $pageObj->getAccessToken(), false);
     }
     
 }
