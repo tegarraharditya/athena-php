@@ -75,6 +75,11 @@ class ListingsDetails extends OneWeb
         return $this->getElementListingsDetails($element)->thenFind()->asHtmlElement()->getText();
     }
 
+    public function getTextCategoryName(){
+        $element = $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_CATEGORY);
+        return $element->thenFind()->asHtmlElement()->getText();
+    }
+
     public function verifyAttributeClassBody(){
         \PHPUnit_Framework_Assert::assertEquals($this->ATR_LISTINGS_DETAILS_PAGE,$this->getAttributeBodyPage());
     }

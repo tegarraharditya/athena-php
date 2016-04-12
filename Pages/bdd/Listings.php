@@ -199,6 +199,11 @@ class Listings extends OneWeb
         return $this->getBrowser()->getCurrentPage()->find()->elementsWithXpath($this->XPATH_ALL_TOP_LISTINGS);
     }
 
+    public function getTextActiveBreadcrumb(){
+        $element = $this->getBrowser()->getCurrentPage()->getElement()->withCss('li.breadcrumb-item.is-active');
+        return $element->thenFind()->asHtmlElement()->getText();
+    }
+
     public function clickPilihSubCategory(){
         $this->getElementPilihSubCategory()->thenFind()->asHtmlElement()->click();
     }
@@ -212,6 +217,12 @@ class Listings extends OneWeb
         $element->thenFind()->asHtmlElement()->click();
     }
 
+    public function getTextCategoryLevel2($level2){
+        $element = $this->getBrowser()->getCurrentPage()->getElement()
+            ->withXpath('.//*[@data-cat-name=\''.$level2.'\']//p');
+        return $element->thenFind()->asHtmlElement()->getText();
+    }
+
     public function chooseCategoryLevel3($category){
         $this->getElementPopUpSubCategoryLevel3()->assertThat()->isDisplayed();
 
@@ -219,6 +230,13 @@ class Listings extends OneWeb
             ->withXpath('.//*[@data-cat-name=\''.$category.'\']');
 
         $element->thenFind()->asHtmlElement()->click();
+    }
+
+    public function getTextCategoryLevel3($level3){
+        $element = $this->getBrowser()->getCurrentPage()->getElement()
+            ->withXpath('.//*[@data-cat-name=\''.$level3.'\']//p');
+
+        return $element->thenFind()->asHtmlElement()->getText();
     }
 
     public function clickUbahUrutan(){
@@ -302,15 +320,24 @@ class Listings extends OneWeb
         }
     }
 
-    public function verifySubCategoryListings($level2,$level3){
-        //check breadcrumb level2
-        //check category di listings details = level 3
-        //*ditrabslate dulu dari id ke text realnya
-        throw new PendingException();
+    public function verifySubCategoryListings($level2Name,$level3Name){
+
+        $breadcrumb = $this->getTextActiveBreadcrumb();
+        if(!strcmp($breadcrumb,$level2Name)==0){
+            \PHPUnit_Framework_Assert::fail('Breadcrumb active expected : '.$level2Name.'. Actual : '.$breadcrumb);
+        }
+
+        $listingsdetails = $this->clickListingsIndex1();
+
+        $category_level3 = $listingsdetails->getTextCategoryName();
+
+        if(!strcmp($category_level3,$level3Name)==0){
+            \PHPUnit_Framework_Assert::fail('category Expected : '.$level3Name.'. Category Actual : '.$category_level3);
+        }
     }
 
     public function chooseConditionBaru(){
-        throw new PendingException();//wait fixed element
+        throw new PendingException();
     }
 
     public function chooseConditionBekas(){

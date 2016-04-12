@@ -21,6 +21,8 @@ class ListingsContext extends BaseContext
      * @var Listings
      */
     private $listings;
+    private $categoryLevel2Name;
+    private $categoryLevel3Name;
 
     /**
      * @var ListingsDetails
@@ -152,6 +154,7 @@ class ListingsContext extends BaseContext
      */
     public function iClickSubCategoryLevel($level2)
     {
+        $this->categoryLevel2Name = $this->listings->getTextCategoryLevel2($level2);
         $this->listings->chooseCategoryLevel2($level2);
     }
 
@@ -160,6 +163,7 @@ class ListingsContext extends BaseContext
      */
     public function iClickSubCategoryLevel1($level3)
     {
+        $this->categoryLevel3Name = $this->listings->getTextCategoryLevel3($level3);
         $this->listings->chooseCategoryLevel3($level3);
     }
 
@@ -202,7 +206,8 @@ class ListingsContext extends BaseContext
      */
     public function iCanSeeProperResultFromAnd($level2, $level3)
     {
-        $this->listings->verifySubCategoryListings($level2,$level3);
+        //$level2=$this->categoryLevel2Name;
+        $this->listings->verifySubCategoryListings($this->categoryLevel2Name,$this->categoryLevel3Name);
     }
 
 
