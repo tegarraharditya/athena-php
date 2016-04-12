@@ -4,17 +4,16 @@ namespace Tests\Api\v1\tests\locations;
 
 use Athena\Test\AthenaAPITestCase;
 use Tests\Api\v1\pages\CityPage;
-use Tests\Atlas\Sinon;
 
 class CityTest extends AthenaAPITestCase {
     
     public function testCities_IdIsGiven_ReturnOneJsonElementWithCityAndReturnHttpCode200()
     {
-        $cityApiPage = new CityPage();
-        $expectedCities = (new Sinon())->randomCity();
+        $cityPage = new CityPage();
+        $expectedCities = $cityPage->getFromSinonRandomCity();
 
         
-        $cityFromApi = $cityApiPage->getWithIdAction($expectedCities['id'], $cityApiPage->getAccessToken());
+        $cityFromApi = $cityPage->getFromApiWithIdAction($expectedCities['id'], $cityPage->getAccessToken());
 
         $this->assertEquals($expectedCities['id'], $cityFromApi->fromJson()['id']);
         $this->assertEquals($expectedCities['name'], $cityFromApi->fromJson()['name']);
@@ -24,13 +23,13 @@ class CityTest extends AthenaAPITestCase {
 
     public function testCities_NoIdIsGiven_ReturnJsonListWith1000CitiesAndReturnHttpCode200()
     {
-        $cityApiPage = new CityPage();
+        $cityPage = new CityPage();
 
-        $expectedCities = json_decode((new Sinon())->allCities(), true);
+        $expectedCities = json_decode($cityPage->getFromSinonAllCities(), true);
         $lang = $expectedCities['lang'];
         unset($expectedCities['lang']);
         
-        $citiesResp  = $cityApiPage->getAction($cityApiPage->getAccessToken());
+        $citiesResp  = $cityPage->getFromApiAction($cityPage->getAccessToken());
 
         $citiesApiResponse   = $citiesResp->fromJson()['results'];
         $citiesStatusCode = $citiesResp->getResponse()->getStatusCode();
@@ -58,8 +57,8 @@ class CityTest extends AthenaAPITestCase {
 
     public function testCities_WrongIdIsGiven_ReturnHttpCode404()
     {
-        $cityApiPage = new CityPage();
-        $cityApiPage->getWithIdAction(time(), $cityApiPage->getAccessToken());
+        $cityPage = new CityPage();
+        $cityPage->getFromApiWithIdAction(time(), $cityPage->getAccessToken());
     }
 }
 

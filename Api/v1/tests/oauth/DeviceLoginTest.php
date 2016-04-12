@@ -11,9 +11,9 @@ class DeviceLoginTest extends AthenaAPITestCase {
     
     public function testLogin_EmptyDeviceDataIsGiven_ReturnInvalidRequestErrorAndHttpCode400()
     {
-        $client = (new Sinon())->oAuthClientData();
-
         $oauthApiPage = new OauthPage();
+        
+        $client = $oauthApiPage->getFromSinonOAuthClientData();
 
         $apiResp = $oauthApiPage->loginWithDeviceIdAction(
             null,
@@ -30,11 +30,12 @@ class DeviceLoginTest extends AthenaAPITestCase {
 
     public function testLogin_DeviceTokenIsFromDifferentDevice_ReturnInvalidGrantErrorAndHttpCode400()
     {
-        $client = (new Sinon())->oAuthClientData();
         $device = Device::random();
         $anotherDevice = Device::random();
 
         $oauthApiPage = new OauthPage();
+        $client = $oauthApiPage->getFromSinonOAuthClientData();
+        
         $apiResp = $oauthApiPage->loginWithDeviceIdAction(
             $device->getDeviceId(),
             $anotherDevice->getOauthValidationToken(),
@@ -50,10 +51,10 @@ class DeviceLoginTest extends AthenaAPITestCase {
 
     public function testLogin_CorrectDeviceDataIsGiven_ReturnTokensAndHttpCode200()
     {
-        $client = (new Sinon())->oAuthClientData();
         $device = Device::random();
 
         $oauthApiPage = new OauthPage();
+        $client = $oauthApiPage->getFromSinonOAuthClientData();
 
         $apiResp = $oauthApiPage->loginWithDeviceIdAction(
             $device->getDeviceId(),

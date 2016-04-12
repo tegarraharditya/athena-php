@@ -11,13 +11,17 @@
     "httpProxy" : "athena-proxy:9991",
     "sslProxy" : "athena-proxy:9991",
     "remapHosts" : {
-      "myolx.co.id": "192.168.99.100"
+      "myolx.co.id": "192.168.99.102"
     },
-    "backlist_urls" : {
+    "blacklist_urls" : {
       ".*facebook.com" : 200,
+      ".*google.co.id" : 200,
       ".*gemius\\..*" : 200,
       ".*plus\\..*" : 200,
       ".*optimizely\\..*" : 200,
+      ".optimizely\\..*" : 200,
+      ".gstatic\\..*" : 200,
+      ".google.com\\..*" : 200,
       ".*doubleclick.net" : 200
     },
     "recording" : true
@@ -27,7 +31,8 @@
     "login" : "/masuk",
     "myaccount" : "/iklanku",
     "archive" : "/iklanku/archive",
-    "posting" : "/pasang"
+    "posting" : "/pasang",
+    "mailcatch" : ":1080/messages"
 
   },
   "selenium" : {

@@ -11,9 +11,9 @@ class RegionTest extends AthenaAPITestCase {
     {
         $regionApiPage = new RegionPage();
 
-        $expectedRegion = (new Sinon())->randomRegion();
+        $expectedRegion = $regionApiPage->getFromSinonRandomRegion();
 
-        $regionFromApi = $regionApiPage->getWithIdAction($expectedRegion['id'], $regionApiPage->getAccessToken());
+        $regionFromApi = $regionApiPage->getFromApiWithIdAction($expectedRegion['id'], $regionApiPage->getAccessToken());
 
         $this->assertEquals($expectedRegion, $regionFromApi->fromJson());
         $this->assertEquals(200, $regionFromApi->getResponse()->getStatusCode());
@@ -23,9 +23,9 @@ class RegionTest extends AthenaAPITestCase {
     {
         $regionApiPage = new RegionPage();
 
-        $expectedRegions = json_decode((new Sinon())->allRegions(), true);
+        $expectedRegions = json_decode($regionApiPage->getFromSinonAllRegion(), true);
 
-        $regionsResp   = $regionApiPage->getAction($regionApiPage->getAccessToken());
+        $regionsResp   = $regionApiPage->getFromApiAction($regionApiPage->getAccessToken());
 
         $regionsContent = $regionsResp->fromJson()['results'];
         $regionsStatusCode = $regionsResp->getResponse()->getStatusCode();
@@ -51,7 +51,7 @@ class RegionTest extends AthenaAPITestCase {
     public function testRegion_WrongIdIsGiven_ReturnEmptyListAndHttpCode404()
     {
         $regionApiPage = new RegionPage();
-        $regionFromApi = $regionApiPage->getWithIdAction(time(), $regionApiPage->getAccessToken());
+        $regionFromApi = $regionApiPage->getFromApiWithIdAction(time(), $regionApiPage->getAccessToken());
         
         $this->assertEquals(200, $regionFromApi->getResponse()->getStatusCode());
         $this->assertEmpty($regionFromApi->fromJson());

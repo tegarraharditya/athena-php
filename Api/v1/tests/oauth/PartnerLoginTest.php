@@ -10,10 +10,8 @@ class PartnerLoginTest extends AthenaAPITestCase {
     
     public function testLogin_EmptyDeviceDataIsGiven_ReturnInvalidRequestErrorAndHttpCode400()
     {
-        $sinon = new Sinon();
-        $client = $sinon->oAuthClientData();
-
         $oauthApiPage = new OauthPage();
+        $client = $oauthApiPage->getFromSinonOAuthClientData();
 
         $apiResp = $oauthApiPage->loginWithPartnerCodeAction(
             null,
@@ -30,11 +28,10 @@ class PartnerLoginTest extends AthenaAPITestCase {
 
     public function testLogin_PartnerSecretIsIncorrect_ReturnInvalidGrantErrorAndHttpCode400()
     {
-        $sinon = new Sinon();
-        $client = $sinon->oAuthClientData();
-        $partner = $sinon->createApiPartner();
-
         $oauthApiPage = new OauthPage();
+        
+        $client = $oauthApiPage->getFromSinonOAuthClientData();
+        $partner = $oauthApiPage->getFromSinonApiPartner();
 
         $apiResp = $oauthApiPage->loginWithPartnerCodeAction(
             $partner['partner_code'],
@@ -51,11 +48,9 @@ class PartnerLoginTest extends AthenaAPITestCase {
 
     public function testLogin_CorrectPartnerDataIsGiven_ReturnTokensAndHttpCode200()
     {
-        $sinon = new Sinon();
-        $client = $sinon->oAuthClientData();
-        $partner = $sinon->createApiPartner();
-
         $oauthApiPage = new OauthPage();
+        $client = $oauthApiPage->getFromSinonOAuthClientData();
+        $partner = $oauthApiPage->getFromSinonApiPartner();
 
         $apiResp = $oauthApiPage->loginWithPartnerCodeAction(
             $partner['partner_code'],

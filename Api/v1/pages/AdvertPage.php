@@ -80,7 +80,7 @@ class AdvertPage extends BasePage {
      */
     public function getSampleAdvertData()
     {
-        $sinon = new Sinon();
+        $sinon = new Sinon($this->getModule());
         $city = $sinon->randomCity();
         $category = $sinon->randomCategoryParametersData();
         $description = <<<DESC
@@ -135,7 +135,7 @@ DESC;
      */
     public function getNewAdvertWithProperStructureForRequest($userId = null)
     {
-        $sinonAd = (new Sinon())->createActiveAd($userId)['ad'];
+        $sinonAd = (new Sinon($this->getModule()))->createActiveAd($userId)['ad'];
         
         $params = isset($sinonAd['params']) ? $this->convertParams($sinonAd['params']) : [];
 

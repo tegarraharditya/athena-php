@@ -6,10 +6,23 @@ use Athena\Athena;
 
 /** Sinon is a client for the trojan server in atlas (allows to inject configurable test data for testing purposes) */
 class Sinon {
+    
+    private $uris = [
+                    "api_v1" => "/api/v1/",
+                    "desktop" => "/"
+                    ];
+    
+    private $base_uri = "/";
+    
+    public function __construct($module = "desktop") {
+        if(isset($this->uris[$module])){
+            $this->base_uri = $this->uris[$module];
+        }
+    }
 
     /*+ Creates a new anonymous user and returns it's data */
     public function createUserWithoutPassword() {
-        return Athena::api()->post("/api/v1/trojan/createuserwithoutpassword/")            
+        return Athena::api()->post($this->base_uri . "trojan/createuserwithoutpassword/")            
                 ->then()
                 ->assertThat()
                 ->responseIsJson()
@@ -19,7 +32,7 @@ class Sinon {
 
     /** Creates a new registered user and returns it's credentials */
     public function createUserWithPassword() {
-        return Athena::api()->post("/api/v1/trojan/createuserwithpassword/")
+        return Athena::api()->post($this->base_uri . "trojan/createuserwithpassword/")
                 ->then()
                 ->assertThat()
                 ->responseIsJson()
@@ -29,7 +42,7 @@ class Sinon {
 
     /** Creates a new phone-registered user and returns it's credentials */
     public function createUserWithSmspassword() {
-        return Athena::api()->post("/api/v1/trojan/createuserwithsmspassword/")            
+        return Athena::api()->post($this->base_uri . "trojan/createuserwithsmspassword/")            
                 ->then()
                 ->assertThat()
                 ->responseIsJson()
@@ -39,7 +52,7 @@ class Sinon {
 
     /** Creates a new registered user used crm and returns it's credentials */
     public function createUserUsedCrm() {
-        return Athena::api()->post("/api/v1/trojan/createuserusedcrm/")            
+        return Athena::api()->post($this->base_uri . "trojan/createuserusedcrm/")            
                 ->then()
                 ->assertThat()
                 ->responseIsJson()
@@ -66,7 +79,7 @@ class Sinon {
      */
     private function createUserSessionWithParameters(array $parameters)
     {
-        $get = Athena::api()->post("/api/v1/trojan/loginasuser/");
+        $get = Athena::api()->post($this->base_uri . "trojan/loginasuser/");
         
         if (!empty($parameters)) {
             $get = $get->withParameters($parameters);
@@ -80,7 +93,7 @@ class Sinon {
 
     public function createUserWithOAuthToken()
     {
-        return Athena::api()->get("/api/v1/trojan/createuserwithoauthcredentials/")
+        return Athena::api()->get($this->base_uri . "trojan/createuserwithoauthcredentials/")
                 ->then()
                 ->assertThat()
                 ->responseIsJson()
@@ -90,7 +103,7 @@ class Sinon {
 
     public function createUserUseCrmWithOAuthToke()
     {
-        return Athena::api()->get("/api/v1/trojan/createuserusecrmwithoauthcredentials/")
+        return Athena::api()->get($this->base_uri . "trojan/createuserusecrmwithoauthcredentials/")
                 ->then()
                 ->assertThat()
                 ->responseIsJson()
@@ -100,7 +113,7 @@ class Sinon {
 
 
     public function getEmails(){
-        return Athena::api()->get(":1080/messages/")
+        return Athena::api()->get("mailcatch")
                 ->then()
                 ->assertThat()
                 ->responseIsJson()
@@ -109,7 +122,7 @@ class Sinon {
     }
 
     public function getSMS($mobile){
-        $get = Athena::api()->get("/api/v1/trojan/getsms/");
+        $get = Athena::api()->get($this->base_uri . "trojan/getsms/");
         
         if (!empty($mobile)) {
             $get = $get->withParameters(['mobile' => $mobile]);
@@ -122,7 +135,7 @@ class Sinon {
     }
 
     public function createActiveAd($user_id = null, $category_id = null) {
-        $get = Athena::api()->post("/api/v1/trojan/createactivead/");
+        $get = Athena::api()->post($this->base_uri . "trojan/createactivead/");
         $params= [];
         if ($user_id)
         {
@@ -146,7 +159,7 @@ class Sinon {
     }
 
     public function acceptMessagesToAd($ad_id) {
-        return Athena::api()->post("/api/v1/trojan/acceptmessagestoad/")
+        return Athena::api()->post($this->base_uri . "trojan/acceptmessagestoad/")
                 ->withParameters(['ad_id' => $ad_id])
                 ->then()
                 ->assertThat()
@@ -157,7 +170,7 @@ class Sinon {
 
     public function createAd($bind)
     {
-        return Athena::api()->post("/api/v1/trojan/createactivead/")
+        return Athena::api()->post($this->base_uri . "trojan/createactivead/")
                 ->withParameters($bind)
                 ->then()
                 ->assertThat()
@@ -171,7 +184,7 @@ class Sinon {
         $bind = [
             'user_id' => $userId,
         ];
-        $lastAddedMessageIds = Athena::api()->post("/api/v1/trojan/createconversationfromotheruser/")
+        $lastAddedMessageIds = Athena::api()->post($this->base_uri . "trojan/createconversationfromotheruser/")
                                 ->withParameters($bind)
                                 ->then()
                                 ->assertThat()
@@ -184,7 +197,7 @@ class Sinon {
 
     public function randomCity()
     {
-        return Athena::api()->post("/api/v1/trojan/randomcity/")
+        return Athena::api()->post($this->base_uri . "trojan/randomcity/")
                                 ->then()
                                 ->assertThat()
                                 ->responseIsJson()
@@ -194,7 +207,7 @@ class Sinon {
 
     public function randomCategoryParametersData()
     {
-        return Athena::api()->get("/api/v1/trojan/randomcategorywithparameters/")
+        return Athena::api()->get($this->base_uri . "trojan/randomcategorywithparameters/")
                                 ->then()
                                 ->assertThat()
                                 ->responseIsJson()
@@ -204,8 +217,8 @@ class Sinon {
 
     public function allCategories()
     {
-
-        return Athena::api()->get("/api/v1/trojan/allcategories/")
+        $base = $this->base_uri . "trojan/allcategories/";
+        return Athena::api()->get($base)
                                 ->then()
                                 ->assertThat()
                                 ->responseIsJson()
@@ -245,7 +258,7 @@ class Sinon {
 
     public function allRegions()
     {
-        return Athena::api()->get("/api/v1/trojan/allregions/")
+        return Athena::api()->get($this->base_uri . "trojan/allregions/")
                                 ->then()
                                 ->assertThat()
                                 ->responseIsJson()
@@ -257,7 +270,7 @@ class Sinon {
     public function createPayment($bind)
     {
     	if ($bind['type'] == 'otc') {
-            return Athena::api()->get("/api/v1/trojan/createotcpayment/")
+            return Athena::api()->get($this->base_uri . "trojan/createotcpayment/")
                             ->then()
                             ->assertThat()
                             ->responseIsJson()
@@ -269,7 +282,7 @@ class Sinon {
     
     public function randomDistrict()
     {
-        return Athena::api()->get("/api/v1/trojan/randomdistrict/")
+        return Athena::api()->get($this->base_uri . "trojan/randomdistrict/")
                             ->then()
                             ->assertThat()
                             ->responseIsJson()
@@ -279,7 +292,7 @@ class Sinon {
     
     public function randomRegion()
     {
-        return Athena::api()->get("/api/v1/trojan/randomregion/")
+        return Athena::api()->get($this->base_uri . "trojan/randomregion/")
                             ->then()
                             ->assertThat()
                             ->responseIsJson()
@@ -289,7 +302,7 @@ class Sinon {
     
     public function allCities()
     {
-        return Athena::api()->get("/api/v1/trojan/allcities/")
+        return Athena::api()->get($this->base_uri . "trojan/allcities/")
                             ->then()
                             ->assertThat()
                             ->responseIsJson()
@@ -299,7 +312,7 @@ class Sinon {
 
     public function allDistricts()
     {
-        return Athena::api()->get("/api/v1/trojan/alldistrict/")
+        return Athena::api()->get($this->base_uri . "trojan/alldistrict/")
                             ->then()
                             ->assertThat()
                             ->responseIsJson()
@@ -309,7 +322,7 @@ class Sinon {
 
     public function oAuthClientData()
     {
-        return Athena::api()->get("/api/v1/trojan/oauthclient/")
+        return Athena::api()->get($this->base_uri . "trojan/oauthclient/")
                             ->then()
                             ->assertThat()
                             ->responseIsJson()
@@ -319,7 +332,7 @@ class Sinon {
 
     public function createApiPartner()
     {
-        return Athena::api()->get("/api/v1/trojan/createapipartner/")
+        return Athena::api()->get($this->base_uri . "trojan/createapipartner/")
                             ->then()
                             ->assertThat()
                             ->responseIsJson()

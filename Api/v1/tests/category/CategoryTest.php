@@ -10,9 +10,9 @@ class CategoryTest extends AthenaAPITestCase {
     public function testCategories_NoIdIsGiven_ReturnJsonListWithAllRootCategoriesAndReturnHttpCode200()
     {
         $catPage = new CategoryPage();
-        $expectedCategories = (new Sinon())->allRootCategories();
+        $expectedCategories = $catPage->getFromSinonAllRootCategories();
 
-        $apiResp = $catPage->getAction($catPage->getAccessToken());
+        $apiResp = $catPage->getFromApiAction($catPage->getAccessToken());
 
         $categoriesList = $apiResp->fromJson()['results'];
         $categoriesStatusCode = $apiResp->getResponse()->getStatusCode();
@@ -33,11 +33,11 @@ class CategoryTest extends AthenaAPITestCase {
 
     public function testCategories_IdIsGiven_ReturnOneJsonElementWithCategoryAndReturnHttpCode200()
     {
-        $expectedCategory = (new Sinon())->randomCategory();
         $catPage = new CategoryPage();
         $accessToken = $catPage->getAccessToken();
+        $expectedCategory = $catPage->getFromSinonRandomCategory();
 
-        $apiResp = $catPage->getWithIdAction($expectedCategory['id'], $accessToken);
+        $apiResp = $catPage->getFromApiWithIdAction($expectedCategory['id'], $accessToken);
         
         $this->assertEquals($expectedCategory['id'], $apiResp->fromJson()['id']);
         $this->assertEquals($expectedCategory['code'], $apiResp->fromJson()['code']);
@@ -54,15 +54,15 @@ class CategoryTest extends AthenaAPITestCase {
         $catPage = new CategoryPage();
         $accessToken = $catPage->getAccessToken();
 
-        $catPage->getWithIdAction(time(), $accessToken);
+        $catPage->getFromApiWithIdAction(time(), $accessToken);
     }
 
     public function testCategories_IdIsGiven_ReturnJsonElementWithCategoryAndParametersAndReturnHttpCode200()
     {
         $catPage = new CategoryPage();
-        $expectedCategoryParameters = (new Sinon())->randomCategoryParametersData();
+        $expectedCategoryParameters = $catPage->getFromSinonRandomCategoryParametersData();
 
-        $apiResp = $catPage->getWithIdAction($expectedCategoryParameters['id'], $catPage->getAccessToken());
+        $apiResp = $catPage->getFromApiWithIdAction($expectedCategoryParameters['id'], $catPage->getAccessToken());
 
         $returnedCategoryData = $apiResp->fromJson();
         $returnedCategoryParameters = CategoryPage::extractCategoryParametersCodes($returnedCategoryData["parameters"]);

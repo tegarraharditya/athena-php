@@ -2,6 +2,8 @@
 
 namespace Tests\Api\v1\pages;
 
+use Tests\Atlas\Sinon;
+
 class OauthPage extends BasePage {
 
     const ENDPOINT = '/api/v1/oauth/token/';
@@ -105,6 +107,17 @@ class OauthPage extends BasePage {
             ],'')
             ->then()
             ->retrieve();
+    }
+    
+    /** Sinon Action **/
+    public function getFromSinonOAuthClientData()
+    {
+        return (new Sinon($this->getModule()))->oAuthClientData();
+    }
+    
+    public function getFromSinonApiPartner()
+    {
+        return (new Sinon($this->getModule()))->createApiPartner();
     }
     
 }

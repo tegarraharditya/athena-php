@@ -80,7 +80,7 @@ class MyAccountPage extends AbstractPage
         $settings = Athena::settings()->getAll();
         $base_url = $settings['urls']['/'];
         $emails = (new Sinon())->getEmails();
-        $result = Athena::browser()->get($base_url . ":1080/messages/" .$emails[0]->getId(). ".html");
+        $result = Athena::browser()->get($base_url . ":1080/messages/" .$emails[0]['id']. ".html");
         
         return $result;
     }

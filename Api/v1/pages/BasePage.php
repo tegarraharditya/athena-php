@@ -7,6 +7,7 @@ use Athena\Page\BaseApiPage;
 
 class BasePage extends BaseApiPage {
     
+    private $module = "api_v1";
     private $accessToken;
     private $user;
     private $oauthData;
@@ -15,7 +16,7 @@ class BasePage extends BaseApiPage {
         parent::__construct();
         if (empty($this->accessToken))
         {
-            $rdata = (new Sinon())->createUserWithOAuthToken();
+            $rdata = (new Sinon($this->module))->createUserWithOAuthToken();
             $oauth_data = $rdata['oauth'];
             $tokens = $oauth_data['tokens'];
             $this->accessToken = $tokens['access_token'];
@@ -37,5 +38,10 @@ class BasePage extends BaseApiPage {
     public function getOauthData()
     {
         return $this->oauthData;
+    }
+    
+    public function getModule()
+    {
+        return $this->module;
     }
 }

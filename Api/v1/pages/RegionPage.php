@@ -2,6 +2,8 @@
 
 namespace Tests\Api\v1\pages;
 
+use Tests\Atlas\Sinon;
+
 class RegionPage extends BasePage {
     
     /**
@@ -13,7 +15,7 @@ class RegionPage extends BasePage {
      * @return \Athena\Api\Response\ResponseFormatter
      * @throws GuzzleHttp\Exception\ClientException
      */
-    public function getWithIdAction($regionId, $accessToken)
+    public function getFromApiWithIdAction($regionId, $accessToken)
     {
         return $this->client()
             ->get(sprintf('/api/v1/regions/%s/?access_token=%s', $regionId, $accessToken))
@@ -28,7 +30,7 @@ class RegionPage extends BasePage {
      *
      * @return \Athena\Api\Response\ResponseFormatter
      */
-    public function getAction($accessToken)
+    public function getFromApiAction($accessToken)
     {
         return $this->client()
             ->get('/api/v1/regions/?access_token=' . $accessToken)
@@ -36,4 +38,15 @@ class RegionPage extends BasePage {
             ->retrieve();
     }
     
+    /** Sinon Action **/
+    
+    public function getFromSinonRandomRegion()
+    {
+        return (new Sinon($this->getModule()))->randomRegion();
+    }
+    
+    public function getFromSinonAllRegion()
+    {
+        return (new Sinon($this->getModule()))->allRegions();
+    }
 }

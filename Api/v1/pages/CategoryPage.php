@@ -1,6 +1,8 @@
 <?php
 namespace Tests\Api\v1\pages;
 
+use Tests\Atlas\Sinon;
+
 class CategoryPage extends BasePage {
 
     /**
@@ -8,7 +10,7 @@ class CategoryPage extends BasePage {
      *
      * @return \Athena\Api\Response\ResponseFormatter
      */
-    public function getAction($accessToken)
+    public function getFromApiAction($accessToken)
     {
         return $this->client()
             ->get('/api/v1/categories?access_token='.$accessToken)
@@ -24,7 +26,7 @@ class CategoryPage extends BasePage {
      * @return \Athena\Api\Response\ResponseFormatter
      * @throws GuzzleHttp\Exception\ClientException
      */
-    public function getWithIdAction($categoryId, $accessToken)
+    public function getFromApiWithIdAction($categoryId, $accessToken)
     {
         return $this->client()
             ->get('/api/v1/categories/' . $categoryId . '?access_token=' . $accessToken)
@@ -49,6 +51,24 @@ class CategoryPage extends BasePage {
         }
 
         return $categoryParametresCodes;
+    }
+    
+    /** SINON Action **/
+    
+    
+    public function getFromSinonAllRootCategories()
+    {
+        return (new Sinon($this->getModule()))->allRootCategories();
+    }
+    
+    public function getFromSinonRandomCategory()
+    {
+        return (new Sinon($this->getModule()))->randomCategory();
+    }
+    
+    public function getFromSinonRandomCategoryParametersData()
+    {
+        return (new Sinon($this->getModule()))->randomCategoryParametersData();
     }
     
 }
