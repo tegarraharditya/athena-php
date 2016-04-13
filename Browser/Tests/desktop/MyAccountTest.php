@@ -8,7 +8,7 @@ use Athena\Test\AthenaBrowserTestCase;
 
 class MyAccountTest extends AthenaBrowserTestCase
 {  
-    public function tearDown()
+    public function setUp()
     {
         \Athena\Athena::getInstance()->setBrowser(null);
     }
