@@ -16,7 +16,7 @@ class AccountTest extends AthenaBrowserTestCase
     {
         $page = new AccountPage();
         $page->open();
-        $result = $page->loginAction(User::generateEmail(), User::generatePassword());
+        $result = $page->loginAction(Sinon::generateEmail(), Sinon::generatePassword());
         $result->findAndAssertThat()->existsAtLeastOnce()->elementWithXpath(static::ELEMENT_MESSAGE_ERROR);
     }
     
@@ -26,15 +26,15 @@ class AccountTest extends AthenaBrowserTestCase
         $page = new AccountPage();
         $page->open();
         
-        $result = $page->loginAction($data->getEmail(), $data->getPassword());
+        $result = $page->loginAction($data['email'], $data['password']);
         $result->findAndAssertThat()->existsOnlyOnce()->elementWithCss(static::ELEMENT_LINK_LOGOUT);
     }
     
     public function testRegister_correctData_shouldSuccessConfirmEmailAndDirectlyLoggedIn()
     {
-        $page = new AccountPage();
+        $page = new AccountPage(true);
         $page->open();
-        $page->registerAction(User::generateEmail(), User::generatePassword());
+        $page->registerAction(Sinon::generateEmail(), Sinon::generatePassword());
         
         $confirmEmail = $page->openEmail();
         $confirmEmail->wait(AccountPage::TIMEOUT)->untilPresenceOf()->elementWithId(static::ELEMENT_LINK_CONFIRM);

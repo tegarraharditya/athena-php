@@ -17,9 +17,9 @@ class AccountPage extends AbstractPage
     CONST ELEMENT_BUTTON_SUBMIT = '.submit';
     CONST TIMEOUT = 10;
     
-    public function __construct() 
+    public function __construct($reset = false) 
     {
-        parent::__construct(Athena::browser(), 'login');
+        parent::__construct(Athena::browser($reset), 'login');
     }
     
     public function loginAction($email, $password)
@@ -51,7 +51,7 @@ class AccountPage extends AbstractPage
         $settings = Athena::settings()->getAll();
         $base_url = $settings['urls']['/'];
         $emails = (new Sinon())->getEmails();
-        $result = Athena::browser()->get($base_url . ":1080/messages/" .$emails[0]->getId(). ".html");
+        $result = Athena::browser()->get($base_url . ":1080/messages/" .$emails[0]['id']. ".html");
         
         return $result;
     }
