@@ -135,7 +135,6 @@ class Sinon {
     }
 
     public function createActiveAd($user_id = null, $category_id = null) {
-        $get = Athena::api()->post($this->base_uri . "trojan/createactivead/");
         $params= [];
         if ($user_id)
         {
@@ -151,11 +150,7 @@ class Sinon {
             $get = $get->withParameters($params);
         }
         
-        return $get->then()
-                ->assertThat()
-                ->responseIsJson()
-                ->retrieve()
-                ->fromJson();
+        return $this->createAd($params);
     }
 
     public function acceptMessagesToAd($ad_id) {
@@ -170,13 +165,17 @@ class Sinon {
 
     public function createAd($bind)
     {
-        return Athena::api()->post($this->base_uri . "trojan/createactivead/")
-                ->withParameters($bind)
-                ->then()
+        $post = Athena::api()->post($this->base_uri . "trojan/createactivead/");
+        if(!empty($bind))
+        {
+            $post->withParameters($bind);
+        }
+        
+        return $post->then()
                 ->assertThat()
                 ->responseIsJson()
                 ->retrieve()
-                ->fromJson()["url"];
+                ->fromJson();
     }
 
     public function createConversationForUser($userId)
