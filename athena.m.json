@@ -11,7 +11,7 @@
     "httpProxy" : "athena-proxy:9991",
     "sslProxy" : "athena-proxy:9991",
     "remapHosts" : {
-      "myolx.co.id": "192.168.99.102"
+      "m.myolx.co.id": "192.168.99.102"
     },
     "blacklist_urls" : {
       ".*facebook.com" : 200,
@@ -27,7 +27,7 @@
     "recording" : true
   },
   "urls" : {
-    "/" : "http://myolx.co.id",
+    "/" : "http://m.myolx.co.id",
     "login" : "/masuk",
     "myaccount" : "/iklanku",
     "archive" : "/iklanku/archive",
@@ -43,6 +43,6 @@
     "outputDirectory" : "./Report"
   },
   "filter_directories" : [
-      "/Browser/Tests/desktop"
+      "/Browser/Tests/m"
   ]
 }

@@ -13,6 +13,7 @@ class AdTest extends AthenaBrowserTestCase
     public function testPostAd_AsGuest_AllDataCorrect_ReturnSuccessPage()
     {
         $page = new AdPage();
+        $page->open();
         $result = $page->postingAdAction(Sinon::generateEmail());
         $result->findAndAssertThat()->textEquals('Terima kasih, iklan Anda berhasil disimpan!')->elementWithCss(AdPage::ELEMENT_SUCCESSBOX);
     }
@@ -37,9 +38,11 @@ class AdTest extends AthenaBrowserTestCase
         $ad = $createdAd['ad'];
         $session = $sinon->createUserSession($ad['user_id']);
         
-        $page = Athena::browser()->withSession($session['sessionid'])->get('/');
-        $page->find()->elementWithId(AdPage::ELEMENT_LINK_LOGIN)->click();
+        $browser = Athena::browser();
+        $page = $browser->get('/');
+        $browser->setSession($session['sessionid']);
         
+        $page->find()->elementWithId(AdPage::ELEMENT_LINK_LOGIN)->click();
         $page->wait(AdPage::TIMEOUT)->untilPresenceOf()->elementWithId(AdPage::ELEMENT_TABLE_ADS);
         $page->find()->elementWithCss(sprintf(AdPage::ELEMENT_LINK_DEACTIVATE, $ad['id']))->click();
         $page->wait(AdPage::TIMEOUT)->untilPresenceOf()->elementWithId(AdPage::ELEMENT_BUTTON_DELETE);
@@ -47,7 +50,7 @@ class AdTest extends AthenaBrowserTestCase
         
         $page->find()->elementWithId(sprintf(AdPage::ELEMENT_OPTION_REMOVEREASON, $id))->click();
         $page->find()->elementWithId(AdPage::ELEMENT_BUTTON_DELETE)->click();
-        $page->find()->elementWithXpath('//a[contains(@href,"/iklanku/archive/")]')->click();
+        $browser->get('archive');
         
         $page->wait(AdPage::TIMEOUT)->untilPresenceOf()->elementWithCss(AdPage::ELEMENT_LINK_REMOVE);
         $page->findAndAssertThat()->existsAtLeastOnce()->elementWithXpath('//a[@href="'.$createdAd['url'].'"]');

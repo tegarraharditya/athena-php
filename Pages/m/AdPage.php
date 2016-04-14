@@ -31,9 +31,9 @@ class AdPage extends AbstractPage
     CONST TIMEOUT = 10;
     private $condition = ['baru','bekas'];
     
-    public function __construct() 
+    public function __construct($reset = false) 
     {
-        parent::__construct(Athena::browser(), 'posting');
+        parent::__construct(Athena::browser($reset), 'posting');
     }
     
     public function postingAdAction($mail = 'random@email.com')
@@ -78,8 +78,7 @@ class AdPage extends AbstractPage
         $this->page()->find()->elementWithName(static::ELEMENT_INPUT_TITLE)->sendKeys('Random title with '.$this->randomText());
         $this->page()->find()->elementWithName(static::ELEMENT_INPUT_DESCRIPTION)->sendKeys('Random description with '.$this->randomText(300));
         $this->page()->find()->elementWithName(static::ELEMENT_INPUT_PRICE)->sendKeys($this->randomText(6, true));
-        $this->page()->find()->elementWithId(static::ELEMENT_SELECT_CONDITION)->click();
-        $this->page()->find()->elementWithXpath(sprintf(static::ELEMENT_OPTION_ANY, $this->condition[$rand_key]))->click();
+        $this->page()->getElement()->withId(static::ELEMENT_SELECT_CONDITION)->thenFind()->asDropDown()->selectByValue($this->condition[$rand_key]);
         $this->page()->find()->elementWithXpath(static::ELEMENT_BUTTON_NEXT)->click();
     }
     

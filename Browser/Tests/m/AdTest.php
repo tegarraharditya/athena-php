@@ -4,6 +4,7 @@ namespace Tests\Browser\Tests\m;
 
 use Tests\Pages\m\AdPage;
 use Athena\Test\AthenaBrowserTestCase;
+use Tests\Atlas\Sinon;
 
 class AdTest extends AthenaBrowserTestCase
 {
@@ -11,8 +12,9 @@ class AdTest extends AthenaBrowserTestCase
             
     public function testPostAd_AsGuest_AllDataCorrect_ReturnSuccessPage()
     {
-        $page = new AdPage();
-        $result = $page->postingAdAction(User::generateEmail());
+        $page = new AdPage(true);
+        $page->open();
+        $result = $page->postingAdAction(Sinon::generateEmail());
         $result->findAndAssertThat()->textEquals(static::ELEMENT_TEXT_SUCCESS)->elementWithXpath('//h3');
     }
 }
