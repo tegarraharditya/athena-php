@@ -206,7 +206,6 @@ class ListingsContext extends BaseContext
      */
     public function iCanSeeProperResultFromAnd($level2, $level3)
     {
-        //$level2=$this->categoryLevel2Name;
         $this->listings->verifySubCategoryListings($this->categoryLevel2Name,$this->categoryLevel3Name);
     }
 

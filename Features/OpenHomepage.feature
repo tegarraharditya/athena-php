@@ -66,7 +66,7 @@ Feature: Homepage
     Then I am in Aksesoris Motor page
 
   @parallel-scenario
-  Scenario: TC_OW_001_010
+  Scenario: TC_OW_001_010su
     Given I am in homepage
     When I click Motor category
     And I click Helm category
@@ -133,7 +133,7 @@ Feature: Homepage
     Given I am in homepage
     When I click Keperluan Pribady category
     And I click Fashion Pria sub-category
-    Then I am in Keperluan Pribadi page
+    Then I am in Fashion Pria page
 
   @parallel-scenario
   Scenario: TC_OW_001_020

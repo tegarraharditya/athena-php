@@ -4,13 +4,13 @@ Feature: Footer
   I want to be able to see all footer link
 
   @parallel-scenario
-  Scenario: TC_OW_003_001 - be able to click 'Join OLX' link on footer
+  Scenario: TC_OW_003_001 - be able to verify all footer link
     Given I am in homepage
     Then I can verify all link on footer
     And I can check all link
 
   @parallel-scenario
-  Scenario:
+  Scenario: TC_OW_003_002 - be able to verify that all link are not broken
     Given I am in homepage
     Then I can verify that all link are not broken
 

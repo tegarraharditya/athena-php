@@ -178,7 +178,14 @@ class ListingsDetails extends OneWeb
         $element->thenFind()->asHtmlElement()->click();
     }
 
+    public function verifyPhoneNumberOnHubungiPenjualElement(){
+        $element_attribut_value = $this->getElementHubungiPenjualButton()->thenFind()->asHtmlElement()
+            ->getAttribute('href');
 
+        if(!substr($element_attribut_value,0,4)=='tel:'){
+            \PHPUnit_Framework_Assert::fail('Error : Hubungi Penjualan Element is not started with \'tel:\'');
+        }
+    }
 
 
 }

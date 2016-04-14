@@ -125,7 +125,6 @@ class Listings extends OneWeb
         parent::__construct('mobil-bekas');
     }
 
-
     private function getElementIklanPromosiSection(){
         return $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_IKLAN_PROMOSI);
     }
@@ -368,7 +367,7 @@ class Listings extends OneWeb
     }
 
     public function clickListingsIndex1(){
-        $this->getElementListingsIndex1()->thenFind()->asHtmlElement()->click();
+        $this->getElementListingsIndex(1)->thenFind()->asHtmlElement()->click();
         return new ListingsDetails();
     }
 
