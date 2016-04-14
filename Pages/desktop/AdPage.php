@@ -45,6 +45,15 @@ class AdPage extends AbstractPage
     CONST ELEMENT_SUCCESSBOX = '.successbox';
     CONST ELEMENT_TEXT_DESCRIPTION = 'textContent';
     CONST ELEMENT_TABLE_ADS = 'adsTable';
+    
+    CONST ELEMENT_INPUT_SEARCH = 'headerSearch';
+    CONST ELEMENT_INPUT_CITY = 'cityField';
+    CONST ELEMENT_BUTTON_SEARCH = 'submit-searchmain';
+    CONST ELEMENT_CONTAINER_ADS = 'tabs-container';
+    CONST ELEMENT_LINK_OBSERVER = '.observelinkinfo';
+    CONST ELEMENT_BOX_DETAIL = '.detailcloudbox';
+    CONST ELEMENT_ROW_AD = '.offer';
+
     CONST TIMEOUT = 20;
     private $condition = ['baru', 'bekas'];
     private $bind = [];
@@ -196,4 +205,22 @@ class AdPage extends AbstractPage
         return $id;
         
     }
+
+    public function seeInListAtLeastOneResult()
+    {
+        $this->page()->wait(static::TIMEOUT)->untilPresenceOf()->elementWithId(static::ELEMENT_CONTAINER_ADS);
+        $this->page()->findAndAssertThat()->existsAtLeastOnce()->elementWithCss(static::ELEMENT_LINK_OBSERVER);
+        $this->page()->findAndAssertThat()->existsAtLeastOnce()->elementWithCss(static::ELEMENT_BOX_DETAIL);
+    }
+
+    public function clickSearchButton()
+    {
+        $this->page()->find()->elementWithId(static::ELEMENT_BUTTON_SEARCH)->click();
+    }
+
+    public function doSearchByFillingKeywordBoxWith($title)
+    {
+        $this->page()->find()->elementWithId(static::ELEMENT_INPUT_SEARCH)->sendKeys($title);
+    }
+
 }
