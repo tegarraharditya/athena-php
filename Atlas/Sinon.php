@@ -144,11 +144,6 @@ class Sinon {
         {
             $params['category'] = $category_id;
         }
-
-        if (!empty($params))
-        {
-            $get = $get->withParameters($params);
-        }
         
         return $this->createAd($params);
     }
