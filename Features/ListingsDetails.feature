@@ -3,6 +3,7 @@ Feature:
     As User I want to see the details of Listings
 
 
+  @parallel-scenario
   Scenario Outline: TC_OW_005_001
     Given I am in Listings Details <category> page
     Then I should see details of listings for Category <category>
@@ -13,6 +14,7 @@ Feature:
     |property-details   |
     |jasa-lowongan-details|
 
+  @parallel-scenario
   Scenario Outline: TC_OW_005_002
     Given I am in Listings Details <category> page
     Then I click Next Listings Details Page
@@ -22,6 +24,7 @@ Feature:
     |category|
     |mobil-bekas-details|
 
+  @parallel-scenario
   Scenario Outline: TC_OW_005_003
     Given I am in Listings Details <category> page
     Then I can find that seller number element contains telp:
@@ -30,6 +33,7 @@ Feature:
     |category|
     |mobil-bekas-details|
 
+  @parallel-scenario
   Scenario Outline: TC_OW_005_004
     Given I am in Listings Details <category> page
     When I click Chat dengan Penjual button

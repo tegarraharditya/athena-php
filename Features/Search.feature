@@ -53,5 +53,16 @@ Feature: Search
       |keyword|province|city|
       |       |2       |3   |
 
+  @parallel-scenario
+  Scenario Outline: TC_OW_004_005
+    Given I am in homepage
+    And I click Pilih Lokasi Button
+    And I choose province <province>
+    And I choose city <city>
+    And I type <keyword>
+    And I click search button
+    Then I get products list in specific area containing <keyword>
 
-
+    Examples:
+      |keyword|province|city|
+      |Samsung|2       |3   |

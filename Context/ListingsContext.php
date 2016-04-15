@@ -180,7 +180,6 @@ class ListingsContext extends BaseContext
      */
     public function iCanVerifyThatItSSortedByTheMostExpensiveListings()
     {
-        $this->listings->verifySortedTermahalOnTopListings();
         $this->listings->verifySortedTermahalOnListings();
     }
 
@@ -197,7 +196,7 @@ class ListingsContext extends BaseContext
      */
     public function iCanVerifyThatItSSortedByTheCheapest()
     {
-        $this->listings->verifySortedTermurahOnTopListings();
+        //$this->listings->verifySortedTermurahOnTopListings();
         $this->listings->verifySortedTermurahOnListings();
     }
 
@@ -207,6 +206,22 @@ class ListingsContext extends BaseContext
     public function iCanSeeProperResultFromAnd($level2, $level3)
     {
         $this->listings->verifySubCategoryListings($this->categoryLevel2Name,$this->categoryLevel3Name);
+    }
+
+    /**
+     * @When /^I click Iklan Terbaru$/
+     */
+    public function iClickIklanTerbaru()
+    {
+        $this->listings->chooseSorting('terbaru');
+    }
+
+    /**
+     * @Then /^I can verify that it's sorted by the newest$/
+     */
+    public function iCanVerifyThatItSSortedByTheNewest()
+    {
+        $this->listings->verifyListingsTheNewest();
     }
 
 

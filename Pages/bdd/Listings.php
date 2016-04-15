@@ -97,15 +97,19 @@ class Listings extends OneWeb
 
     private $XPATH_PAGING_BAR = "//*[@id='page_nav_pagination']li";
     private $XPATH_ALL_TOP_LISTINGS = '//*[@id=\'js-ad-promotion-group\']/article';
-    private $XPATH_ALL_TOP_LISTINGS_PRICE = './/*[@id=\'js-ad-promotion-group\']//*[contains(text(),\'Rp\')]';
-    private $XPATH_ALL_LISTINGS_PRICE = './/*[@id=\'js-ad-listing-group\']//*[contains(text(),\'Rp\')]';
+    private $XPATH_ALL_TOP_LISTINGS_PRICE = './/*[@id=\'js-ad-promotion-group\']//span[contains(text(),\'Rp\')]';
+    private $XPATH_ALL_LISTINGS_PRICE = './/*[@id=\'js-ad-listing-group\']//span[contains(text(),\'Rp\')]';
     private $NEXT_PAGE = 'Next';
     private $PREV_PAGE = 'Previous';
     private $ID_IKLAN_PROMOSI = 'js-ad-promotion-group';
     private $ID_IKLAN_LAINNYA = 'js-ad-listing-group';
+    private $XPATH_IKLAN_LAINNYA_ARTICLE = './/*[@id=\'js-ad-promotion-group\']/article';
     private $XPATH_LABEL_ISTIMEWA_IN_IKLAN_PROMOSI = './/*[@id=\'js-ad-promotion-group\']//*[text()=\'ISTIMEWAA\']';
     private $ID_SUB_CATEGORY_BUTTON = 'btn_filter__modal_l3';
     private $ID_UBAH_URUTAN_BUTTON = 'btn_filter__modal_sort';
+    private $ID_SORT_PRICE_MOST_EXPENSIVE_BUTTON = 'ads-sort-by-price-desc';
+    private $ID_SORT_PRICE_CHEAPEST_BUTTON = 'ads-sort-by-price-asc';
+    private $ID_SORT_THE_NEWEST_BUTTON = 'ads-sort-by-none';
     private $ID_PILIH_KONDISI_BUTTON = 'btn_filter__modal_condition';
     private $ID_POPUP_CHOOSE_SUBCAT_LEVEL1 = 'modal-inner-category-l1';
     private $ID_POPUP_CHOOSE_SUBCAT_LEVEL2 = 'modal-inner-category-l2';
@@ -114,6 +118,7 @@ class Listings extends OneWeb
     private $CLASS_TOP_LISTINGS = 'ad-listing__promoted-0';
     private $CLASS_BADGED_LISTINGS = 'ad-listing__promoted-1';
     private $CLASS_HIGHLIGHTED_LISTINGS = 'ad-listing__promoted-2';
+
 
     /**
      * @var String
@@ -198,6 +203,17 @@ class Listings extends OneWeb
         return $this->getBrowser()->getCurrentPage()->find()->elementsWithXpath($this->XPATH_ALL_TOP_LISTINGS);
     }
 
+    private function getArrayTimeStampListings(){
+        $elements = $this->getBrowser()->getCurrentPage()->find()->elementsWithXpath($this->XPATH_IKLAN_LAINNYA_ARTICLE);
+        $elements_timestamp = [];
+        foreach($elements as $element){
+            $time = $element->getAttribute('data-created-time');
+            if($time==''){\PHPUnit_Framework_Assert::fail('timestamp is empty');}
+            $elements_timestamp[] = array($time);
+        }
+        return $elements_timestamp;
+    }
+
     public function getTextActiveBreadcrumb(){
         $element = $this->getBrowser()->getCurrentPage()->getElement()->withCss('li.breadcrumb-item.is-active');
         return $element->thenFind()->asHtmlElement()->getText();
@@ -240,23 +256,24 @@ class Listings extends OneWeb
 
     public function clickUbahUrutan(){
         $this->getElementUbahUrutan()->thenFind()->asHtmlElement()->click();
-        throw new PendingException();//wait pop up sub-category
+        //throw new PendingException();//wait pop up sub-category
     }
 
     public function clickPilihKondisi(){
         $this->getElementPilihKondisi()->thenFind()->asHtmlElement()->click();
-        throw new PendingException();//wait pop up pilih kondisi
+        //throw new PendingException();//wait pop up pilih kondisi
     }
 
     public function chooseSorting($key){
         if(strcasecmp($key,'termahal')==0){
-
+            $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_SORT_PRICE_MOST_EXPENSIVE_BUTTON)
+                ->thenFind()->asHtmlElement()->click();
         }else if (strcasecmp($key,'termurah')==0){
-            throw new PendingException();//choose button then verify resultnya
-        }else if (strcasecmp($key,'terbaru')==0){
-            throw new PendingException();//choose button then verify resultnya
-        }else if (strcasecmp($key,'terlama')==0){
-            throw new PendingException();//choose button then verify resultnya
+            $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_SORT_PRICE_CHEAPEST_BUTTON)
+                ->thenFind()->asHtmlElement()->click();
+        }else if (strcasecmp($key,'terbaru')==0) {
+            $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_SORT_THE_NEWEST_BUTTON)
+                ->thenFind()->asHtmlElement()->click();
         }else{
             \PHPUnit_Framework_Assert::fail('key '.$key.'is undefined');
         }
@@ -268,24 +285,27 @@ class Listings extends OneWeb
         foreach($elements as $element){
             $price = str_replace('Rp ','',$element->getText());
             $price_final = str_replace('.','',$price);
+            if($price_final==''){
+                \PHPUnit_Framework_Assert::fail('price is empty');
+            }
             $elements_price[] = array($price_final);
         }
         return $elements_price;
     }
 
-    public function isSortedTermahal($array){
+    public function isSortedDesc($array){
         $prices_top = $array;
         return rsort($prices_top,SORT_NUMERIC);
     }
 
-    public function isSortedTermurah($array){
+    public function isSortedAsc($array){
         $prices_top = $array;
         return sort($prices_top,SORT_NUMERIC);
     }
 
     public function verifySortedTermahalOnTopListings(){
         $elements = $this->getArrayPriceWihXpath($this->XPATH_ALL_TOP_LISTINGS_PRICE);
-        $result = $this->isSortedTermahal($elements);
+        $result = $this->isSortedDesc($elements);
 
         if(!$result){
             \PHPUnit_Framework_Assert::fail('Top Listings is not sorted by the most expensive');
@@ -294,7 +314,7 @@ class Listings extends OneWeb
 
     public function verifySortedTermahalOnListings(){
         $elements = $this->getArrayPriceWihXpath($this->XPATH_ALL_LISTINGS_PRICE);
-        $result = $this->isSortedTermahal($elements);
+        $result = $this->isSortedDesc($elements);
 
         if(!$result){
             \PHPUnit_Framework_Assert::fail('Regular Listings is not sorted by the most expensive');
@@ -303,8 +323,8 @@ class Listings extends OneWeb
 
     public function verifySortedTermurahOnTopListings(){
         $elements = $this->getArrayPriceWihXpath($this->XPATH_ALL_TOP_LISTINGS_PRICE);
-        $result = $this->isSortedTermurah($elements);
 
+        $result = $this->isSortedAsc($elements);
         if(!$result){
             \PHPUnit_Framework_Assert::fail('Top Listings is not sorted by the cheapest');
         }
@@ -312,8 +332,8 @@ class Listings extends OneWeb
 
     public function verifySortedTermurahOnListings(){
         $elements = $this->getArrayPriceWihXpath($this->XPATH_ALL_LISTINGS_PRICE);
-        $result = $this->isSortedTermurah($elements);
 
+        $result = $this->isSortedAsc($elements);
         if(!$result){
             \PHPUnit_Framework_Assert::fail('Regular Listings is not sorted by the cheapest');
         }
@@ -335,6 +355,15 @@ class Listings extends OneWeb
         }
     }
 
+    public function verifyListingsTheNewest(){
+        $array_time = $this->getArrayTimeStampListings();
+        $result = $this->isSortedDesc($array_time);
+
+        if(!$result){
+            \PHPUnit_Framework_Assert::fail('Listings is not sorted by the newest');
+        }
+    }
+
     public function chooseConditionBaru(){
         throw new PendingException();
     }
@@ -342,8 +371,6 @@ class Listings extends OneWeb
     public function chooseConditionBekas(){
         throw new PendingException();
     }
-
-    public function isSortedTerbaru(){}
 
 
     public function getCurrentListingsLink(){
