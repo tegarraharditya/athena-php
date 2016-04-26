@@ -11,7 +11,7 @@
     "httpProxy" : "athena-proxy:9991",
     "sslProxy" : "athena-proxy:9991",
     "remapHosts" : {
-      "myolx.co.id": "192.168.99.102"
+      "myolx.co.id": "192.168.99.101"
     },
     "blacklist_urls" : {
       ".*facebook.com" : 200,
@@ -36,7 +36,12 @@
 
   },
   "selenium" : {
-	    "hub_url" : "http://192.168.99.101:4444/wd/hub"
+	    "hub_url" : "http://192.168.99.100:4444/wd/hub",
+        "browser" : {
+            "capabilities" : {
+              "unexpectedAlertBehaviour" : "accept"
+            }
+        }
   },
   "report" : {
     "format" : "html",

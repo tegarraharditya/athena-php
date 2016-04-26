@@ -333,6 +333,28 @@ class Sinon {
                             ->retrieve()
                             ->fromJson()["apiPartner"];
     }
+
+    public function addUserPoint($bind)
+    {
+        return Athena::api()->post($this->base_uri . "trojan/addpointforuser/")
+            ->withParameters($bind)
+            ->then()
+            ->assertThat()
+            ->responseIsJson()
+            ->retrieve()
+            ->fromJson();
+    }
+
+    public function setUserPointsToExpire($bind)
+    {
+        return Athena::api()->post($this->base_uri . "trojan/expiringpoint/")
+            ->withParameters($bind)
+            ->then()
+            ->assertThat()
+            ->responseIsJson()
+            ->retrieve()
+            ->fromJson();
+    }
     
     /**
      * The algorithm is the same as in Atlas Devicetokens class.

@@ -4,6 +4,7 @@ namespace Tests\Pages\desktop;
 
 use Athena\Page\AbstractPage;
 use Athena\Athena;
+use Facebook\WebDriver\Exception\UnexpectedAlertOpenException;
 use Tests\Atlas\Sinon;
 
 class AdPage extends AbstractPage
@@ -15,13 +16,20 @@ class AdPage extends AbstractPage
     CONST ELEMENT_INPUT_EMAIL = 'add-email';
     CONST ELEMENT_INPUT_PHONE = 'add-phone';
     CONST ELEMENT_INPUT_BBPIN = 'add-bb_pin';
+    CONST ELEMENT_INPUT_SEARCH = 'headerSearch';
+    CONST ELEMENT_INPUT_CITY = 'cityField';
+    CONST ELEMENT_INPUT_PRICE = 'data[param_price][1]';
     
     CONST ELEMENT_LINK_DEACTIVATE = '.deactivateme%s';
     CONST ELEMENT_LINK_REMOVE = '.remove4';
     CONST ELEMENT_LINK_LOGIN = 'topLoginLink';
+    CONST ELEMENT_LINK_OBSERVER = '.observelinkinfo';
     
     CONST ELEMENT_BUTTON_SUBMIT = 'save';
     CONST ELEMENT_BUTTON_DELETE = 'deleteButton';
+    CONST ELEMENT_BUTTON_SEARCH = 'submit-searchmain';
+    CONST ELEMENT_BUTTON_PROMOTE = 'promoteAdRow';
+    CONST ELEMENT_BUTTON_SUBMIT_PROMOTE = 'submit-contact';
     
     CONST ELEMENT_CHECK_EMAIL = '//label[@relname="data[contactform]"]';
     CONST ELEMENT_CHECK_WHATSAPP = '//label[@relname="data[whatsapp]"]';
@@ -41,20 +49,17 @@ class AdPage extends AbstractPage
     CONST ELEMENT_RADIO_REMOVEREASON = '.removeReason';
     CONST ELEMENT_ROOT_CATEGORY = 'cat-%s';
     CONST ELEMENT_CHILD_CATEGORY = '//a[@data-category="%s"]';
-    CONST ELEMENT_INPUT_PRICE = 'data[param_price][1]';
     CONST ELEMENT_SUCCESSBOX = '.successbox';
     CONST ELEMENT_TEXT_DESCRIPTION = 'textContent';
     CONST ELEMENT_TABLE_ADS = 'adsTable';
-    
-    CONST ELEMENT_INPUT_SEARCH = 'headerSearch';
-    CONST ELEMENT_INPUT_CITY = 'cityField';
-    CONST ELEMENT_BUTTON_SEARCH = 'submit-searchmain';
     CONST ELEMENT_CONTAINER_ADS = 'tabs-container';
-    CONST ELEMENT_LINK_OBSERVER = '.observelinkinfo';
     CONST ELEMENT_BOX_DETAIL = '.detailcloudbox';
+    CONST ELEMENT_BOX_CONFIRMATION = '.stuffed';
     CONST ELEMENT_ROW_AD = '.offer';
-
+    CONST ELEMENT_POPUP_ERROR_MESSAGE = 'message_system';
+    
     CONST TIMEOUT = 20;
+    CONST SET_POINT_EXPIRE = true;
     private $condition = ['baru', 'bekas'];
     private $bind = [];
     
@@ -222,5 +227,51 @@ class AdPage extends AbstractPage
     {
         $this->page()->find()->elementWithId(static::ELEMENT_INPUT_SEARCH)->sendKeys($title);
     }
+
+    public function addPointForUserWithAd($createdAd, $setExpire = false)
+    {
+        $bind['userid'] = isset($createdAd['ad']) ? $createdAd['ad']['user_id'] : 0;
+        $bind['points'] = 50000;
+        $addedPoint = (new Sinon())->addUserPoint($bind);
+        
+        if($setExpire)
+        {
+            $data['id'] = isset($addedPoint['id']) ? $addedPoint['id'] : 0;
+            $addedPoint = (new Sinon())->setUserPointsToExpire($data);
+        }
+
+        return $addedPoint;
+    }
+
+    public function tryToPromoteMyAd()
+    {
+        $this->page()->wait(static::TIMEOUT)->untilPresenceOf()->elementWithId(static::ELEMENT_BUTTON_PROMOTE);
+        $this->page()->find()->elementWithId(static::ELEMENT_BUTTON_PROMOTE)->click();
+        $this->page()->wait(static::TIMEOUT)->untilPresenceOf()->elementWithId(static::ELEMENT_BUTTON_SUBMIT_PROMOTE);
+
+        try {
+            $this->page()->find()->elementWithId(static::ELEMENT_BUTTON_SUBMIT_PROMOTE)->click();
+        } catch(UnexpectedAlertOpenException $e) {
+            // Nothing needed to be done here
+            // because selenium is closing the alert automatically
+            //$this->page()->wait(35)->forExpectedCondition(WebDriverExpectedCondition::alertIsPresent());
+            //$this->getBrowser()->switchTo()->alert()->dismiss();
+        }
+    }
+
+    public function seeErrorPopupMessageFailedToPromote()
+    {
+        $this->page()->getElement()->withId(static::ELEMENT_POPUP_ERROR_MESSAGE)->wait(static::TIMEOUT)->toBeVisible();
+        $this->page()->findAndAssertThat()->textEquals('  Saldo anda sudah habis masa aktifnya')->elementWithId(static::ELEMENT_POPUP_ERROR_MESSAGE);
+
+    }
+
+    public function seePromoteConfirmationPage()
+    {
+        $this->page()->getElement()->withCss(static::ELEMENT_BOX_CONFIRMATION)->wait(static::TIMEOUT)->toBeVisible();
+        $this->page()->findAndAssertThat()->textEquals('Terima kasih telah mempromosikan iklan Anda!')->elementWithCss(static::ELEMENT_BOX_CONFIRMATION);
+        
+    }
+
 
 }

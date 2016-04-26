@@ -42,6 +42,32 @@ class AdTest extends AthenaBrowserTestCase
         $I->openPage('archive');
         $I->seeDeletedAdFrom($createdAd);
     }
-    
-    
+
+    public function testPromoteAd_WithExpiredPoints_PromoteFailed()
+    {
+        $I = new AdPage();
+        $createdAd = $I->createAdThroughStubInDatabase();
+        $I->addPointForUserWithAd($createdAd, $I::SET_POINT_EXPIRE);
+
+        $createdSession = $I->createSessionFrom($createdAd);
+        $I->openPage('/');
+        $I->setBrowserSessionWith($createdSession);
+        $I->clickLoginLink();
+        $I->tryToPromoteMyAd();
+        $I->seeErrorPopupMessageFailedToPromote();
+    }
+
+    public function testPromoteAd_WithActivePoints_PromoteSuceed()
+    {
+        $I = new AdPage();
+        $createdAd = $I->createAdThroughStubInDatabase();
+        $I->addPointForUserWithAd($createdAd);
+
+        $createdSession = $I->createSessionFrom($createdAd);
+        $I->openPage('/');
+        $I->setBrowserSessionWith($createdSession);
+        $I->clickLoginLink();
+        $I->tryToPromoteMyAd();
+        $I->seePromoteConfirmationPage();
+    }
 }

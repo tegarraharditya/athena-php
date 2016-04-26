@@ -22,7 +22,8 @@
     "recording" : true
   },
   "urls" : {
-    "/" : "http://api.myolx.co.id"
+    "/" : "http://oneweb.co.id",
+    "trojan_user_add" : "http://api.oneweb.co.id/trojan/user/add"
   },
   "selenium" : {
 	    "hub_url" : "http://192.168.99.101:4444/wd/hub"
