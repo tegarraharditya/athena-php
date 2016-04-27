@@ -30,7 +30,7 @@ class ListingsContext extends BaseContext
     private $listingsDetails;
     public function __construct()
     {
-        $this->listings=new Listings();
+        $this->listings=new Listings('games-console');
         //$this->listings->setCurrentListingList('games-console');
 
     }
@@ -161,7 +161,7 @@ class ListingsContext extends BaseContext
     /**
      * @When /^I click sub\-category level3 (.*)$/
      */
-    public function iClickSubCategoryLevel1($level3)
+    public function iClickSubCategoryLevel3($level3)
     {
         $this->categoryLevel3Name = $this->listings->getTextCategoryLevel3($level3);
         $this->listings->chooseCategoryLevel3($level3);
@@ -221,7 +221,55 @@ class ListingsContext extends BaseContext
      */
     public function iCanVerifyThatItSSortedByTheNewest()
     {
-        $this->listings->verifyListingsTheNewest();
+        $this->listings->verifySortedTheNewestOnListings();
+    }
+
+    /**
+     * @Given /^I am in Listings page level1$/
+     */
+    public function iAmInListingsPageLevel1()
+    {
+        $this->listings->getBrowser()->get('mobil');
+    }
+
+    /**
+     * @Given /^I click sub\-category level1 (.*)$/
+     */
+    public function iClickSubCategoryLevel1($level1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When /^I click Baru$/
+     */
+    public function iClickBaru()
+    {
+        $this->listings->chooseConditionBaru();
+    }
+
+    /**
+     * @Then /^I can verify that condition of product is new$/
+     */
+    public function iCanVerifyThatConditionOfProductIsNew()
+    {
+        $this->listings->verifyConditionListings('baru');
+    }
+
+    /**
+     * @When /^I click Bekas$/
+     */
+    public function iClickBekas()
+    {
+        $this->listings->chooseConditionBekas();
+    }
+
+    /**
+     * @Then /^I can verify that condition of product is used$/
+     */
+    public function iCanVerifyThatConditionOfProductIsUsed()
+    {
+        $this->listings->verifyConditionListings('bekas');
     }
 
 

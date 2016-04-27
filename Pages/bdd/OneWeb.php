@@ -10,9 +10,10 @@ namespace Tests\Pages\bdd;
 
 
 use Athena\Athena;
-use Athena\Page\BasePage;
+use Athena\Page\AbstractPage;
+use Facebook\WebDriver\WebDriverExpectedCondition;
 
-class OneWeb extends BasePage
+class OneWeb extends AbstractPage
 {
     public function getAttributeBodyPage(){
         return  $this->getElementBodyPage()->thenFind()->asHtmlElement()->getAttribute('class');

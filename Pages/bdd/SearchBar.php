@@ -21,7 +21,7 @@ class SearchBar extends OneWeb
 
     public function __construct()
     {
-        parent::__construct('search');
+        parent::__construct(Athena::browser(),'/');
     }
 
     /**

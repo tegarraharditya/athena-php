@@ -9,6 +9,7 @@
 namespace Tests\Pages\bdd;
 
 
+use Athena\Athena;
 use Behat\Behat\Tester\Exception\PendingException;
 
 class ListingsDetails extends OneWeb
@@ -54,7 +55,7 @@ class ListingsDetails extends OneWeb
 
     public function __construct()
     {
-        parent::__construct('listings_details');
+        parent::__construct(Athena::browser(),'listings_details');
     }
 
     private function getElementListingsDetails($element){
@@ -187,5 +188,12 @@ class ListingsDetails extends OneWeb
         }
     }
 
+    public function verifyProductCondition($condition){
+        $element = $this->getBrowser()->getCurrentPage()->getElement()->withId('detail_ad_param_condition');
+        $condition_actual = $element->thenFind()->asHtmlElement()->getText();
 
+        if(!strcmp($condition_actual,$condition)==0){
+            \PHPUnit_Framework_Assert::fail('Expected : '.$condition.'. Actual : '.$condition_actual);
+        }
+    }
 }

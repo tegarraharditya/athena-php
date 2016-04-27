@@ -107,6 +107,8 @@ class Listings extends OneWeb
     private $XPATH_LABEL_ISTIMEWA_IN_IKLAN_PROMOSI = './/*[@id=\'js-ad-promotion-group\']//*[text()=\'ISTIMEWAA\']';
     private $ID_SUB_CATEGORY_BUTTON = 'btn_filter__modal_l3';
     private $ID_UBAH_URUTAN_BUTTON = 'btn_filter__modal_sort';
+    private $ID_FILTER_NEW = 'ads-filter-condition-new';
+    private $ID_FILTER_USED = 'ads-filter-condition-old';
     private $ID_SORT_PRICE_MOST_EXPENSIVE_BUTTON = 'ads-sort-by-price-desc';
     private $ID_SORT_PRICE_CHEAPEST_BUTTON = 'ads-sort-by-price-asc';
     private $ID_SORT_THE_NEWEST_BUTTON = 'ads-sort-by-none';
@@ -125,9 +127,9 @@ class Listings extends OneWeb
      */
     private $listingsLink;
 
-    public function __construct()
+    public function __construct($page)
     {
-        parent::__construct('mobil-bekas');
+        parent::__construct(Athena::browser(),$page);
     }
 
     private function getElementIklanPromosiSection(){
@@ -223,6 +225,15 @@ class Listings extends OneWeb
         $this->getElementPilihSubCategory()->thenFind()->asHtmlElement()->click();
     }
 
+    public function chooseCategoryLevel1($category){
+        $this->getElementPopUpSubCategoryLevel1()->assertThat()->isDisplayed();
+
+        $element = $this->getBrowser()->getCurrentPage()->getElement()
+            ->withXpath('.//*[@data-cat-name=\''.$category.'\']');
+
+        $element->thenFind()->asHtmlElement()->click();
+    }
+
     public function chooseCategoryLevel2($category){
         $this->getElementPopUpSubCategoryLevel2()->assertThat()->isDisplayed();
 
@@ -252,6 +263,17 @@ class Listings extends OneWeb
             ->withXpath('.//*[@data-cat-name=\''.$level3.'\']//p');
 
         return $element->thenFind()->asHtmlElement()->getText();
+    }
+
+    public function verifyConditionListings($condition){
+        $elements = $this->getBrowser()->getCurrentPage()->find()->elementsWithXpath('//*[@class=\'meta-condition\']');
+
+        foreach($elements as $element){
+            $condition_actual = $element->getText();
+            if(!strcmp($condition_actual,$condition)==0){
+                \PHPUnit_Framework_Assert::fail('Condition actual : '.$condition_actual.'. Condition Expected : '.$condition);
+            }
+        }
     }
 
     public function clickUbahUrutan(){
@@ -355,7 +377,7 @@ class Listings extends OneWeb
         }
     }
 
-    public function verifyListingsTheNewest(){
+    public function verifySortedTheNewestOnListings(){
         $array_time = $this->getArrayTimeStampListings();
         $result = $this->isSortedDesc($array_time);
 
@@ -365,11 +387,13 @@ class Listings extends OneWeb
     }
 
     public function chooseConditionBaru(){
-        throw new PendingException();
+        $element = $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_FILTER_NEW);
+        $element->thenFind()->asHtmlElement()->click();
     }
 
     public function chooseConditionBekas(){
-        throw new PendingException();
+        $element = $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_FILTER_USED);
+        $element->thenFind()->asHtmlElement()->click();
     }
 
 

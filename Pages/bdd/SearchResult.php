@@ -15,7 +15,7 @@ class SearchResult extends Listings
 {
     public function __construct()
     {
-        parent::__construct('');
+        parent::__construct(Athena::browser(),'');
     }
 
     private function clickOneOfResult(){

@@ -43,6 +43,19 @@
       |mobil-bekas_198|mobil-bekas/honda_4677|
 
   @parallel-scenario
+  Scenario Outline:
+    Given I am in Listings page level1
+    When I click pilih sub-categoty button
+    And I click sub-category level1 <level1>
+    And I click sub-category level2 <level2>
+    And I click sub-category level3 <level3>
+    Then I can see proper result from <level2> and <level3>
+
+    Examples:
+    |level1|level2|level3|
+    |mobil-86|mobil-bekas_198|mobil-bekas/honda_4677|
+
+  @parallel-scenario
   Scenario: TC_OW_006_006
     Given I am in a Listings page
     When I click ubah urutan button
@@ -64,13 +77,6 @@
     Then I can verify that it's sorted by the newest
 
   @parallel-scenario
-  Scenario:TC_OW_006_009
-    Given I am in a Listings page
-    When I click ubah urutan button
-    And I click Iklan Terlama
-    Then I can verify that it's sorted by oldest
-
-  @parallel-scenario
   Scenario:TC_OW_006_010
     Given I am in a Listings page
     When I click Pilih Kondisi button
@@ -82,7 +88,7 @@
     Given I am in a Listings page
     When I click Pilih Kondisi button
     And I click Bekas
-    Then I can verify that condition of product is second hand
+    Then I can verify that condition of product is used
 
 
 

@@ -44,3 +44,12 @@ Feature:
     Examples:
     |category|
     |mobil-bekas-details|
+
+  Scenario Outline:
+    Given I am in Listings Details <category> page
+    When I click Next Button
+    Then I can see listings details in next page
+
+    Examples:
+    |category|
+    |mobil-bekas-details|

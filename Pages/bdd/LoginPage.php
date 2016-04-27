@@ -1,5 +1,6 @@
 <?php
 namespace Tests\Pages\bdd;
+use Athena\Athena;
 use Athena\Browser\BrowserInterface;
 use Athena\Page\BasePage;
 use Facebook\WebDriver\WebDriverBy;
@@ -14,7 +15,7 @@ class LoginPage extends OneWeb
 {
     public function __construct()
     {
-        parent::__construct('login');
+        parent::__construct(Athena::browser(),'login');
     }
 
     public function fillLoginEmail($email)

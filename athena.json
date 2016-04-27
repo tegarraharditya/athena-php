@@ -10,12 +10,21 @@
     "/" : "http://olex.id",
     "login" : "/masuk",
     "myads" : "/iklanku",
-    "game-console" : "/elektronik-gadget/games-console",
+    "electronic-gadget" : "/elektronik-gadget",
+    "games-console" : "/elektronik-gadget/games-console",
+    "mobil" : "/mobil",
     "mobil-bekas" : "/mobil/bekas",
     "mobil-bekas-details" : "/iklan/toyota-innova-2-0-g-at-2012-silver-IDhFAhA.html",
     "property-details" : "/iklan/dijual-cepat-1-unit-apartemen-bassura-city-studio-tower-e-lantai-22-IDgp0KT.html",
-    "jasa-lowongan-details" : "http://localhost:8000/iklan/sales-marketing-rettail-IDhFvQ1.html"
+    "jasa-lowongan-details" : "/iklan/sales-marketing-rettail-IDhFvQ1.html"
   },
-  "username" : "suci.istch@gmail.com",
-  "password" : "testing123"
+  "api" : "http://api.olex.id/api/v1/",
+  "bug-tracker" : {
+    "base-url" : "https://api.leantesting.com",
+    "token" : "OuLLQeZQ02ogIreZ9Kxr0Luf6KWfx5NMzwsbtDHa",
+    "web" : "WebOLXID"
+  },
+  "filter_directories" : [
+    "/Browser/Tests/desktop/Oneweb"
+  ]
 }
