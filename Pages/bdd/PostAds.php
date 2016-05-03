@@ -18,11 +18,12 @@ class PostAds extends OneWeb
     private $LOCATION = '';
     private $NAME = '';
     private $EMAIL = '';
-    private $NOHP = '';
-    private $PINBB = '';
-    private $AGREEMENT_USER = '';
+    private $NOHP = 'ad_form_seller_phone';
+    private $PINBB = 'ad_form_seller_pinbb';
+    private $AGREEMENT_USER = 'ad_form_user_accept';
     private $NEWSLETTER = '';
     private $BUTTON_SUBMIT = '';
+    private $POST_ADS_CLASS = 'adding';
 
     public function inputTitle($title){
         $element = $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ADS_TITLE);
@@ -46,6 +47,32 @@ class PostAds extends OneWeb
         $element->thenFind()->asHtmlElement()->sendKeys($name);
     }
 
+    public function inputEmail($email){
+        $element = $this->getBrowser()->getCurrentPage()->getElement()->withId($this->EMAIL);
+        $element->thenFind()->asHtmlElement()->sendKeys($email);
+    }
 
+    public function inputNoHp($noHp){
+        $element = $this->getBrowser()->getCurrentPage()->getElement()->withId($this->NOHP);
+        $element->thenFind()->asHtmlElement()->sendKeys($noHp);
+    }
+
+    public function inputPinBB($pinBB){
+        $element = $this->getBrowser()->getCurrentPage()->getElement()->withId($this->PINBB);
+        $element->thenFind()->asHtmlElement()->sendKeys($pinBB);
+    }
+
+    public function thickAgreementUser(){
+        $element = $this->getBrowser()->getCurrentPage()->getElement()->withId($this->AGREEMENT_USER);
+        if(!$element->thenFind()->asHtmlElement()->isSelected()){
+            $element->thenFind()->asHtmlElement()->click();
+        }
+    }
+
+
+
+    public function verifyPostAdsPage(){
+        \PHPUnit_Framework_Assert::assertEquals($this->POST_ADS_CLASS,$this->getAttributeBodyPage());
+    }
 
 }

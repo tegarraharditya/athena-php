@@ -11,6 +11,7 @@ namespace Tests\Context;
 use Athena\Athena;
 use Behat\Behat\Tester\Exception\PendingException;
 use GuzzleHttp\Url;
+use Tests\Pages\bdd\Listings;
 use Tests\Pages\bdd\ListingsDetails;
 
 class ListingsDetailsContext extends BaseContext
@@ -19,10 +20,12 @@ class ListingsDetailsContext extends BaseContext
      * @var ListingsDetails
      */
     private $listingsDetails;
+    private $listings;
 
     public function __construct()
     {
         $this->listingsDetails = new ListingsDetails();
+        $this->listings = new Listings();
     }
 
     /**
@@ -30,7 +33,8 @@ class ListingsDetailsContext extends BaseContext
      */
     public function iAmInListingsDetailsPage($category)
     {
-        $this->listingsDetails->getBrowser()->get($category);
+        $this->listings->getBrowser()->get($category);
+        $this->listingsDetails = $this->listings->clickListingsIndex1();
     }
 
     /**

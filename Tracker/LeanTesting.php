@@ -33,12 +33,23 @@ class LeanTesting extends BaseApiPage
         return $results['projects'];
     }
 
-    public function createBug(){
-        $data = json_encode('');
-        $list = Athena::api()->post($this->base_uri.'/v1/projects/'.$this->project_id.'/bugs')
+    public function createBug($dataJson){
+        $result = Athena::api()->post($this->base_uri.'/v1/projects/'.$this->project_id.'/bugs')
             ->withHeader('Authorization','Bearer '.$this->token)
-            ->withBody()
+            ->withBody($dataJson,'application/json')
+            ->then()->getResponseHolder()->getStatusCode();
         ;
+
+        return $result;
+    }
+
+    public function updateBug($bug_id,$dataJson){
+        $result = Athena::api()->put($this->base_uri.'/v1/bugs/'.$bug_id)
+            ->withHeader('Authorization','Bearer '.$this->token)
+            ->withBody($dataJson,'application/json')
+            ->then()->getResponseHolder()->getStatusCode();
+
+        return $result;
     }
 
     public function getBugTypeScheme(){
@@ -63,7 +74,79 @@ class LeanTesting extends BaseApiPage
         return $id;
     }
 
+    public function getVersions(){
+        $results = Athena::api()->get($this->base_uri.'/v1/projects/'.$this->project_id.'/versions')
+            ->withHeader('Authorization','Bearer '.$this->token)
+            ->then()->retrieve()->fromJson();
+        ;
 
+        return $results;
+    }
+
+    public function createDataForBug($title,$project_version_id,$project_version){
+
+        $data = '
+        {
+            "title": "'.$title.'",
+            "status_id" : 1,
+            "severity_id": 2,
+            "type_id": 1,
+            "priority_id": 1,
+            "description": "From Automation Test",
+            "project_version_id": '.$project_version_id.',
+            "project_version": "'.$project_version.'"
+        }';
+
+        return $data;
+    }
+
+    public function getProjectComponents(){
+        $result = Athena::api()->get($this->base_uri.'/v1/projects/'.$this->project_id.'/sections')
+            ->withHeader('Authorization','Bearer '.$this->token)
+            ->then()->retrieve()->fromJson();
+
+        return $result;
+    }
+
+    public function addingProjectVersion($version_id,$version){
+        $data = '
+        {
+            "id": '.$version_id.',
+            "number": "'.$version.'",
+            "project_id": '.$this->project_id.'
+        }';
+
+        $result = Athena::api()->post($this->base_uri.'/v1/projects/'.$this->project_id.'/versions')
+            ->withHeader('Authorization','Bearer '.$this->token)
+            ->withBody($data,'application/json')
+            ->then()->getResponseHolder()->getStatusCode();
+
+        return $result;
+    }
+
+    public function getBugStatusScheme(){
+        $result = Athena::api()->get($this->base_uri.'/v1/projects/'.$this->project_id.'/bug-status-scheme')
+            ->withHeader('Authorization','Bearer '.$this->token)
+            ->then()->retrieve()->fromJson();
+
+        return $result;
+    }
+
+    public function getSeverityBugScheme(){
+        $result = Athena::api()->get($this->base_uri.'/v1/projects/'.$this->project_id.'/bug-severity-scheme')
+            ->withHeader('Authorization','Bearer '.$this->token)
+            ->then()->retrieve()->fromJson();
+
+        return $result;
+    }
+
+    public function getAllBugs(){
+        $result = Athena::api()->get($this->base_uri.'/v1/projects/'.$this->project_id.'/bugs')
+            ->withHeader('Authorization','Bearer '.$this->token)
+            ->then()->retrieve()->fromJson();
+
+        return $result;
+    }
 
 
 }

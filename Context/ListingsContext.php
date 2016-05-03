@@ -12,6 +12,7 @@ namespace Tests\Context;
 use Athena\Athena;
 use Athena\Test\AthenaTestContext;
 use Behat\Behat\Tester\Exception\PendingException;
+use Tests\Helper\LeanTestingHookTrait;
 use Tests\Pages\bdd\Listings;
 use Tests\Pages\bdd\ListingsDetails;
 
@@ -40,6 +41,7 @@ class ListingsContext extends BaseContext
      */
     public function iAmInListingsPage()
     {
+
         $this->listings->open(true);
         $this->listings->verifyCategoryPage_ENG_Games_Console();
 

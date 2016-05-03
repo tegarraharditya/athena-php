@@ -114,11 +114,11 @@ class ListingsDetails extends OneWeb
     }
 
     private function verifyExtraParameter($category){
-        if(strcmp($category,'mobil-bekas-details')){
+        if(strcmp($category,'mobil-bekas')){
             $this->verifyExtraParameterMobilBekas();
-        }else if (strcmp($category,'property-details')){
+        }else if (strcmp($category,'property')){
             $this->verifyExtraParameterProperty();
-        }else if(strcmp($category,'jasa-lowongan-details')){
+        }else if(strcmp($category,'lowongan')){
             $this->verifyExtraParameterJasaLowongan();
         }else{
             \PHPUnit_Framework_Assert::fail($category.' is undefined');

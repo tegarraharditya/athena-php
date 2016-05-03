@@ -66,3 +66,4 @@ Feature: Search
     Examples:
       |keyword|province|city|
       |Samsung|2       |3   |
+

@@ -14,9 +14,7 @@
     "games-console" : "/elektronik-gadget/games-console",
     "mobil" : "/mobil",
     "mobil-bekas" : "/mobil/bekas",
-    "mobil-bekas-details" : "/iklan/toyota-innova-2-0-g-at-2012-silver-IDhFAhA.html",
-    "property-details" : "/iklan/dijual-cepat-1-unit-apartemen-bassura-city-studio-tower-e-lantai-22-IDgp0KT.html",
-    "jasa-lowongan-details" : "/iklan/sales-marketing-rettail-IDhFvQ1.html"
+    "lowongan" : "/jasa-lowongan-kerja/lowongan"
   },
   "api" : "http://api.olex.id/api/v1/",
   "bug-tracker" : {

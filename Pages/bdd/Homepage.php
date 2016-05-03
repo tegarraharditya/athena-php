@@ -15,7 +15,9 @@ use Facebook\WebDriver\WebDriverExpectedCondition;
 
 class Homepage extends OneWeb
 {
-    CONST HOME = 'home';
+    CONST HOME = 'home--';
+    CONST HEADER_POST_ADS_LINK = 'post-ad-head';
+
     public function __construct()
     {
         parent::__construct(Athena::browser(),'/');
@@ -52,6 +54,13 @@ class Homepage extends OneWeb
 
     public function clickElementCategoryViewAll($viewall){
         $this->getElementCategoryViewAll($viewall)->thenFind()->asHtmlElement()->click();
+    }
+
+    public function clickPostAdsLink(){
+        $element = $this->getBrowser()->getCurrentPage()->getElement()->withId(static::HEADER_POST_ADS_LINK);
+
+        $element->thenFind()->asHtmlElement()->click();
+        return new PostAds();
     }
 
 

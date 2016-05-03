@@ -69,23 +69,4 @@ class FooterContext extends BaseContext
         $this->footer->verifyAllLinkNotBroken();
     }
 
-    /**
-     * @Then /^I get something$/
-     */
-    public function iGetSomething()
-    {
-        $something=$this->footer->getJavascripVar();
-        print_r($something);
-        //var_dump($a);
-        die;
-    }
-
-    /**
-     * @Given /^I can check all link$/
-     */
-    public function iCanCheckAllLink()
-    {
-
-    }
-
 }

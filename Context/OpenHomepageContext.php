@@ -8,15 +8,15 @@
 
 namespace Tests\Context;
 
-
-use Athena\Athena;
-use Athena\Test\AthenaTestContext;
-use Behat\Behat\Tester\Exception\PendingException;
+use Exception;
+use Tests\Helper\LeanTestingHookTrait;
 use Tests\Pages\bdd\Homepage;
 use Tests\Pages\bdd\Listings;
 
 class OpenHomepageContext extends BaseContext
 {
+    use LeanTestingHookTrait;
+
     /**
      * @var Listings
      */
@@ -141,6 +141,7 @@ class OpenHomepageContext extends BaseContext
      * @Then /^I should see homepage$/
      */
     public function iSeeHomepageTitle(){
+        //throw new Exception('this step has an exception');
         $this->homepage->verifyPage();
     }
 
@@ -1288,6 +1289,5 @@ class OpenHomepageContext extends BaseContext
     {
         $this->homepage->clickElementLevel1($this->ID_PBA);
     }
-
 
 }

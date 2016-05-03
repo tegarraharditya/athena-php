@@ -10,23 +10,12 @@ namespace Tests\Context;
 
 
 use Athena\Test\AthenaTestContext;
+use Behat\Behat\Tester\Exception\PendingException;
+use Tests\Helper\LeanTestingHookTrait;
+use Tests\Tracker\LeanTesting;
 
 class BaseContext extends AthenaTestContext
 {
-    /**
-     * @BeforeScenario
-     */
-    protected function startup()
-    {
-        $this->browser = Athena::browser(true);
-    }
 
-    /**
-     * @AfterScenario
-     */
-    protected function cleanup()
-    {
-        $this->browser->cleanup();
-    }
 
 }

@@ -10,9 +10,9 @@ Feature:
 
     Examples:
     |category|
-    |mobil-bekas-details|
-    |property-details   |
-    |jasa-lowongan-details|
+    |mobil-bekas|
+    |apartment|
+    |lowongan|
 
   @parallel-scenario
   Scenario Outline: TC_OW_005_002
@@ -22,7 +22,7 @@ Feature:
 
     Examples:
     |category|
-    |mobil-bekas-details|
+    |mobil-bekas|
 
   @parallel-scenario
   Scenario Outline: TC_OW_005_003
@@ -31,7 +31,7 @@ Feature:
 
     Examples:
     |category|
-    |mobil-bekas-details|
+    |mobil-bekas|
 
   @parallel-scenario
   Scenario Outline: TC_OW_005_004
@@ -43,7 +43,7 @@ Feature:
 
     Examples:
     |category|
-    |mobil-bekas-details|
+    |mobil-bekas|
 
   Scenario Outline:
     Given I am in Listings Details <category> page
@@ -52,4 +52,4 @@ Feature:
 
     Examples:
     |category|
-    |mobil-bekas-details|
+    |mobil-bekas|

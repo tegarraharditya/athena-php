@@ -127,6 +127,10 @@ class Listings extends OneWeb
      */
     private $listingsLink;
 
+    /**
+     * Listings constructor.
+     * @param string $page
+     */
     public function __construct($page)
     {
         parent::__construct(Athena::browser(),$page);

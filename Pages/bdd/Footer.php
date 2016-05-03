@@ -17,17 +17,12 @@ use Athena\Athena;
     private $urls_footer = array(
         'http://olex.id/',
         'http://help.olx.co.id/hc/id',
-        'http://help.olx.co.id/hc/id/articles/206444513-Ketentuan-Umum',
-        'http://help.olx.co.id/hc/id/articles/206077866-Kebijakan-Privasi',
-        'http://help.olx.co.id/hc/id/articles/206443633-Cara-Menggunakan-OLX',
-        'http://help.olx.co.id/hc/id/articles/206443813-Tips-Jual-Beli-Aman-di-OLX',
-        'http://olx.co.id/sitemap/',
-        'http://olx.co.id/sitemap/regions/',
-        'http://olx.co.id/popular/',
         'http://joinolx.com/',
         'https://www.facebook.com/olxid',
         'https://twitter.com/OLX_Indonesia',
-        'http://blog.olx.co.id/');
+        'https://instagram.com/OLX_Indonesia',
+        'http://blog.olx.co.id/',
+        'http://olex.id/');
 
     public function __construct()
     {
