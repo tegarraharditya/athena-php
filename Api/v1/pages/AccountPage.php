@@ -4,6 +4,7 @@ namespace Tests\Api\v1\pages;
 class AccountPage extends BasePage {
     
     CONST URI_CHANGE_PASSWORD = '/api/v1/account/password/';
+    CONST URI_CHANGE_PROFILE = '/api/v1/account/profile/';
     CONST URI_CREATE_AD = '';
     
     
@@ -26,7 +27,7 @@ class AccountPage extends BasePage {
     public function getProfile($accessToken)
     {
         return $this->client()
-            ->get('/api/v1/account/profile?access_token=' . $accessToken)
+            ->get(static::URI_CHANGE_PROFILE . '?access_token=' . $accessToken)
             ->then()
             ->retrieve();
     }

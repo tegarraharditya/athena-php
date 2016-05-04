@@ -356,6 +356,22 @@ class Sinon {
             ->fromJson();
     }
     
+    public function getSmsToken($phone, $userid = 0)
+    {
+        $data['phone'] = $phone;
+        if($userid > 0)
+        {
+            $data['user_id'] = $userid;
+        }
+                
+        return Athena::api()->get($this->base_uri . "trojan/smstoken/?".  http_build_query($data))
+            ->then()
+            ->assertThat()
+            ->responseIsJson()
+            ->retrieve()
+            ->fromJson();
+    }
+    
     /**
      * The algorithm is the same as in Atlas Devicetokens class.
      *

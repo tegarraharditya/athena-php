@@ -10,7 +10,7 @@
     "httpProxy" : "athena-proxy:9991",
     "sslProxy" : "athena-proxy:9991",
     "remapHosts" : {
-      "api.myolx.co.id": "192.168.99.100"
+      "api.myolx.co.id": "192.168.99.101"
     },
     "backlist_urls" : {
       ".*facebook.com" : 200,
@@ -22,11 +22,8 @@
     "recording" : true
   },
   "urls" : {
-    "/" : "http://oneweb.co.id",
-    "trojan_user_add" : "http://api.oneweb.co.id/trojan/user/add"
-  },
-  "selenium" : {
-	    "hub_url" : "http://192.168.99.101:4444/wd/hub"
+    "/" : "http://api.myolx.co.id/",
+    "trojan_user_add" : "http://api.myolx.co.id/trojan/user/add"
   },
   "report" : {
     "format" : "html",
