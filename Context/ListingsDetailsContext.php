@@ -25,7 +25,7 @@ class ListingsDetailsContext extends BaseContext
     public function __construct()
     {
         $this->listingsDetails = new ListingsDetails();
-        $this->listings = new Listings();
+        $this->listings = new Listings('games-console');
     }
 
     /**
