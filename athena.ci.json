@@ -25,12 +25,12 @@
   "proxy" : {
     "connectTimeout" : 20000,
     "readTimeout" : 20000,
-    "url" : "http://athena-proxy",
+    "url" : "http://172.17.0.1",
     "port" : 9090,
     "internalPort" : 9991,
     "proxyType" : "manual",
-    "httpProxy" : "athena-proxy:9991",
-    "sslProxy" : "athena-proxy:9991",
+    "httpProxy" : "172.17.0.1:9991",
+    "sslProxy" : "172.17.0.1:9991",
     "remapHosts" : {
       "myolx.co.id": "172.17.0.1"
     }

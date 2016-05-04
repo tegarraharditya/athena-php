@@ -32,7 +32,7 @@ class HomepageContext extends BaseContext
      */
     public function iCanVerifyThatIAmInHomepage()
     {
-        sleep(100);
+        //sleep(10);
         $this->homepage->verifyHomepage();
     }
 }
