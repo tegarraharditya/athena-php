@@ -34,8 +34,9 @@ class PostAds extends OneWeb
 
     }
 
-    public function inputDescription(){
+    public function inputDescription($description){
         $element = $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ADS_DESC);
+        $element->thenFind()->asHtmlElement()->sendKeys($description);
     }
 
     public function setImage(){
@@ -68,8 +69,6 @@ class PostAds extends OneWeb
             $element->thenFind()->asHtmlElement()->click();
         }
     }
-
-
 
     public function verifyPostAdsPage(){
         \PHPUnit_Framework_Assert::assertEquals($this->POST_ADS_CLASS,$this->getAttributeBodyPage());

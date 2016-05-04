@@ -17,9 +17,7 @@ trait LeanTestingHookTrait
 {
     static $exceptions = [];
 
-    /**
-     * @AfterStep
-     */
+
     public static function afterStepHook(AfterStepScope $scope)
     {
         if ($scope->getTestResult()->isPassed()) {
@@ -37,9 +35,7 @@ trait LeanTestingHookTrait
         static::$exceptions[] = sprintf("%s: %s\n\n%s", $exceptionType, $exceptionMessage, $exceptionTrace);
     }
 
-    /**
-     * @AfterScenario
-     **/
+
     public static function afterScenario(AfterScenarioScope $scope)
     {
         /*

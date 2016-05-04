@@ -7,20 +7,35 @@
     "outputDirectory" : "./Report"
   },
   "urls" : {
-    "/" : "http://olex.id",
+    "/" : "http://myolx.co.id",
     "login" : "/masuk",
     "myads" : "/iklanku",
-    "listings_details" : "/bla",
-    "search" : "/search",
-    "game-console" : "/elektronik-gadget/games-console",
-    "mobil-bekas-details" : "/iklan/test-extend-validate-coba-edit-IDa7yQb.html",
-    "property-details" : "/iklan/paywall-ke-9-belom-kena-IDa7yKQ.html",
-    "jasa-lowongan-details" : "/iklan/admin-laundry-sepatu-online-di-bandung-ID9NxgM.html"
+    "electronic-gadget" : "/elektronik-gadget",
+    "games-console" : "/elektronik-gadget/games-console",
+    "mobil" : "/mobil",
+    "mobil-bekas" : "/mobil/bekas",
+    "lowongan" : "/jasa-lowongan-kerja/lowongan"
   },
-  "username" : "suci.istch@gmail.com",
-  "password" : "testing123",
-  "attributeByBody" : {
-    "homepage" : "home"
-
-  }
+  "api" : "http://api.olex.id/api/v1/",
+  "bug-tracker" : {
+    "base-url" : "https://api.leantesting.com",
+    "token" : "OuLLQeZQ02ogIreZ9Kxr0Luf6KWfx5NMzwsbtDHa",
+    "web" : "WebOLXID"
+  },
+  "proxy" : {
+    "connectTimeout" : 20000,
+    "readTimeout" : 20000,
+    "url" : "http://athena-proxy",
+    "port" : 9090,
+    "internalPort" : 9991,
+    "proxyType" : "manual",
+    "httpProxy" : "athena-proxy:9991",
+    "sslProxy" : "athena-proxy:9991",
+    "remapHosts" : {
+      "myolx.co.id": "172.17.0.1"
+    }
+  },
+  "filter_directories" : [
+    "/Browser/Tests/desktop/Oneweb"
+  ]
 }

@@ -14,7 +14,7 @@ default:
     suites:
         default:
             filters:
-              tags: @coba
+              tags: @atlas
             paths:
                 - %paths.base%/Features
             contexts:
@@ -24,3 +24,4 @@ default:
                 - Tests\Context\LoginContext
                 - Tests\Context\SearchContext
                 - Tests\Context\FooterContext
+                - Tests\Context\atlas\HomepageContext
