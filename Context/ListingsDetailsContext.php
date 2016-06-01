@@ -25,7 +25,7 @@ class ListingsDetailsContext extends BaseContext
     public function __construct()
     {
         $this->listingsDetails = new ListingsDetails();
-        $this->listings = new Listings('games-console');
+        $this->listings = new Listings('games-console ');
     }
 
     /**
@@ -70,5 +70,22 @@ class ListingsDetailsContext extends BaseContext
     {
         $this->listingsDetails->verifyPhoneNumberOnHubungiPenjualElement();
     }
+
+    /**
+     * @When /^I click Chat dengan Penjual button$/
+     */
+    public function iClickChatDenganPenjualButton()
+    {
+        $this->listingsDetails->clickChatwithSeller();
+    }
+
+    /**
+     * @Then /^I see pop up suggestion to download apps$/
+     */
+    public function iSeePopUpSuggestionToDownloadApps()
+    {
+        $this->listingsDetails->verifyPopUpChatwithSeller();
+    }
+
 
 }

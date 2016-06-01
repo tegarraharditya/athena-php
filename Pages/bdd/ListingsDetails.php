@@ -93,6 +93,16 @@ class ListingsDetails extends OneWeb
         $this->getElementHubungiPenjualButton()->thenFind()->asHtmlElement()->click();
     }
 
+    public function clickChatwithSeller(){
+        $this->getElementChat()->thenFind()->asHtmlElement()->click();
+    }
+
+    public function verifyPopUpChatwithSeller(){
+        $element_active = $this->getBrowser()->getCurrentPage()
+            ->getElement()->withXpath('//*[@class=\'modal__group js-cta-modal-target is-shown\']');
+        $element_active->assertThat()->isDisplayed();
+    }
+
     public function verifyListingDetails($category){
         $this->verifyElementListingsDetails($this->ID_TITLE);
         $this->verifyElementListingsDetails($this->ID_IMAGE);

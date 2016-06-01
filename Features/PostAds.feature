@@ -6,5 +6,20 @@
     When I click post Ads on Header
     Then It will be redirected to Post Ads Page
 
-  Scenario:
+  Scenario: Positive Scenario
+    Given I go to posting ads page
+    And I fill title
+    And I choose category
+    And I fill description
+    And I upload photo
+    And I choose location
+    And I fill name
+    And I fill email
+    And I fill Handphone number
+    And I fill pin BB
+    And I agree OLX can process my data
+    And I want to accept newsletter
+    When I click Pasang Iklan button
+    Then I can see that I successfully post ads
+
 

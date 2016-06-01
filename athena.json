@@ -7,7 +7,8 @@
     "outputDirectory" : "./Report"
   },
   "urls" : {
-    "/" : "http://myolx.co.id",
+    "/" : "http://olex.id",
+    "post-ads" : "/pasang",
     "login" : "/masuk",
     "myads" : "/iklanku",
     "electronic-gadget" : "/elektronik-gadget",
@@ -21,19 +22,6 @@
     "base-url" : "https://api.leantesting.com",
     "token" : "OuLLQeZQ02ogIreZ9Kxr0Luf6KWfx5NMzwsbtDHa",
     "web" : "WebOLXID"
-  },
-  "proxy" : {
-    "connectTimeout" : 20000,
-    "readTimeout" : 20000,
-    "url" : "http://athena-proxy",
-    "port" : 9090,
-    "internalPort" : 9991,
-    "proxyType" : "manual",
-    "httpProxy" : "athena-proxy:9991",
-    "sslProxy" : "athena-proxy:9991",
-    "remapHosts" : {
-      "myolx.co.id": "172.17.0.1"
-    }
   },
   "filter_directories" : [
     "/Browser/Tests/desktop/Oneweb"

@@ -37,9 +37,7 @@ Feature:
   Scenario Outline: TC_OW_005_004
     Given I am in Listings Details <category> page
     When I click Chat dengan Penjual button
-    And I fill all of information needed
-    And I click post
-    Then bla bla bla
+    Then I see pop up suggestion to download apps
 
     Examples:
     |category|

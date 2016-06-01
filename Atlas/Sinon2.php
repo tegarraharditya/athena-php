@@ -109,7 +109,7 @@ class Sinon2 {
 
 
     public function getEmails(){
-        return Athena::api()->get("mailcatch")
+        return Athena::api()->get($this->base_uri."mailcatch")
                 ->then()
                 ->assertThat()
                 ->responseIsJson()
