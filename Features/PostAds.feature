@@ -22,4 +22,19 @@
     When I click Pasang Iklan button
     Then I can see that I successfully post ads
 
+  Scenario: Negative Scenario
+    Given I go to posting ads page
+    When I submit pasang iklan (negative)
+    Then I see error on title ads field
+    And I see error on Category field
+    And I see error on choose location field
+    And I see error on Name field
+    And I see error on Email field
+    And I see error on No HP field
+    And I see error on Agreement User field
+
+
+
+
+
 

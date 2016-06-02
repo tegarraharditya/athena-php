@@ -59,6 +59,5 @@ trait LeanTestingHookTrait
 
         // reset exceptions after each scenario
         static::$exceptions = [];
-
     }
 }

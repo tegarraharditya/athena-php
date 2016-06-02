@@ -157,7 +157,7 @@ class PostAdsContext extends BaseContext
      */
     public function iClickPasangIklanButton()
     {
-        throw new PendingException();
+        $this->postAds->clickSubmitAds();
     }
 
     /**
@@ -166,6 +166,70 @@ class PostAdsContext extends BaseContext
     public function iCanSeeThatISuccessfullyPostAds()
     {
         throw new PendingException();
+    }
+
+    /**
+     * @When /^I submit pasang iklan \(negative\)$/
+     */
+    public function iSubmitPasangIklanNegative()
+    {
+        $this->postAds->clickSubmitAdsNegative();
+    }
+
+    /**
+     * @Then /^I see error on title ads field$/
+     */
+    public function iSeeErrorOnTitleAdsField()
+    {
+        \PHPUnit_Framework_Assert::assertTrue($this->postAds->errorNoTitleIsDisplayed());
+    }
+
+    /**
+     * @Given /^I see error on Category field$/
+     */
+    public function iSeeErrorOnCategoryField()
+    {
+        \PHPUnit_Framework_Assert::assertTrue($this->postAds->errorNoCategoryIsDisplayed());
+    }
+
+    /**
+     * @Given /^I see error on choose location field$/
+     */
+    public function iSeeErrorOnChooseLocationField()
+    {
+        \PHPUnit_Framework_Assert::assertTrue($this->postAds->errorNoCityIsDisplayed());
+    }
+
+    /**
+     * @Given /^I see error on Name field$/
+     */
+    public function iSeeErrorOnNameField()
+    {
+        \PHPUnit_Framework_Assert::assertTrue($this->postAds->errorNoNameIsDisplayed());
+    }
+
+    /**
+     * @Given /^I see error on Email field$/
+     */
+    public function iSeeErrorOnEmailField()
+    {
+        \PHPUnit_Framework_Assert::assertTrue($this->postAds->errorNoEmailIsDisplayed());
+    }
+
+    /**
+     * @Given /^I see error on No HP field$/
+     */
+    public function iSeeErrorOnNoHPField()
+    {
+        \PHPUnit_Framework_Assert::assertTrue($this->postAds->errorNoHpNumberIsDisplayed());
+    }
+
+    /**
+     * @Given /^I see error on Agreement User field$/
+     */
+    public function iSeeErrorOnAgreementUserField()
+    {
+        \PHPUnit_Framework_Assert::assertTrue($this->postAds->errorNoAgreementUserIsDisplayed());
     }
 
 
