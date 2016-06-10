@@ -142,7 +142,7 @@ class OpenHomepageContext extends BaseContext
      */
     public function iSeeHomepageTitle(){
         //throw new Exception('this step has an exception');
-        sleep(10000);
+        //sleep(10000);
         $this->homepage->verifyPage();
     }
 

@@ -30,6 +30,21 @@ Feature: Search
       |Samsung    |2 |3         |
 
   @parallel-scenario
+  Scenario Outline: TC_OW_004_002 - Search in specific area
+    Given I am in homepage
+    And I click Pilih Lokasi Button
+    And I choose province <province>
+    And I choose city <city>
+    When I type <keyword>
+    And I click search button
+    Then I get products list in specific area containing <keyword>
+
+    Examples:
+      |keyword    |province|city|
+      |Sepeda     |2 |3         |
+      |Samsung    |2 |3         |
+
+  @parallel-scenario
   Scenario Outline: TC_OW_004_003 - Search using blank keyword in all areas
     Given I am in homepage
     And I type <keyword>
@@ -66,4 +81,6 @@ Feature: Search
     Examples:
       |keyword|province|city|
       |Samsung|2       |3   |
+
+
 

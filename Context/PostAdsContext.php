@@ -10,8 +10,12 @@ namespace Tests\Context;
 
 
 use Behat\Behat\Tester\Exception\PendingException;
+use Composer\Util\Keys;
+use Facebook\WebDriver\WebDriverKeys;
 use Tests\Atlas\Sinon2;
+use Tests\Helper\LeanTestingHookTrait;
 use Tests\Pages\bdd\Homepage;
+use Tests\Pages\bdd\MyAds;
 use Tests\Pages\bdd\PostAds;
 
 class PostAdsContext extends BaseContext
@@ -20,7 +24,12 @@ class PostAdsContext extends BaseContext
 
     private $postAds;
     private $homepage;
+    /**
+     * @var MyAds
+     */
+    private $myads;
     private $sinon;
+    private $level2;
     public function __construct()
     {
         $this->postAds = new PostAds();
@@ -58,21 +67,7 @@ class PostAdsContext extends BaseContext
     public function iFillTitle()
     {
         $title = 'Test Posting Ads'.date('Y:m:d h:i:sa');
-        var_dump($title);
         $this->postAds->inputTitle($title);
-    }
-
-    /**
-     * @Given /^I choose category$/
-     */
-    public function iChooseCategory()
-    {
-        /*$category = $this->sinon->randomCategory();
-        var_dump($category);*/
-        $this->postAds->clickChooseCategoryButton();
-        $this->postAds->chooseCategoryLevel1(1);
-        $this->postAds->chooseCategoryLevel2(2);
-        $this->postAds->chooseCategoryLevel3(2);
     }
 
     /**
@@ -80,7 +75,7 @@ class PostAdsContext extends BaseContext
      */
     public function iFillDescription()
     {
-        $description = 'description test';
+        $description = 'DEscription Test, DEscription Test, '.WebDriverKeys::ENTER.'DEscription Test, DEscription Test';
         $this->postAds->inputDescription($description);
     }
 
@@ -89,7 +84,7 @@ class PostAdsContext extends BaseContext
      */
     public function iUploadPhoto()
     {
-        throw new PendingException();
+        //throw new PendingException();
     }
 
     /**
@@ -157,7 +152,8 @@ class PostAdsContext extends BaseContext
      */
     public function iClickPasangIklanButton()
     {
-        $this->postAds->clickSubmitAds();
+        $this->myads = $this->postAds->clickSubmitAds();
+        sleep(10);
     }
 
     /**
@@ -165,7 +161,7 @@ class PostAdsContext extends BaseContext
      */
     public function iCanSeeThatISuccessfullyPostAds()
     {
-        throw new PendingException();
+        $this->myads->verifyMyAdsTitle();
     }
 
     /**
@@ -230,6 +226,26 @@ class PostAdsContext extends BaseContext
     public function iSeeErrorOnAgreementUserField()
     {
         \PHPUnit_Framework_Assert::assertTrue($this->postAds->errorNoAgreementUserIsDisplayed());
+    }
+
+    /**
+     * @Given /^I fill all extra fields (.*)$/
+     */
+    public function iFillAllExtraFields($level2)
+    {
+        $this->postAds->fillExtraFieldBasedOnCategory($this->level2);
+    }
+
+    /**
+     * @Given /^I choose category "([^"]*)" "([^"]*)" "([^"]*)"$/
+     */
+    public function iChooseCategory1($arg1, $arg2, $arg3)
+    {
+        $this->postAds->clickChooseCategoryButton();
+        $this->postAds->chooseCategoryLevel1($arg1);
+        $this->level2 = $this->postAds->getTextFromChosenLevel2($arg2);
+        $this->postAds->chooseCategoryLevel2($arg2);
+        $this->postAds->chooseCategoryLevel3($arg3);
     }
 
 

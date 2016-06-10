@@ -7,7 +7,6 @@ Feature: Footer
   Scenario: TC_OW_003_001 - be able to verify all footer link
     Given I am in homepage
     Then I can verify all link on footer
-    And I can check all link
 
   @parallel-scenario
   Scenario: TC_OW_003_002 - be able to verify that all link are not broken

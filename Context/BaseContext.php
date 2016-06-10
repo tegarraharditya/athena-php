@@ -11,8 +11,6 @@ namespace Tests\Context;
 
 use Athena\Test\AthenaTestContext;
 use Behat\Behat\Tester\Exception\PendingException;
-use Tests\Helper\LeanTestingHookTrait;
-use Tests\Tracker\LeanTesting;
 
 class BaseContext extends AthenaTestContext
 {
