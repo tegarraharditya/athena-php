@@ -103,6 +103,10 @@ class ListingsDetails extends OneWeb
         $element_active->assertThat()->isDisplayed();
     }
 
+    private function verifyImageDetailsAsContain(){
+
+    }
+
     public function verifyListingDetails($category){
         $this->verifyElementListingsDetails($this->ID_TITLE);
         $this->verifyElementListingsDetails($this->ID_IMAGE);

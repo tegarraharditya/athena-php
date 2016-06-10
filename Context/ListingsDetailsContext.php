@@ -46,24 +46,6 @@ class ListingsDetailsContext extends BaseContext
     }
 
     /**
-     * @Then /^I click Next Listings Details Page$/
-     */
-    public function iClickNextListingsDetailsPage()
-    {
-        $this->listingsDetails->clickNextPage();
-        $this->listingsDetails->verifyAttributeClassBody();
-    }
-
-    /**
-     * @Then /^I click Prev Listings Details Page$/
-     */
-    public function iClickPrevListingsDetailsPage()
-    {
-        $this->listingsDetails->clickPrevPage();
-        $this->listingsDetails->verifyAttributeClassBody();
-    }
-
-    /**
      * @Then /^I can find that seller number element contains telp:$/
      */
     public function iCanFindThatSellerNumberElementContainsTelp()
