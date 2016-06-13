@@ -53,10 +53,15 @@ class ListingsDetails extends OneWeb
     private $ID_PREV_PAGE = 'page_nav_sibling_prev';
     private $ATR_LISTINGS_DETAILS_PAGE = 'advert';
 
+    private $ID_SELLER_CONTACT = 'btn_contact_main';
+    private $ID_ICON_ANDROID = 'login-head';
+
+
     public function __construct()
     {
         parent::__construct(Athena::browser(),'listings_details');
     }
+
 
     private function getElementListingsDetails($element){
         return $this->getBrowser()->getCurrentPage()->getElement()->withId($element);
@@ -120,6 +125,7 @@ class ListingsDetails extends OneWeb
         $this->verifyElementListingsDetails($this->ID_MEMBER_REG_DATE);
         $this->verifyElementListingsDetails($this->ID_LAST_LOGIN_DATE);
 
+        $this->verifyFraudWarningElement();
         $this->verifyExtraParameter($category);
     }
 
@@ -162,6 +168,10 @@ class ListingsDetails extends OneWeb
         }
     }
 
+    public function verifyFraudWarningElement(){
+        $this->getBrowser()->getCurrentPage()->getElement()->withXpath('.//*[text()=\'Tips Berbelanja\']')->assertThat()->isDisplayed();
+    }
+
     public function verifiedListingsDetailsByKeywordInSpecificArea($keyword,$area){
         $address = $this->getElementListingsDetails($this->ID_ADDRESS_SELLER)->thenFind()
             ->asHtmlElement()->getText();
@@ -180,6 +190,14 @@ class ListingsDetails extends OneWeb
             ->withId($this->ID_NEXT_PAGE);
 
         $element->thenFind()->asHtmlElement()->click();
+    }
+
+    public function clickAndroidIcon(){
+         $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_ICON_ANDROID)->thenFind()->asHtmlElement()->click();
+    }
+
+    public function clickCloseIconAndroid(){
+        $this->getBrowser()->getCurrentPage()->getElement()->withXpath(".//*[@id='js-modal-login']/div[2]/section/header/a/span")->thenFind()->asHtmlElement()->click();
     }
 
     public function clickPrevPage(){
@@ -206,4 +224,17 @@ class ListingsDetails extends OneWeb
             \PHPUnit_Framework_Assert::fail('Expected : '.$condition.'. Actual : '.$condition_actual);
         }
     }
+
+    /**
+     * @return bool
+     */
+    public function isNotClosedIconAndroid(){
+        return $this->getBrowser()->getCurrentPage()->find()->elementWithId("js-modal-login")->isDisplayed();
+    }
+
+    public function verifyCloseIconAndroid(){
+        \PHPUnit_Framework_Assert::assertNotTrue($this->isNotClosedIconAndroid(),'Modals is not cloed');
+    }
+
+
 }

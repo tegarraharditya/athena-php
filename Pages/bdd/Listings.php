@@ -18,12 +18,12 @@ use Facebook\WebDriver\WebDriverKeys;
 
 class Listings extends OneWeb
 {
-    private $ALL_CATEGORY = 'adverts';
-    private $MOBIL_MOBIL_BEKAS ='adverts';
-    private $MOBIL_AKSESORIS_MOBIL = 'adverts';
-    private $MOBIL_AUDIO_MOBIL = 'adverts';
-    private $MOBIL_SPAREPART = 'adverts';
-    private $MOBIL_VELG_AND_BAN = 'adverts';
+    private $ALL_CATEGORY = 'listing';
+    private $MOBIL_MOBIL_BEKAS ='listing';
+    private $MOBIL_AKSESORIS_MOBIL = 'listing';
+    private $MOBIL_AUDIO_MOBIL = 'listing';
+    private $MOBIL_SPAREPART = 'listing';
+    private $MOBIL_VELG_AND_BAN = 'listing';
 
     private $MOTOR_MOTOR_BEKAS = 'adverts';
     private $MOTOR_AKSESORIS = 'adverts';
@@ -428,6 +428,8 @@ class Listings extends OneWeb
 
     public function verifyIklanPromosiSection(){
         $this->getElementIklanPromosiSection()->assertThat()->isDisplayed();
+
+
     }
 
     public function verifyOnlyTopListingsOnIklanPromosiSection(){
