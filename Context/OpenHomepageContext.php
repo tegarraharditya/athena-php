@@ -125,6 +125,16 @@ class OpenHomepageContext extends BaseContext
     private $ID_JASA_CARI_PEKERJAAN = 'jasa-lowongan-kerja-cari-pekerjaan_227';
     private $ID_JASA_JASA = 'jasa-lowongan-kerja-jasa_228';
 
+
+
+    private $XPATH_GUNAKAN_OLX = './/*[@id=\'js-home-comm\']/ul/li/div[1]/div/a';
+    private $XPATH_PLAYSTORE_OLX = './/*[@id=\'js-home-comm\']/ul/li/div[2]/a[1]';
+    private $XPATH_APPLESTORE_OLX = './/*[@id=\'js-home-comm\']/ul/li/div[2]/a[2]';
+
+    private $HREF_BANNER_OLX = 'http://berita.olx.co.id/berita_campaign/introducing-olx-app/';
+    private $HREF_PLAYSTORE_OLX = 'https://go.onelink.me/2327713408?pid=OLX_OneWeb';
+    private $HREF_APPLESTORE_OLX = 'https://itunes.apple.com/id/app/olx-indonesia/id660161040';
+
     public function __construct(){
         $this->homepage = new Homepage();
     }
@@ -144,6 +154,9 @@ class OpenHomepageContext extends BaseContext
         //throw new Exception('this step has an exception');
         //sleep(10000);
         $this->homepage->verifyPage();
+        $this->homepage->verifyOLXBanner($this->XPATH_GUNAKAN_OLX,$this->HREF_BANNER_OLX);
+        $this->homepage->verifyOLXBanner($this->XPATH_PLAYSTORE_OLX,$this->HREF_PLAYSTORE_OLX);
+        $this->homepage->verifyOLXBanner($this->XPATH_APPLESTORE_OLX,$this->HREF_APPLESTORE_OLX);
     }
 
     /**

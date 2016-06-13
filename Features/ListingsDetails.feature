@@ -49,3 +49,13 @@ Feature:
     And I click one of ads that has image
     Then I see image has Contain as background size
 
+    @parallel-scenario
+    Scenario Outline:
+      Given I am in Listings Details <category> page
+      When I click android icon
+      And I click close
+      Then I cannot see the android icon
+
+      Examples:
+        |category|
+        |mobil-bekas|

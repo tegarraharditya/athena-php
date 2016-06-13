@@ -85,5 +85,29 @@ class ListingsDetailsContext extends BaseContext
         $this->listingsDetails->verifyImageDetailsAsContain();
     }
 
+    /**
+     * @When /^I click android icon$/
+     */
+    public function iClickAndroidIcon()
+    {
+        $this->listingsDetails->clickAndroidIcon();
+    }
+
+    /**
+     * @Given /^I click close$/
+     */
+    public function iClickClose()
+    {
+        $this->listingsDetails->clickCloseIconAndroid();
+    }
+
+    /**
+     * @Then /^I cannot see the android icon$/
+     */
+    public function iCannotSeeTheAndroidIcon()
+    {
+        $this->listingsDetails->verifyCloseIconAndroid();
+    }
+
 
 }

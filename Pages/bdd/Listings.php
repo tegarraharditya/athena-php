@@ -428,6 +428,8 @@ class Listings extends OneWeb
 
     public function verifyIklanPromosiSection(){
         $this->getElementIklanPromosiSection()->assertThat()->isDisplayed();
+
+
     }
 
     public function verifyOnlyTopListingsOnIklanPromosiSection(){
