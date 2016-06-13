@@ -15,8 +15,9 @@ use Facebook\WebDriver\WebDriverExpectedCondition;
 
 class Homepage extends OneWeb
 {
-    CONST HOME = 'home--';
+    CONST HOME = 'home';
     CONST HEADER_POST_ADS_LINK = 'post-ad-head';
+
 
     public function __construct()
     {
@@ -63,5 +64,17 @@ class Homepage extends OneWeb
         return new PostAds();
     }
 
+    public function verifyOLXBanner($xpath,$expected){
+        //var_dump($this->getHrefLink($xpath));
+        \PHPUnit_Framework_Assert::assertEquals($this->getHrefLink($xpath),$expected,'Link Not Updated');
+    }
+
+    /**
+     * @param $xpath
+     * @return null|string
+     */
+    public function getHrefLink($xpath){
+       return $this->getBrowser()->getCurrentPage()->find()->elementWithXpath($xpath)->getAttribute('href');
+    }
 
 }

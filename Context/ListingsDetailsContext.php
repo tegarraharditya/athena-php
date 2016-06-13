@@ -87,5 +87,53 @@ class ListingsDetailsContext extends BaseContext
         $this->listingsDetails->verifyPopUpChatwithSeller();
     }
 
+    /**
+     * @When /^I click Next Button$/
+     */
+    public function iClickNextButton()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then /^I can see listings details in next page$/
+     */
+    public function iCanSeeListingsDetailsInNextPage()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^I am in Listing Details (.*) page$/
+     */
+    public function iAmInListingDetailsPage($category)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When /^I click android icon$/
+     */
+    public function iClickAndroidIcon()
+    {
+        $this->listingsDetails->clickAndroidIcon();
+    }
+
+    /**
+     * @Given /^I click close$/
+     */
+    public function iClickClose()
+    {
+        $this->listingsDetails->clickCloseIconAndroid();
+    }
+
+    /**
+     * @Then /^I cannot see the android icon$/
+     */
+    public function iCannotSeeTheAndroidIcon()
+    {
+        $this->listingsDetails->verifyCloseIconAndroid();
+    }
+
 
 }
