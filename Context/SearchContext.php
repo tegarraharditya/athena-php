@@ -123,5 +123,13 @@ class SearchContext extends BaseContext
         }
     }
 
+    /**
+     * @When /^I click enter$/
+     */
+    public function iClickEnter()
+    {
+        $this->searchResult = $this->searchBar->pressEnter();
+    }
+
 
 }

@@ -17,9 +17,13 @@ trait LeanTestingHookTrait
 {
     static $exceptions = [];
 
-
+    /**
+     * @param AfterStepScope $scope
+     * @AfterStep
+     */
     public static function afterStepHook(AfterStepScope $scope)
     {
+        //printf('after step hook');
         if ($scope->getTestResult()->isPassed()) {
             return;
         }
@@ -31,11 +35,15 @@ trait LeanTestingHookTrait
         if (method_exists($exception, 'getTraceAsString')) {
             $exceptionTrace = $exception->getTraceAsString();
         }
+        var_dump($scope->getStep());
 
-        static::$exceptions[] = sprintf("%s: %s\n\n%s", $exceptionType, $exceptionMessage, $exceptionTrace);
+        static::$exceptions[] = sprintf("%s: %s\n\n%s\n%s", $exceptionType, $exceptionMessage, $exceptionTrace);
     }
 
-
+    /**
+     * @param AfterScenarioScope $scope
+     * @AfterScenario
+     */
     public static function afterScenario(AfterScenarioScope $scope)
     {
         /*
@@ -44,20 +52,32 @@ trait LeanTestingHookTrait
             TestResult::PENDING = 20;
             TestResult::FAILED = 99;
             StepResult::UNDEFINED = 30;
-         */
-        /*
+        */
+
+        //printf('after Scenario hook');
         printf("Result code: %d\n", $scope->getTestResult()->getResultCode());
         printf("Is passed: %d\n", $scope->getTestResult()->isPassed());
-        printf("Exceptions: %s\n", print_r(static::$exceptions, true));*/
-        $title = print_r(static::$exceptions);
-        var_dump($title);
-        if(!$scope->getTestResult()->isPassed()){
+
+        $description = print_r(static::$exceptions,true);
+        $title = $scope->getScenario()->getTitle();
+        $steps = $scope->getScenario()->getSteps();
+
+        //self::getSteps($steps);
+        /*$steps = $scope->getScenario()->getSteps();
+        $line = $scope->getScenario()->getLine();
+        $keyword = $scope->getScenario()->getKeyword();
+        $nodetype = $scope->getScenario()->getNodeType();
+        $tags = $scope->getScenario()->getTags();*/
+
+        /*if(!$scope->getTestResult()->isPassed()){
             $leantesting = new LeanTesting(13466);
-            $dataJson = $leantesting->createDataForBug($title,16570,'v1.0');
+            $dataJson = $leantesting->createDataForBug($title, $description, $steps, 16570,'v1.0');
             $leantesting->createBug($dataJson);
-        }
+
+        }*/
 
         // reset exceptions after each scenario
         static::$exceptions = [];
     }
+
 }

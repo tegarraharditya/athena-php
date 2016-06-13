@@ -12,6 +12,7 @@
     "login" : "/masuk",
     "myads" : "/iklanku",
     "electronic-gadget" : "/elektronik-gadget",
+    "handphone" : "/elektronik-gadget/handphone",
     "games-console" : "/elektronik-gadget/games-console",
     "mobil" : "/mobil",
     "mobil-bekas" : "/mobil/bekas",
@@ -20,8 +21,9 @@
   "api" : "http://api.olex.id/api/v1/",
   "bug-tracker" : {
     "base-url" : "https://api.leantesting.com",
-    "token" : "OuLLQeZQ02ogIreZ9Kxr0Luf6KWfx5NMzwsbtDHa",
-    "web" : "WebOLXID"
+    "token" : "esjeDdcllCuWGEqfW8yOM4LjL7lfwyEjMKKhNrrY",
+    "web" : "WebOLXID",
+    "path-token" : ""
   },
   "filter_directories" : [
     "/Browser/Tests/desktop/Oneweb"

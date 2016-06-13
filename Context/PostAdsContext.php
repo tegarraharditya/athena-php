@@ -111,7 +111,6 @@ class PostAdsContext extends BaseContext
     public function iFillEmail()
     {
         $email = $this->sinon->generateEmail();
-        var_dump($email);
         $this->postAds->inputEmail($email);
     }
 

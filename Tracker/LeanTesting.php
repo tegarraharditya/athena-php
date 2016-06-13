@@ -16,10 +16,14 @@ class LeanTesting extends BaseApiPage
     private $base_setting;
     private $token;
     private $project_id;
+
     public function __construct($id)
     {
         $url = (array)Athena::settings()->getAll();
         $this->base_setting=$url['bug-tracker'];
+
+        //$file = file_get_contents($this->base_setting['path-token'],FILE_USE_INCLUDE_PATH);
+
         $this->token=$this->base_setting['token'];
         $this->base_uri=$this->base_setting['base-url'];
         $this->project_id=$id;
@@ -39,7 +43,8 @@ class LeanTesting extends BaseApiPage
             ->withBody($dataJson,'application/json')
             ->then()->getResponseHolder()->getStatusCode();
         ;
-
+        //var_dump(Athena::api()->post($this->base_uri.'/v1/projects/'.$this->project_id.'/bugs'));
+        var_dump($result);
         return $result;
     }
 
@@ -83,8 +88,16 @@ class LeanTesting extends BaseApiPage
         return $results;
     }
 
-    public function createDataForBug($title,$project_version_id,$project_version){
-
+    /**
+     * @param $title
+     * @param $description
+     * @param $steps
+     * @param $project_version_id
+     * @param $project_version
+     * @return string
+     */
+    public function createDataForBug($title, $description, $steps,$project_version_id,$project_version){
+        $description2 = 'ini contoh';
         $data = '
         {
             "title": "'.$title.'",
@@ -92,11 +105,11 @@ class LeanTesting extends BaseApiPage
             "severity_id": 2,
             "type_id": 1,
             "priority_id": 1,
-            "description": "From Automation Test",
+            "description": "'.$description2.'",
             "project_version_id": '.$project_version_id.',
-            "project_version": "'.$project_version.'"
+            "project_version": "'.$project_version.'",
+            "assigned_user_id" : 17249
         }';
-
         return $data;
     }
 
@@ -146,6 +159,10 @@ class LeanTesting extends BaseApiPage
             ->then()->retrieve()->fromJson();
 
         return $result;
+    }
+
+    public function getAllOpenBugs(){
+
     }
 
 

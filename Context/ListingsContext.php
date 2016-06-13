@@ -31,7 +31,7 @@ class ListingsContext extends BaseContext
     private $listingsDetails;
     public function __construct()
     {
-        $this->listings=new Listings('games-console');
+        $this->listings=new Listings('handphone');
         //$this->listings->setCurrentListingList('games-console');
 
     }
@@ -43,7 +43,6 @@ class ListingsContext extends BaseContext
     {
 
         $this->listings->open(true);
-        $this->listings->verifyCategoryPage_ENG_Games_Console();
 
     }
 
@@ -272,6 +271,30 @@ class ListingsContext extends BaseContext
     public function iCanVerifyThatConditionOfProductIsUsed()
     {
         $this->listings->verifyConditionListings('bekas');
+    }
+
+    /**
+     * @Given /^I can verify that image has Contain as background size$/
+     */
+    public function iCanVerifyThatImageHasContainAsBackgroundSize()
+    {
+        $this->listings->verifyListingsImageHasContainAsBackgroundSize();
+    }
+
+    /**
+     * @Given /^I am in a Listings page in category (.*)$/
+     */
+    public function iAmInAListingsPageThatHaveNoConditionFilter($category)
+    {
+        $this->listings->getBrowser()->get($category);
+    }
+
+    /**
+     * @Then /^I see that listings has no condition filter$/
+     */
+    public function iSeeThatListingsHasNoConditionFilter()
+    {
+
     }
 
 

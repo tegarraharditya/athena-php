@@ -72,6 +72,7 @@ class SearchBar extends OneWeb
 
     public function pressEnter(){
         $this->getElementSearchBar()->thenFind()->asHtmlElement()->sendKeys(WebDriverKeys::ENTER);
+        return new SearchResult();
     }
 
     public function clickLokasiProvince($index){
