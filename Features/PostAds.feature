@@ -6,10 +6,12 @@
     When I click post Ads on Header
     Then It will be redirected to Post Ads Page
 
-  Scenario: Positive Scenario
+  @parallel-scenario
+  Scenario Outline: : Positive Scenario
     Given I go to posting ads page
     And I fill title
-    And I choose category
+    And I choose category "<level1>" "<level2>" "<level3>"
+    And I fill all extra fields "<level2>"
     And I fill description
     And I upload photo
     And I choose location
@@ -21,6 +23,10 @@
     And I want to accept newsletter
     When I click Pasang Iklan button
     Then I can see that I successfully post ads
+
+    Examples:
+      |level1|level2|level3|
+      |1 |1|1|
 
   Scenario: Negative Scenario
     Given I go to posting ads page

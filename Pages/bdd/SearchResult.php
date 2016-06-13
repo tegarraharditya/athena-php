@@ -65,18 +65,33 @@ class SearchResult extends Listings
     }
 
     public function verifyListingsResultByListingsDetails($keyword){
-        $listingsdetails = $this->clickOneOfResult();
-        $listingsdetails->verifiedListingsDetailsByKeyword($keyword);
+        try{
+            $listingsdetails = $this->clickOneOfResult();
+            $listingsdetails->verifiedListingsDetailsByKeyword($keyword);
+        }catch(\Exception $e){
+            \PHPUnit_Framework_Assert::fail('Ads not found. Check manually. Error'.$e->getMessage());
+        }
+
     }
 
     public function verifyListingsResultByListingsDetailsInSpecificArea($keyword, $area){
-        $listingsdetails = $this->clickOneOfResult();
-        $listingsdetails->verifiedListingsDetailsByKeywordInSpecificArea($keyword,$area);
+        try{
+            $listingsdetails = $this->clickOneOfResult();
+            $listingsdetails->verifiedListingsDetailsByKeywordInSpecificArea($keyword,$area);
+        }catch(\Exception $e){
+            \PHPUnit_Framework_Assert::fail('Ads not found. Check manually. Error'.$e->getMessage());
+        }
+
     }
 
     public function verifyAllListingsByListingsDetailsInSpecificArea($area){
-        $listingsdetails = $this->clickOneOfResult();
-        $listingsdetails->verifyListingDetailsInSpecificArea($area);
+        try{
+            $listingsdetails = $this->clickOneOfResult();
+            $listingsdetails->verifyListingDetailsInSpecificArea($area);
+        }catch(\Exception $e){
+            \PHPUnit_Framework_Assert::fail('Ads not found. Check manually. Error'.$e->getMessage());
+        }
+
     }
 
 }

@@ -91,8 +91,4 @@ class SearchBar extends OneWeb
         return $element->thenFind()->asHtmlElement()->getText();
     }
 
-
-
-
-
 }

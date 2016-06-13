@@ -15,7 +15,7 @@ use Facebook\WebDriver\WebDriverExpectedCondition;
 
 class Homepage extends OneWeb
 {
-    CONST HOME = 'home--';
+    CONST HOME = 'home';
     CONST HEADER_POST_ADS_LINK = 'post-ad-head';
 
     public function __construct()

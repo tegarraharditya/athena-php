@@ -15,14 +15,11 @@ use Athena\Athena;
     private $XPATH_ALL_LINK = '//*[@id=\'main-footer\']//a';
 
     private $urls_footer = array(
-        'http://olex.id/',
         'http://help.olx.co.id/hc/id',
         'http://joinolx.com/',
-        'https://www.facebook.com/olxid',
-        'https://twitter.com/OLX_Indonesia',
-        'https://instagram.com/OLX_Indonesia',
-        'http://blog.olx.co.id/',
-        'http://olex.id/');
+        'http://blog.olx.co.id/');
+
+    private $TOTAL_IGNORE_LINK = 3;
 
     public function __construct()
     {
@@ -38,8 +35,13 @@ use Athena\Athena;
     }
 
     public function openAllLinkATFooter(){
-        foreach($this->getAllLinkAtFooter() as $url){
+        /*foreach($this->getAllLinkAtFooter() as $url){
             $this->getBrowser()->get($url);
+        }*/
+        $total_link_test = count($this->getAllLinkAtFooter())-$this->TOTAL_IGNORE_LINK;
+        $urls = $this->getAllLinkAtFooter();
+        for($i=0;$i<$total_link_test;$i++){
+            $this->getBrowser()->get($urls[$i]);
         }
     }
 
@@ -57,14 +59,15 @@ use Athena\Athena;
 
         $verified=[];
         $unverified=[];
-        $i=0;
-        foreach($this->getAllLinkAtFooter() as $url){
-            if(strcmp($url,$this->urls_footer[$i])==0){
-               $verified[]=array($i=>$url);
+
+        $urls = $this->getAllLinkAtFooter();
+        $total_link_test = count($urls)-$this->TOTAL_IGNORE_LINK;
+        for($i=0;$i<$total_link_test;$i++){
+            if(strcmp($urls[$i],$this->urls_footer[$i])==0){
+                $verified[]=array($i=>$urls[$i]);
             }else{
-                $unverified[]=array($i=>$url);
+                $unverified[]=array($i=>$urls[$i]);
             }
-            $i++;
         }
 
         if(count($unverified)>0){
@@ -76,17 +79,15 @@ use Athena\Athena;
     public function verifyAllLinkNotBroken(){
         $broken = [];
         $valid = [];
-        $i=0;
-        foreach($this->getAllLinkAtFooter() as $url){
-            if($i==10||$i==11){var_dump('skip:'.$url);}else{
-                if($this->isURLBroken($url)){
-                    $broken[] = array($i=>$url);
-                }else{
-                    $valid[] = array($i=>$url);
-                }
-                $i++;
-            }
 
+        $urls = $this->getAllLinkAtFooter();
+        $total_link_test = count($urls)-$this->TOTAL_IGNORE_LINK;
+        for($i=0;$i<$total_link_test;$i++){
+            if($this->isURLBroken($urls[$i])){
+                $broken[] = array($i=>$urls[$i]);
+            }else{
+                $valid[] = array($i=>$urls[$i]);
+            }
         }
 
         if(count($broken)>0){
