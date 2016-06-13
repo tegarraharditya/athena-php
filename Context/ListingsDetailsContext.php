@@ -117,5 +117,37 @@ class ListingsDetailsContext extends BaseContext
         $this->listingsDetails->verifyCloseIconAndroid();
     }
 
+    /**
+     * @Then /^I can click contact seller$/
+     */
+    public function iCanClickContactSeller()
+    {
+        $this->listingsDetails->clickContactMain();
+    }
+
+    /**
+     * @Then /^I can view contact detail$/
+     */
+    public function iCanViewContactDetail()
+    {
+        $this->listingsDetails->verifyContactMain();
+    }
+
+    /**
+     * @Then /^I can click phone contact$/
+     */
+    public function iCanClickPhoneContact()
+    {
+        $this->listingsDetails->clickCallIcon();
+    }
+
+    /**
+     * @Then /^I can see phone number appear$/
+     */
+    public function iCanSeePhoneNumberAppear()
+    {
+        $this->listingsDetails->verifyContactNumberAppear();
+    }
+
 
 }

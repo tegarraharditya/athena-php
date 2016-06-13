@@ -24,10 +24,14 @@ Feature:
     |category|
     |mobil-bekas|
 
+  @contact
   @parallel-scenario
   Scenario Outline: TC_OW_005_003
     Given I am in Listings Details <category> page
-    Then I can find that seller number element contains telp:
+    Then I can click contact seller
+    Then I can view contact detail
+    Then I can click phone contact
+    Then I can see phone number appear
 
     Examples:
     |category|
@@ -43,13 +47,13 @@ Feature:
     |category|
     |mobil-bekas|
 
-    @parallel-scenario
-    Scenario Outline:
-      Given I am in Listings Details <category> page
-      When I click android icon
-      And I click close
-      Then I cannot see the android icon
+  @parallel-scenario
+  Scenario Outline:
+    Given I am in Listings Details <category> page
+    When I click android icon
+    And I click close
+    Then I cannot see the android icon
 
-      Examples:
-        |category|
-        |mobil-bekas|
+    Examples:
+      |category|
+      |mobil-bekas|

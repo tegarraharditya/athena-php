@@ -54,6 +54,8 @@ class ListingsDetails extends OneWeb
     private $ATR_LISTINGS_DETAILS_PAGE = 'advert';
 
     private $ID_SELLER_CONTACT = 'btn_contact_main';
+    private $ID_CONTACT_CALL = 'btn_contact__call';
+    private $ID_CALLNUMBER_APPEAR = 'contact_inside_val';
     private $ID_ICON_ANDROID = 'login-head';
 
 
@@ -240,5 +242,21 @@ class ListingsDetails extends OneWeb
         \PHPUnit_Framework_Assert::assertNotTrue($this->isNotClosedIconAndroid(),'Modals is not cloed');
     }
 
+    public function clickContactMain(){
+        $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_SELLER_CONTACT)->thenFind()->asHtmlElement()->click();
+    }
 
+    public function verifyContactMain(){
+       \PHPUnit_Framework_Assert::assertTrue
+         ($this->getBrowser()->getCurrentPage()->find()->elementWithId($this->ID_CONTACT_CALL)->isDisplayed(),'Contact Bermasalah');
+    }
+
+    public function clickCallIcon(){
+        $this->getBrowser()->getCurrentPage()->getElement()->withId($this->ID_CONTACT_CALL)->thenFind()->asHtmlElement()->click();
+    }
+
+    public function verifyContactNumberAppear(){
+        \PHPUnit_Framework_Assert::assertTrue(
+        $this->getBrowser()->getCurrentPage()->find()->elementWithId($this->ID_CALLNUMBER_APPEAR)->isDisplayed(),'Phone Number Not Detected');
+    }
 }
