@@ -43,3 +43,9 @@ Feature:
     |category|
     |mobil-bekas|
 
+  @parallel-scenario
+  Scenario: TC_OW_005_004 Image on Ads Details page has Contain as background size
+    Given I am in a Listings page
+    And I click one of ads that has image
+    Then I see image has Contain as background size
+

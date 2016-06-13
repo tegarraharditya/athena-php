@@ -69,5 +69,21 @@ class ListingsDetailsContext extends BaseContext
         $this->listingsDetails->verifyPopUpChatwithSeller();
     }
 
+    /**
+     * @Given /^I click one of ads that has image$/
+     */
+    public function iClickOneOfAdsThatHasImage()
+    {
+        $this->listingsDetails = $this->listings->clickRandomAdsWithImage();
+    }
+
+    /**
+     * @Then /^I see image has Contain as background size$/
+     */
+    public function iSeeImageHasContainAsBackgroundSize()
+    {
+        $this->listingsDetails->verifyImageDetailsAsContain();
+    }
+
 
 }
