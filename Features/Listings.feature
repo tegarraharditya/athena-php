@@ -76,19 +76,28 @@
     And I click Iklan Terbaru
     Then I can verify that it's sorted by the newest
 
-  @parallel-scenario
-  Scenario:TC_OW_006_010
-    Given I am in a Listings page
-    When I click Pilih Kondisi button
-    And I click Baru
-    Then I can verify that condition of product is new
+    @parallel-scenario
+    Scenario:TC_OW_006_010
+      Given I am in a Listings page
+      When I click Pilih Kondisi button
+      And I click Baru
+      Then I can verify that condition of product is new
 
-  @parallel-scenario
-  Scenario:TC_OW_006_011
-    Given I am in a Listings page
-    When I click Pilih Kondisi button
-    And I click Bekas
-    Then I can verify that condition of product is used
+    @parallel-scenario
+    Scenario:TC_OW_006_011
+      Given I am in a Listings page
+      When I click Pilih Kondisi button
+      And I click Bekas
+      Then I can verify that condition of product is used
+
+    @parallel-scenario
+    Scenario Outline:
+      Given I am in a Listings page in category <category>
+      Then I see that listings has no condition filter
+
+      Examples:
+        |category|
+        |mobil-bekas|
 
 
 

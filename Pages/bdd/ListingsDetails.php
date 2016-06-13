@@ -110,9 +110,24 @@ class ListingsDetails extends OneWeb
         $element_active->assertThat()->isDisplayed();
     }
 
-    private function verifyImageDetailsAsContain(){
+    public function verifyImageDetailsAsContain(){
+        $elements = $this->getBrowser()->getCurrentPage()->find()
+            ->elementsWithXpath('//*[@id=\''.$this->ID_IMAGE.'\']//li');
 
+        foreach($elements as $element){
+            $attr_value = $element->getAttribute('style');
+            if($attr_value==''){
+                \PHPUnit_Framework_Assert::fail('Ads doesn\'t has Image');
+            }
+            if(strpos($attr_value,'background-size: contain;')==-false){
+                \PHPUnit_Framework_Assert::fail(
+                    'Image on Ads Details page is not fit. Please check manually. url: '.$this->getBrowser()->getCurrentURL());
+            }
+        }
     }
+
+
+
 
     public function verifyListingDetails($category){
         $this->verifyElementListingsDetails($this->ID_TITLE);

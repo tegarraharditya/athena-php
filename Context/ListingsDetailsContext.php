@@ -70,27 +70,19 @@ class ListingsDetailsContext extends BaseContext
     }
 
     /**
-     * @When /^I click Next Button$/
+     * @Given /^I click one of ads that has image$/
      */
-    public function iClickNextButton()
+    public function iClickOneOfAdsThatHasImage()
     {
-        throw new PendingException();
+        $this->listingsDetails = $this->listings->clickRandomAdsWithImage();
     }
 
     /**
-     * @Then /^I can see listings details in next page$/
+     * @Then /^I see image has Contain as background size$/
      */
-    public function iCanSeeListingsDetailsInNextPage()
+    public function iSeeImageHasContainAsBackgroundSize()
     {
-        throw new PendingException();
-    }
-
-    /**
-     * @Given /^I am in Listing Details (.*) page$/
-     */
-    public function iAmInListingDetailsPage($category)
-    {
-        throw new PendingException();
+        $this->listingsDetails->verifyImageDetailsAsContain();
     }
 
     /**

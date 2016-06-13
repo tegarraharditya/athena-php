@@ -150,7 +150,7 @@ class Listings extends OneWeb
 
     protected function getElementListingsIndex($index){
         return $this->getBrowser()->getCurrentPage()->getElement()
-            ->withXpath('.//*[@id=\'js-ad-listing-group\']/article['.$index.']//header/a');
+            ->withXpath('.//*[@id=\'js-ad-listing-group\']/article['.$index.']//div/a');
     }
 
     private function getElementNextPage(){
@@ -463,6 +463,54 @@ class Listings extends OneWeb
         if(!count($elements)>0){
             \PHPUnit_Framework_Assert::fail('No \'Istimewa\' listings. Please check manually');
         }
+
+    }
+
+    private function getAllAdsWithImageStyle(){
+        $all_elements = $this->getListElementByXpath('.//*[@id=\'js-ad-listing-group\']//header/a[contains(@style,\'background-image\')]');
+        return $all_elements;
+    }
+
+    private function getAllAdsWithImage(){
+        $all_elements = $this->getListElementByXpath('.//*[@id=\'js-ad-listing-group\']//header/a/img');
+        return $all_elements;
+    }
+
+    public function clickRandomAdsWithImage(){
+        //check listings ada image
+        $elements_has_image = $this->getAllAdsWithImage();
+        if(count($elements_has_image)==0){
+            \PHPUnit_Framework_Assert::fail('No listings has image. Please choose another category');
+        }
+
+        //check listings ada style
+        $elements_has_style = $this->getAllAdsWithImageStyle();
+        $count_elements_style = count($elements_has_style);
+        if($count_elements_style==0){
+            \PHPUnit_Framework_Assert::fail('Background size can not be found');
+        }else{
+            $rand_ = rand(0,($count_elements_style-1));
+
+            $element = $elements_has_style[$rand_];
+            $element->click();
+
+            return new ListingsDetails();
+        }
+    }
+
+    public function verifyListingsImageHasContainAsBackgroundSize(){
+        $elements_has_image = $this->getAllAdsWithImage();
+        if(count($elements_has_image)==0){
+            \PHPUnit_Framework_Assert::fail('No listings has image. Please choose another category');
+        }
+        $elements_has_style = $this->getAllAdsWithImageStyle();
+        $count_elements_style = count($elements_has_style);
+        if($count_elements_style==0){
+            \PHPUnit_Framework_Assert::fail('Background size can not be found');
+        }
+    }
+
+    public function verifyListingsHasNoConditionFilter(){
 
     }
 

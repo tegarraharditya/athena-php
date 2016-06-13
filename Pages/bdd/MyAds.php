@@ -14,6 +14,7 @@ use PHPUnit_Framework_Assert;
  */
 class MyAds extends OneWeb
 {
+    private $MYADS_CONF = 'Konfirmasi pasang Iklan - OLX.co.id';
     public function __construct()
     {
         parent::__construct(Athena::browser(),'myads');
@@ -21,6 +22,6 @@ class MyAds extends OneWeb
 
     public function verifyMyAdsTitle()
     {
-        PHPUnit_Framework_Assert::assertEquals('OLX.co.id - Cara Tepat Jual Cepat', $this->getBrowser()->getTitle());
+        PHPUnit_Framework_Assert::assertEquals($this->MYADS_CONF, $this->getBrowser()->getTitle());
     }
 }
