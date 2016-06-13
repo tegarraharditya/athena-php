@@ -15,7 +15,8 @@
     "games-console" : "/elektronik-gadget/games-console",
     "mobil" : "/mobil",
     "mobil-bekas" : "/mobil/bekas",
-    "lowongan" : "/jasa-lowongan-kerja/lowongan"
+    "lowongan" : "/jasa-lowongan-kerja/lowongan",
+    "apartment" : "/properti/apartment"
   },
   "api" : "http://api.olex.id/api/v1/",
   "bug-tracker" : {
