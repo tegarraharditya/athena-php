@@ -4,7 +4,6 @@ Feature: Homepage
   I want to open Homepage
   And verify category link
 
-  @awal
   @parallel-scenario
   Scenario: TC_OW_001_001
     When I open olx homepage

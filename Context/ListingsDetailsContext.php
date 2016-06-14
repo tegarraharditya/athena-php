@@ -141,5 +141,21 @@ class ListingsDetailsContext extends BaseContext
         $this->listingsDetails->verifyContactNumberAppear();
     }
 
+    /**
+     * @Given /^I can find applestore link$/
+     */
+    public function iCanFindApplestoreLink()
+    {
+        $this->listingsDetails->verifyAppleStoreLink();
+    }
+
+    /**
+     * @Then /^I can find playstore link$/
+     */
+    public function iCanFindPlaystoreLink()
+    {
+        $this->listingsDetails->verifyPlayStoreLink();
+    }
+
 
 }

@@ -58,6 +58,11 @@ class ListingsDetails extends OneWeb
     private $ID_CALLNUMBER_APPEAR = 'contact_inside_val';
     private $ID_ICON_ANDROID = 'login-head';
 
+    private $XPATH_PLAYSTORE_OLX = './/*[@id=\'js-modal-login\']/div[2]/section/div/div/a[1]';
+    private $XPATH_APPLESTORE_OLX = './/*[@id=\'js-modal-login\']/div[2]/section/div/div/a[2]';
+
+    private $HREF_PLAYSTORE_OLX = 'https://go.onelink.me/2327713408?pid=OLX_OneWeb';
+    private $HREF_APPLESTORE_OLX = 'https://itunes.apple.com/id/app/olx-indonesia/id660161040';
 
     public function __construct()
     {
@@ -273,5 +278,15 @@ class ListingsDetails extends OneWeb
     public function verifyContactNumberAppear(){
         \PHPUnit_Framework_Assert::assertTrue(
         $this->getBrowser()->getCurrentPage()->find()->elementWithId($this->ID_CALLNUMBER_APPEAR)->isDisplayed(),'Phone Number Not Detected');
+    }
+
+    public function verifyPlayStoreLink(){
+        \PHPUnit_Framework_Assert::assertEquals($this->HREF_PLAYSTORE_OLX,
+        $this->getBrowser()->getCurrentPage()->find()->elementWithXpath($this->XPATH_PLAYSTORE_OLX)->getAttribute('href'),'Link PlayStore Broken');
+    }
+
+    public function verifyAppleStoreLink(){
+        \PHPUnit_Framework_Assert::assertEquals($this->HREF_APPLESTORE_OLX,
+        $this->getBrowser()->getCurrentPage()->find()->elementWithXpath($this->XPATH_APPLESTORE_OLX)->getAttribute('href'),'Link AppleStore Broken');
     }
 }
