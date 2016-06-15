@@ -25,6 +25,10 @@
     "web" : "WebOLXID",
     "path-token" : ""
   },
+  "username" : "krisna.parahita@olx.co.id",
+  "username-others" : "harry@olx.co.id",
+  "password" : "testing",
+  "verified-phone" : "6281398399578",
   "filter_directories" : [
     "/Browser/Tests/desktop/Oneweb"
   ]
