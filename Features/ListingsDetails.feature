@@ -24,10 +24,14 @@ Feature:
     |category|
     |mobil-bekas|
 
+  @contact
   @parallel-scenario
   Scenario Outline: TC_OW_005_003
     Given I am in Listings Details <category> page
-    Then I can find that seller number element contains telp:
+    Then I can click contact seller
+    Then I can view contact detail
+    Then I can click phone contact
+    Then I can see phone number appear
 
     Examples:
     |category|
@@ -44,18 +48,40 @@ Feature:
     |mobil-bekas|
 
   @parallel-scenario
-  Scenario: TC_OW_005_004 Image on Ads Details page has Contain as background size
+  Scenario Outline:TC_OW_005_005
+    Given  I am in Listings Details <category> page
+    When I click android icon
+    And I click close
+    Then I cannot see the android icon
+
+    Examples:
+      |category|
+      |mobil-bekas|
+
+  Scenario: TC_OW_005_006 Image on Ads Details page has Contain as background size
     Given I am in a Listings page
     And I click one of ads that has image
     Then I see image has Contain as background size
 
-    @parallel-scenario
-    Scenario Outline:
-      Given I am in Listings Details <category> page
-      When I click android icon
-      And I click close
-      Then I cannot see the android icon
+  @parallel-scenario
+  Scenario Outline:TC_OW_005_007
+    Given I am in Listings Details <category> page
+    When I click android icon
+    And I click close
+    Then I cannot see the android icon
 
-      Examples:
-        |category|
-        |mobil-bekas|
+    Examples:
+      |category|
+      |mobil-bekas|
+
+  @Apple
+  @parallel-scenario
+  Scenario Outline:TC_OW_005_008
+    Given  I am in Listings Details <category> page
+    When I click android icon
+    Then I can find playstore link
+    And I can find applestore link
+
+    Examples:
+      |category|
+      |mobil-bekas|

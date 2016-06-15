@@ -15,7 +15,7 @@ use Tests\Pages\bdd\Listings;
 
 class OpenHomepageContext extends BaseContext
 {
-    use LeanTestingHookTrait;
+    //use LeanTestingHookTrait;
 
     /**
      * @var Listings
