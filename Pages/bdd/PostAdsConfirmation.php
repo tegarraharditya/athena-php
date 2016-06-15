@@ -41,13 +41,13 @@ class PostAdsConfirmation extends OneWeb
     public function clickRepostAdsButton(){
         $this->getElementWithID($this->REPOST_ADS_BUTTON)->thenFind()->asHtmlElement()
             ->click();
-        return new MyAds();
+        return new PostAds();
     }
 
     public function clickRepostAdsSameCategoryButton(){
         $this->getElementWithID($this->REPOST_ADS_SAME_CAT_BUTTON)->thenFind()->asHtmlElement()
             ->click();
-        return new MyAds();
+        return new PostAds();
     }
 
 

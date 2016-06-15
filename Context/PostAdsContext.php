@@ -9,32 +9,36 @@
 namespace Tests\Context;
 
 
+use Athena\Athena;
 use Behat\Behat\Tester\Exception\PendingException;
 use Composer\Util\Keys;
 use Facebook\WebDriver\WebDriverKeys;
 use Tests\Atlas\Sinon2;
 use Tests\Helper\LeanTestingHookTrait;
 use Tests\Pages\bdd\Homepage;
-use Tests\Pages\bdd\MyAds;
 use Tests\Pages\bdd\PostAds;
+use Tests\Pages\bdd\PostAdsConfirmation;
 
 class PostAdsContext extends BaseContext
 {
 
-
+    private $error_email_and_number_not_match = 'Nomor ini telah terdaftar atas akun pengguna lain';
     private $postAds;
     private $homepage;
+
     /**
-     * @var MyAds
+     * @var PostAdsConfirmation
      */
-    private $myads;
+    private $adsconf;
     private $sinon;
     private $level2;
+    private $settings;
     public function __construct()
     {
         $this->postAds = new PostAds();
         $this->homepage = new Homepage();
         $this->sinon = new Sinon2();
+        $this->settings = (array) Athena::settings()->getAll();
     }
 
     /**
@@ -151,8 +155,8 @@ class PostAdsContext extends BaseContext
      */
     public function iClickPasangIklanButton()
     {
-        $this->myads = $this->postAds->clickSubmitAds();
-        sleep(10);
+        $this->adsconf = $this->postAds->clickSubmitAds();
+
     }
 
     /**
@@ -160,7 +164,7 @@ class PostAdsContext extends BaseContext
      */
     public function iCanSeeThatISuccessfullyPostAds()
     {
-        $this->myads->verifyMyAdsTitle();
+        $this->adsconf->verifyPage();
     }
 
     /**
@@ -245,6 +249,138 @@ class PostAdsContext extends BaseContext
         $this->level2 = $this->postAds->getTextFromChosenLevel2($arg2);
         $this->postAds->chooseCategoryLevel2($arg2);
         $this->postAds->chooseCategoryLevel3($arg3);
+    }
+
+    /**
+     * @Given /^I fill existing email address$/
+     */
+    public function iFillExistingEmailAddress()
+    {
+
+        $existing_email = $this->settings['username'];
+        $this->postAds->inputEmail($existing_email);
+    }
+
+    /**
+     * @When /^I can see a pop up to continue with login$/
+     */
+    public function iCanSeeAPopUpToContinueWithLogin()
+    {
+        $this->postAds->verifyConfirmationLoginShowUp();
+    }
+
+    /**
+     * @When /^I click yes$/
+     */
+    public function iClickYes()
+    {
+        $this->postAds->clickConfirmToContinueWithLogin();
+    }
+
+    /**
+     * @When /^I fill password$/
+     */
+    public function iFillPassword()
+    {
+        $password = $this->settings['password'];
+        $this->postAds->inputPasswordLogin($password);
+    }
+
+    /**
+     * @When /^I click submit login$/
+     */
+    public function iClickSubmitLogin()
+    {
+        $this->adsconf = $this->postAds->clickSubmitLoginSuccess();
+    }
+
+    /**
+     * @Given /^I fill existing verified phone number$/
+     */
+    public function iFillExistingVerifiedPhoneNumber()
+    {
+        $phonenumber = $this->settings['verified-phone'];
+        $this->postAds->inputNoHp($phonenumber);
+    }
+
+    /**
+     * @Given /^I fill other's existing email address$/
+     */
+    public function iFillOtherSExistingEmailAddress()
+    {
+        $others_email = $this->settings['username-others'];
+        $this->postAds->inputEmail($others_email);
+    }
+
+    /**
+     * @Then /^I see error : can not use this phone number$/
+     */
+    public function iSeeErrorCanNotUseThisPhoneNumber()
+    {
+        $actual_error = $this->postAds->getPopUpError();
+        $this->postAds->verifyError($this->error_email_and_number_not_match,$actual_error);
+    }
+
+    /**
+     * @Given /^I post Ads using existing email and existing verified phone number$/
+     */
+    public function iPostAdsUsingExistingEmailAndExistingVerifiedPhoneNumber()
+    {
+        $email = $this->settings['username'];
+        $phone = $this->settings['verified-phone'];
+        $password = $this->settings['password'];
+        $this->postAds->postAds($email,$phone);
+        $this->postAds->clickSubmitAdsNegative();
+
+        //login
+        $this->postAds->verifyConfirmationLoginShowUp();
+        sleep(3);
+        $this->postAds->clickConfirmToContinueWithLogin();
+        var_dump('success3');
+        $this->postAds->inputPasswordLogin($password);
+        $this->adsconf = $this->postAds->clickSubmitLoginSuccess();
+
+    }
+
+    /**
+     * @When /^I post another ads using existing email and existing verified phone number$/
+     */
+    public function iPostAnotherAdsUsingExistingEmailAndExistingVerifiedPhoneNumber()
+    {   $email = $this->settings['username'];
+        $phone = $this->settings['verified-phone'];
+        $this->adsconf->verifyPage();
+        $this->postAds = $this->adsconf->clickRepostAdsButton();
+        $this->postAds->postAds($email,$phone);
+        $this->adsconf = $this->postAds->clickSubmitAds();
+        $this->adsconf->verifyPage();
+
+    }
+
+    /**
+     * @When /^I post another ads using other's email$/
+     */
+    public function iPostAnotherAdsUsingOtherSEmail()
+    {
+        $email = $this->settings['username-others'];
+        $phone = $this->settings['verified-phone'];
+        $this->postAds = $this->adsconf->clickRepostAdsButton();
+        $this->postAds->postAds($email,$phone);
+    }
+
+    /**
+     * @When /^I click Pasang Iklan button \(need confirmation\)$/
+     */
+    public function iClickPasangIklanButtonNeedConfirmation()
+    {
+        $this->postAds->clickSubmitAdsNegative();
+    }
+
+    /**
+     * @Then /^I see pop up to login again$/
+     */
+    public function iSeePopUpToLoginAgain()
+    {
+        $this->postAds->verifyConfirmationLoginShowUp();
     }
 
 

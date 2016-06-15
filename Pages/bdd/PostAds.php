@@ -68,6 +68,15 @@ class PostAds extends OneWeb
     private $MIN_SALARY = 'param_salary_from';
     private $MAX_SALARY = 'param_salary_to';
 
+    //confirmation pop up
+    private $CONFIRMASTION_ADS = 'confirm_approve';
+    private $CONFIRMATION_LANJUTKAN_LOGIN_BUTTON = 'confirm_approve';
+    private $MODAL_LOGIN_FORM = 'modal_login_form';
+    private $PASSWORD_LOGIN = 'ad_posting_password_field';
+    private $SUBMIT_LOGIN = 'btn_submit_login';
+
+    private $POP_UP_ERROR_TEXT = 'alert_info__text';
+
     public function __construct()
     {
         parent::__construct(Athena::browser(),'post-ads');
@@ -214,7 +223,7 @@ class PostAds extends OneWeb
         $element = $this->getBrowser()->getCurrentPage()->getElement()->withId($this->BUTTON_SUBMIT);
         $element->thenFind()->asHtmlElement()->click();
 
-        return new MyAds();
+        return new PostAdsConfirmation();
     }
 
     public function clickSubmitAdsNegative(){
@@ -411,6 +420,89 @@ class PostAds extends OneWeb
         }
 
     }
+
+    public function verifyConfirmationLoginShowUp(){
+        $this->getBrowser()->getCurrentPage()->getElement()->withId($this->CONFIRMASTION_ADS)
+            ->assertThat()->isDisplayed();
+
+        $this->getBrowser()->getCurrentPage()->getElement()->withId($this->CONFIRMATION_LANJUTKAN_LOGIN_BUTTON)
+            ->assertThat()->isDisplayed();
+    }
+
+    private function verifyLoginPopUpShowUp(){
+        $element = $this->getBrowser()->getCurrentPage()->getElement()->withId($this->MODAL_LOGIN_FORM);
+        $element->assertThat()->isDisplayed();
+    }
+
+    public function clickConfirmToContinueWithLogin(){
+        $this->getBrowser()->getCurrentPage()->getElement()->withId($this->CONFIRMATION_LANJUTKAN_LOGIN_BUTTON)
+            ->thenFind()->asHtmlElement()->click();
+
+
+        $this->verifyLoginPopUpShowUp();
+    }
+
+
+    public function inputPasswordLogin($value){
+        $element = $this->getBrowser()->getCurrentPage()->getElement()->withId($this->PASSWORD_LOGIN);
+        $element->thenFind()->asHtmlElement()->sendKeys($value);
+    }
+
+    public function clickSubmitLoginSuccess(){
+        $element = $this->getBrowser()->getCurrentPage()->getElement()->withId($this->SUBMIT_LOGIN);
+        $element->thenFind()->asHtmlElement()->click();
+        return new PostAdsConfirmation();
+    }
+
+    public function verifyError($errorExpected,$errorActual){
+        \PHPUnit_Framework_Assert::assertEquals($errorExpected,$errorActual);
+    }
+
+    public function getPopUpError(){
+        $element = $this->getBrowser()->getCurrentPage()->getElement()->withId($this->POP_UP_ERROR_TEXT);
+        return $element->thenFind()->asHtmlElement()->getText();
+    }
+
+    public function postAds($email,$phonenumber){
+        $this->inputTitle('test post Ads oleh QA OLX');
+        //select category
+        $this->clickChooseCategoryButton();
+        $this->chooseCategoryLevel1(1);
+        $level2 = $this->getTextFromChosenLevel2(1);
+        $this->chooseCategoryLevel2(1);
+        $this->chooseCategoryLevel3(1);
+
+        $this->fillExtraFieldBasedOnCategory($level2);
+        $this->inputDescription('dnkjddkdbdkfbdfb djfdkfnkdnfd djfkndjfndjf bsdhbsbdsbd shjbsjhdbs dsbdsbds sdbskdbs sdb');
+
+        //lokasi
+        $this->clickChooseLocationButton();
+        $this->chooseRegion(2);
+        $this->chooseCity(2);
+
+        $this->inputName('name name name name name');
+        $this->inputEmail($email);
+        $this->inputNoHp($phonenumber);
+        $this->thickAgreementUser();
+        $this->thickAcceptNewsLetter();
+
+        /*
+         And I fill title
+    And I choose category "<level1>" "<level2>" "<level3>"
+    And I fill all extra fields "<level2>"
+    And I fill description
+    And I upload photo
+    And I choose location
+    And I fill name
+    And I fill existing email address
+    And I fill Handphone number
+    And I fill pin BB
+    And I agree OLX can process my data
+    And I want to accept newsletter
+         */
+
+    }
+
 
 
 }
