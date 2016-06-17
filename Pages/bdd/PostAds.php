@@ -486,23 +486,11 @@ class PostAds extends OneWeb
         $this->thickAgreementUser();
         $this->thickAcceptNewsLetter();
 
-        /*
-         And I fill title
-    And I choose category "<level1>" "<level2>" "<level3>"
-    And I fill all extra fields "<level2>"
-    And I fill description
-    And I upload photo
-    And I choose location
-    And I fill name
-    And I fill existing email address
-    And I fill Handphone number
-    And I fill pin BB
-    And I agree OLX can process my data
-    And I want to accept newsletter
-         */
 
     }
 
+    public function deleteInputEmail(){
 
+    }
 
 }

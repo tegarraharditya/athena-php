@@ -10,11 +10,8 @@ namespace Tests\Context;
 
 
 use Athena\Athena;
-use Behat\Behat\Tester\Exception\PendingException;
-use Composer\Util\Keys;
 use Facebook\WebDriver\WebDriverKeys;
 use Tests\Atlas\Sinon2;
-use Tests\Helper\LeanTestingHookTrait;
 use Tests\Pages\bdd\Homepage;
 use Tests\Pages\bdd\PostAds;
 use Tests\Pages\bdd\PostAdsConfirmation;
@@ -336,7 +333,6 @@ class PostAdsContext extends BaseContext
         $this->postAds->verifyConfirmationLoginShowUp();
         sleep(3);
         $this->postAds->clickConfirmToContinueWithLogin();
-        var_dump('success3');
         $this->postAds->inputPasswordLogin($password);
         $this->adsconf = $this->postAds->clickSubmitLoginSuccess();
 
@@ -346,7 +342,7 @@ class PostAdsContext extends BaseContext
      * @When /^I post another ads using existing email and existing verified phone number$/
      */
     public function iPostAnotherAdsUsingExistingEmailAndExistingVerifiedPhoneNumber()
-    {   $email = $this->settings['username'];
+    {   $email = '';
         $phone = $this->settings['verified-phone'];
         $this->adsconf->verifyPage();
         $this->postAds = $this->adsconf->clickRepostAdsButton();
@@ -361,10 +357,11 @@ class PostAdsContext extends BaseContext
      */
     public function iPostAnotherAdsUsingOtherSEmail()
     {
-        $email = $this->settings['username-others'];
-        $phone = $this->settings['verified-phone'];
+        $email = 'com';
+        $phone = '';
         $this->postAds = $this->adsconf->clickRepostAdsButton();
         $this->postAds->postAds($email,$phone);
+        $this->postAds->clickSubmitAdsNegative();
     }
 
     /**
