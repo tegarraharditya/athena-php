@@ -2,12 +2,8 @@
 default:
     extensions:
         Tonic\Behat\ParallelScenarioExtension: ~
-        Pproenca\Behat\BootstrapFileLoader:
-            bootstrap_path: "/opt/athena-php/bootstrap.php"
-
-        jarnaiz\JUnitFormatter\JUnitFormatterExtension:
-            filename: report.xml
-            outputDir: %paths.base%/Report
+        Athena\Behat\BootstrapFileLoader:
+            bootstrap_path: "/opt/athena/bootstrap.php"
 
         Athena\Event\Proxy\BehatProxyExtension: ~
 
@@ -24,4 +20,10 @@ default:
                 - Tests\Context\LoginContext
                 - Tests\Context\SearchContext
                 - Tests\Context\FooterContext
+                - Tests\Context\PostAdsContext
                 - Tests\Context\atlas\HomepageContext
+
+
+
+
+
